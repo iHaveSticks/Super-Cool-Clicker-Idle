@@ -32,6 +32,7 @@ class Game extends React.Component {
         this.state = {
             clicksTotal: 0,
             clicksCurrent: 0,
+            pineconesCurrent: 0, //Second currency
             amountPerClick: 1,
             amountPerAutoClick: 0,
             autoClickSpeed: 1000,
@@ -41,9 +42,10 @@ class Game extends React.Component {
             amountPerAutoClickPrice4x: 80,
             amountPerClickPrice2x: 100,
             amountPerClickPrice4x: 120,
+            pineconePrice: 100000,
             autoClickSpeedPrice: 600,
             
-            increaseBasePrice2xPrice: 20000,
+            increaseBasePrice2xPrice: 1, //Buy with pinecones
 
             // incremental numbers, this will get updated in play
             two: 2,
@@ -163,16 +165,28 @@ class Game extends React.Component {
         }
     }
 
+    buyPinecones() {
+        const cost = this.state.pineconesPrice;
+        if (this.state.clicksCurrent >= cost) {
+            this.setState({
+                autoClickSpeed: this.state.autoClickSpeed - 250,
+                clicksCurrent: this.state.clicksCurrent - cost,
+                autoClickSpeedPrice: cost + (cost *.5)
+            });
+        }
+    }
+
     increaseBasePrice2x() {
         const cost = this.state.increaseBasePrice2xPrice;
-        if (this.state.clicksCurrent >= cost) {
+        if (this.state.pineconesCurrent >= cost) {
             this.setState({
                 amountPerClick: this.state.amountPerClick * 2,
                 amountPerAutoClick: this.state.amountPerAutoClick * 2,
                 two: this.state.two * 2,
                 four: this.state.four * 2,
 
-                clicksCurrent: this.state.clicksCurrent - cost,
+                //clicksCurrent: this.state.clicksCurrent - cost,
+                pineconesCurrent: this.state.clicksCurrent - cost,
                 increaseBasePrice2xPrice: cost + (cost * 2.5)
             });
         }

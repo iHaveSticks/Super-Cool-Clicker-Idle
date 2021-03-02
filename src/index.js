@@ -32,7 +32,7 @@ class Game extends React.Component {
         this.state = {
             clicksTotal: 0,
             clicksCurrent: 0,
-            pineconesCurrent: 0, //Second currency
+            pineconesCurrent: 0, //Pinecone currency
             amountPerClick: 1,
             amountPerAutoClick: 0,
             autoClickSpeed: 1000,
@@ -42,7 +42,9 @@ class Game extends React.Component {
             amountPerAutoClickPrice4x: 80,
             amountPerClickPrice2x: 100,
             amountPerClickPrice4x: 120,
-            pineconePrice: 100000,
+
+            pineconePrice: 100000,  //pinecone price
+
             autoClickSpeedPrice: 600,
             
             increaseBasePrice2xPrice: 1, //Buy with pinecones
@@ -58,6 +60,7 @@ class Game extends React.Component {
         this.buyExClick2x = this.buyExClick2x.bind(this);
         this.buyExClick4x = this.buyExClick4x.bind(this);
         this.buyAutoSpeed2x = this.buyAutoSpeed2x.bind(this);
+        this.buyPinecones = this.buyPinecones.bind(this)        //pinecone
         this.increaseBasePrice2x = this.increaseBasePrice2x.bind(this);
 
         {
@@ -194,6 +197,8 @@ class Game extends React.Component {
 
     render() {
         const clicksCurrent = this.state.clicksCurrent;
+        // add pincones
+        
         const clicksTotal = this.state.clicksTotal;
         const amountPerAutoClickPrice2x = this.state.amountPerAutoClickPrice2x;
         const amountPerAutoClickPrice4x = this.state.amountPerAutoClickPrice4x;

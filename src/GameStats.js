@@ -18,6 +18,8 @@ class GameStats extends React.Component {
                     <p style={rowStyles}>Per autoclick:&nbsp;{(this.props.amountPerAutoClick/(this.props.autoClickSpeed/1000)).toFixed(0)}/s</p>
                     <p style={rowStyles}>Per selfclick:&nbsp;{this.props.amountPerClick.toFixed(0)}</p>
                     <p style={rowStyles}>Total Clicks:&nbsp;{this.props.clicksTotal.toFixed(0)}</p>
+                    <br />
+                    <p style={rowStyles}>Pinecones:&nbsp;{this.props.pineconesCurrent.toFixed(0)}</p>
             </div>
         )
     }

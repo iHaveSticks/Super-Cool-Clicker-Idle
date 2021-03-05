@@ -7,14 +7,15 @@ import GameStats from "./GameStats.js";
 
 const mainStyles = {
     marginLeft: '50px',
-    color: "#e6e6e6"
+    color: "#FFFBDB"
 }
+// ferfw
 
 const clickerButton = {
     borderStyle: 'none',
     marginLeft: '20px',
     minWidth: '5em',
-    backgroundColor: '#75bd75',
+    backgroundColor: '#DA7422',
     minHeight: '2.3em'
 }
 const unavailable = {
@@ -30,8 +31,8 @@ class Game extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            clicksTotal: 0,
-            clicksCurrent: 0,
+            clicksTotal: 99999999999999990,
+            clicksCurrent: 9999999999999990,
             pineconesCurrent: 0, //Pinecone currency
             amountPerClick: 1,
             amountPerAutoClick: 0,
@@ -169,18 +170,19 @@ class Game extends React.Component {
     }
 
     buyPinecones() {
-        const cost = this.state.pineconesPrice;
+        const cost = this.state.pineconePrice;
         if (this.state.clicksCurrent >= cost) {
             this.setState({
-                autoClickSpeed: this.state.autoClickSpeed - 250,
                 clicksCurrent: this.state.clicksCurrent - cost,
-                autoClickSpeedPrice: cost + (cost *.5)
+                pineconesCurrent: this.state.pineconesCurrent += 1,
+                pineconePrice: this.state.pineconePrice * 1.5
             });
         }
     }
 
     increaseBasePrice2x() {
         const cost = this.state.increaseBasePrice2xPrice;
+        const pineconesCurrent = this.state.pineconesCurrent
         if (this.state.pineconesCurrent >= cost) {
             this.setState({
                 amountPerClick: this.state.amountPerClick * 2,
@@ -189,17 +191,21 @@ class Game extends React.Component {
                 four: this.state.four * 2,
 
                 //clicksCurrent: this.state.clicksCurrent - cost,
-                pineconesCurrent: this.state.clicksCurrent - cost,
-                increaseBasePrice2xPrice: cost + (cost * 2.5)
+                pineconesCurrent: this.state.pineconesCurrent - cost,
+                increaseBasePrice2xPrice: cost + 1
             });
         }
     }
 
     render() {
+        //clicks
         const clicksCurrent = this.state.clicksCurrent;
-        // add pincones
-        
         const clicksTotal = this.state.clicksTotal;
+
+        //pincones
+        const pineconesCurrent = this.state.pineconesCurrent;
+        const pineconePrice = this.state.pineconePrice;
+
         const amountPerAutoClickPrice2x = this.state.amountPerAutoClickPrice2x;
         const amountPerAutoClickPrice4x = this.state.amountPerAutoClickPrice4x;
         const amountPerClickPrice2x = this.state.amountPerClickPrice2x;
@@ -209,6 +215,7 @@ class Game extends React.Component {
         const amountPerAutoClick = this.state.amountPerAutoClick;
         const amountPerClick = this.state.amountPerClick;
         const increaseBasePrice2xPrice = this.state.increaseBasePrice2xPrice;
+
         const two = this.state.two;
         const four = this.state.four;
 
@@ -233,6 +240,19 @@ class Game extends React.Component {
                         </button>
                     </p>
                 }
+
+                {/* Buy pinecones*/}
+                {clicksTotal >= 15000 &&
+                    <p>
+                        Price: {pineconePrice.toFixed(0)}:
+                        <button type="button" 
+                            style={clicksCurrent >= pineconePrice ? clickerButton : unavailable}
+                            onClick={this.buyPinecones}   //Create function for this              <--------------------
+                            >Buy pinecones +{1}
+                        </button>
+                    </p>
+                }
+
 
                 {/* Buy amount per autoclick 4x*/}
                 {clicksTotal >= 1500 &&
@@ -285,9 +305,9 @@ class Game extends React.Component {
                 {/* Double base incrementals */}
                 {clicksTotal >= 15000 && autoClickSpeed <= 500 &&
                     <p>
-                        Price: {increaseBasePrice2xPrice.toFixed(0)}:
+                        Price: {increaseBasePrice2xPrice.toFixed(0)} pinecones:
                         <button type="button"
-                            style={clicksCurrent >= increaseBasePrice2xPrice ? clickerButton : unavailable}
+                            style={pineconesCurrent >= increaseBasePrice2xPrice ? clickerButton : unavailable}
                             onClick={this.increaseBasePrice2x}
                             >All base incrementals *2
                         </button>
@@ -297,6 +317,7 @@ class Game extends React.Component {
             <GameStats  amountPerAutoClick={amountPerAutoClick}
                         autoClickSpeed={autoClickSpeed}
                         amountPerClick={amountPerClick}
+                        pineconesCurrent={pineconesCurrent}
                         clicksTotal={clicksTotal}
             />
         </div>

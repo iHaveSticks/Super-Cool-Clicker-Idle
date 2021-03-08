@@ -31,8 +31,8 @@ class Game extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            clicksTotal: 99999999999999990,
-            clicksCurrent: 9999999999999990,
+            clicksTotal: 0,
+            clicksCurrent: 0,
             pineconesCurrent: 0, //Pinecone currency
             amountPerClick: 1,
             amountPerAutoClick: 0,
@@ -222,7 +222,7 @@ class Game extends React.Component {
         return (
         <div style={mainStyles}>
             <h1>Super Cool Clicker Idle</h1>
-            <h2 style={{border: "3px solid #e6e6e6", width: "8em", padding: '5px'}}>Clicks: {clicksCurrent.toFixed(0)}</h2>
+            <h2 style={{border: "3px solid #e6e6e6", width: "10em", whiteSpace: "nowrap", padding: '5px', overflow: "hidden"}}>Clicks: {clicksCurrent.toFixed(0)}</h2>
 
             <button type="button" style={clickerButton} onClick={this.handleClickerButton}>Mine</button> <br />
 

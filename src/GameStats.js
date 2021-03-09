@@ -4,8 +4,10 @@ const GameStatStyles = {
     padding: '1em',
     minWidth: '14em',
     float: 'left',
+    whiteSpace: "nowrap",
     display: "block",
-    border: "3px solid #e6e6e6"
+    border: "3px solid #e6e6e6",
+    overflow: "hidden"
 }
 const rowStyles = {
     margin: '.1em'

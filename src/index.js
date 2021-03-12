@@ -7,7 +7,8 @@ import GameStats from "./GameStats.js";
 
 const mainStyles = {
     marginLeft: '50px',
-    color: "#FFFBDB"
+    color: "#FFFBDB",
+    marginLeft: "20vw",
 }
 // ferfw
 

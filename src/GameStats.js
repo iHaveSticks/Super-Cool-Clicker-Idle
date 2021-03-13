@@ -2,8 +2,7 @@ import React from 'react';
 
 const GameStatStyles = {
     padding: '1em',
-    minWidth: '14em',
-    float: 'left',
+    width: '14em',
     whiteSpace: "nowrap",
     display: "block",
     border: "3px solid #e6e6e6",

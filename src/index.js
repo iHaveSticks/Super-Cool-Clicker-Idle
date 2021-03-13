@@ -6,11 +6,10 @@ import "./index.css";
 import GameStats from "./GameStats.js";
 
 const mainStyles = {
-    marginLeft: '50px',
     color: "#FFFBDB",
     marginLeft: "20vw",
+    userSelect: "none",
 }
-// ferfw
 
 const clickerButton = {
     borderStyle: 'none',
@@ -35,7 +34,7 @@ class Game extends React.Component {
             clicksTotal: 0,
             clicksCurrent: 0,
             pineconesCurrent: 0, //Pinecone currency
-            amountPerClick: 1,
+            amountPerClick: 1999999999,
             amountPerAutoClick: 0,
             autoClickSpeed: 1000,
 
@@ -175,7 +174,7 @@ class Game extends React.Component {
         if (this.state.clicksCurrent >= cost) {
             this.setState({
                 clicksCurrent: this.state.clicksCurrent - cost,
-                pineconesCurrent: this.state.pineconesCurrent += 1,
+                pineconesCurrent: this.state.pineconesCurrent += this.state.two,
                 pineconePrice: this.state.pineconePrice * 1.5
             });
         }
@@ -223,17 +222,18 @@ class Game extends React.Component {
         return (
         <div style={mainStyles}>
             <h1>Super Cool Clicker Idle</h1>
-            <h2 style={{border: "3px solid #e6e6e6", width: "10em", whiteSpace: "nowrap", padding: '5px', overflow: "hidden"}}>Clicks: {clicksCurrent.toFixed(0)}</h2>
+            <h2 style={{border: "3px solid #e6e6e6", width: "10em", whiteSpace: "nowrap", padding: '5px', overflow: "hidden"}}>Clicks: {clicksCurrent.toFixed(0)}</h2> {/*h2 is 2em by default*/}
 
-            <button type="button" style={clickerButton} onClick={this.handleClickerButton}>Mine</button> <br />
+            <div style={{minHeight: "11em", float: 'left', marginRight: '1em', display: 'block', minWidth: "20em", overflow: "hidden"}}> {/* minWidth = 10em * 2 to match the h2 element above*/}
+            
+                <button type="button" style={clickerButton} onClick={this.handleClickerButton}>Click</button> <br />
 
-            <div style={{minHeight: "11em", minWidth: '14.5em', float: 'left', marginRight: '15em', display: 'block'}}> {/* Store */}
                 <h3>Store</h3>
                 
                 {/* Buy amount per autoclick 2x*/}
                 {clicksTotal >= 30 &&
                     <p>
-                        Price: {amountPerAutoClickPrice2x.toFixed(0)}:
+                        {amountPerAutoClickPrice2x.toFixed(0)} Clicks
                         <button type="button" 
                             style={clicksCurrent >= amountPerAutoClickPrice2x ? clickerButton : unavailable}
                             onClick={this.buyAuto2x}
@@ -245,11 +245,11 @@ class Game extends React.Component {
                 {/* Buy pinecones*/}
                 {clicksTotal >= 15000 &&
                     <p>
-                        Price: {pineconePrice.toFixed(0)}:
+                        {pineconePrice.toFixed(0)} Clicks
                         <button type="button" 
                             style={clicksCurrent >= pineconePrice ? clickerButton : unavailable}
-                            onClick={this.buyPinecones}   //Create function for this              <--------------------
-                            >Buy pinecones +{1}
+                            onClick={this.buyPinecones}
+                            >Pinecones +{two}
                         </button>
                     </p>
                 }
@@ -258,7 +258,7 @@ class Game extends React.Component {
                 {/* Buy amount per autoclick 4x*/}
                 {clicksTotal >= 1500 &&
                     <p>
-                        Price: {amountPerAutoClickPrice4x.toFixed(0)}:
+                        {amountPerAutoClickPrice4x.toFixed(0)} Clicks
                         <button type="button" 
                             style={clicksCurrent >= amountPerAutoClickPrice4x ? clickerButton : unavailable}
                             onClick={this.buyAuto4x}
@@ -270,7 +270,7 @@ class Game extends React.Component {
                 {/* Buy amount per self click 2x */}
                 {clicksTotal >= 60 &&
                     <p>
-                        Price: {amountPerClickPrice2x.toFixed(0)}:
+                        {amountPerClickPrice2x.toFixed(0)} Clicks
                         <button type="button"
                             style={clicksCurrent >= amountPerClickPrice2x ? clickerButton : unavailable}
                             onClick={this.buyExClick2x}
@@ -282,7 +282,7 @@ class Game extends React.Component {
                 {/* Buy amount per self click 4x */}
                 {clicksTotal >= 1700 &&
                     <p>
-                        Price: {amountPerClickPrice4x.toFixed(0)}:
+                        {amountPerClickPrice4x.toFixed(0)}  Clicks
                         <button type="button"
                             style={clicksCurrent >= amountPerClickPrice4x ? clickerButton : unavailable}
                             onClick={this.buyExClick4x}
@@ -294,7 +294,7 @@ class Game extends React.Component {
                 {/* Buy autoclick speed */}
                 {clicksTotal >= 300 && autoClickSpeed > 250 &&
                     <p>
-                        Price: {autoClickSpeedPrice.toFixed(0)}:
+                        {autoClickSpeedPrice.toFixed(0)} Clicks
                         <button type="button"
                             style={clicksCurrent >= autoClickSpeedPrice ? clickerButton : unavailable}
                             onClick={this.buyAutoSpeed2x}
@@ -306,11 +306,11 @@ class Game extends React.Component {
                 {/* Double base incrementals */}
                 {clicksTotal >= 15000 && autoClickSpeed <= 500 &&
                     <p>
-                        Price: {increaseBasePrice2xPrice.toFixed(0)} pinecones:
+                        {increaseBasePrice2xPrice.toFixed(0)} pinecones
                         <button type="button"
                             style={pineconesCurrent >= increaseBasePrice2xPrice ? clickerButton : unavailable}
                             onClick={this.increaseBasePrice2x}
-                            >All base incrementals *2
+                            >Base incrementals *2
                         </button>
                     </p>
                 }

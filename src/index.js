@@ -75,7 +75,7 @@ class Game extends React.Component {
                         });
                         break;
                     case 500:
-                        if(counter % 2 === 0) {
+                        if(counter === 2) {
                             this.setState({
                                 clicksTotal: this.state.clicksTotal + this.state.amountPerAutoClick,
                                 clicksCurrent: this.state.clicksCurrent + this.state.amountPerAutoClick
@@ -84,7 +84,7 @@ class Game extends React.Component {
                         counter >= 2 ? counter = 1 : counter++;
                         break;
                     case 750:
-                        if(counter % 3 === 0) {
+                        if(counter === 3) {
                             this.setState({
                                 clicksTotal: this.state.clicksTotal + this.state.amountPerAutoClick,
                                 clicksCurrent: this.state.clicksCurrent + this.state.amountPerAutoClick
@@ -93,7 +93,7 @@ class Game extends React.Component {
                         counter >= 3 ? counter = 1 : counter++;
                         break;
                     case 1000:
-                        if(counter % 4 === 0) {
+                        if(counter === 4) {
                             this.setState({
                                 clicksTotal: this.state.clicksTotal + this.state.amountPerAutoClick,
                                 clicksCurrent: this.state.clicksCurrent + this.state.amountPerAutoClick

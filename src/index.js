@@ -227,6 +227,17 @@ class Game extends React.Component {
             <div style={{minHeight: "11em", float: 'left', marginRight: '1em', display: 'block', minWidth: "20em", overflow: "hidden"}}> {/* minWidth = 10em * 2 to match the h2 element above*/}
             
                 <button type="button" style={clickerButton} onClick={this.handleClickerButton}>Click</button> <br />
+                {/* Buy pinecones*/}
+                {clicksTotal >= 15000 &&
+                    <p>
+                        <button type="button" 
+                            style={clicksCurrent >= pineconePrice ? clickerButton : unavailable}
+                            onClick={this.buyPinecones}
+                            >Pinecones +{two}
+                        </button>
+                        &nbsp; {pineconePrice.toFixed(0)} Clicks
+                    </p>
+                }
 
                 <h3>Store</h3>
                 
@@ -242,17 +253,7 @@ class Game extends React.Component {
                     </p>
                 }
 
-                {/* Buy pinecones*/}
-                {clicksTotal >= 15000 &&
-                    <p>
-                        {pineconePrice.toFixed(0)} Clicks
-                        <button type="button" 
-                            style={clicksCurrent >= pineconePrice ? clickerButton : unavailable}
-                            onClick={this.buyPinecones}
-                            >Pinecones +{two}
-                        </button>
-                    </p>
-                }
+                
 
 
                 {/* Buy amount per autoclick 4x*/}

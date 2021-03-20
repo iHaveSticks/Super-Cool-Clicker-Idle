@@ -222,7 +222,11 @@ class Game extends React.Component {
         return (
         <div style={mainStyles}>
             <h1>Super Cool Clicker Idle</h1>
-            <h2 style={{border: "3px solid #e6e6e6", width: "10em", whiteSpace: "nowrap", padding: '5px', overflow: "hidden"}}>Clicks: {clicksCurrent.toFixed(0)}</h2> {/*h2 is 2em by default*/}
+            <h2 style={{border: "3px solid #e6e6e6", width: "10em", whiteSpace: "nowrap", padding: '5px', overflow: "hidden"}}> {new Intl.NumberFormat(undefined, { 
+                                                                                                                                            notation: "compact",
+                                                                                                                                            compactDisplay: "long"
+                                                                                                                                            }).format(clicksCurrent)
+                                                                                                                                        }</h2> {/*h2 is 2em by default*/}
 
             <div style={{minHeight: "11em", float: 'left', marginRight: '1em', display: 'block', minWidth: "20em", overflow: "hidden"}}> {/* minWidth = 10em * 2 to match the h2 element above*/}
             

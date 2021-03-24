@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import "./index.css";
 
 // Import Components
-import GameStats from "./GameStats.js";
+import GameStats from "./components/GameStats.js";
+import NumberCompacter from './functions/number-compacter';
+// import CurrentClicksSTR from "./components/CurrentClicksSTR.js";
 
 const mainStyles = {
     color: "#FFFBDB",
@@ -28,13 +30,13 @@ const unavailable = {
 }
 
 class Game extends React.Component {
-    constructor(props) {
+constructor(props) {
         super(props);
         this.state = {
             clicksTotal: 0,
             clicksCurrent: 0,
             pineconesCurrent: 0, //Pinecone currency
-            amountPerClick: 1999999999,
+            amountPerClick: 990000000,
             amountPerAutoClick: 0,
             autoClickSpeed: 1000,
 
@@ -52,7 +54,7 @@ class Game extends React.Component {
 
             // incremental numbers, this will get updated in play
             two: 2,
-            four: 4
+            four: 4,
             
         }
         this.handleClickerButton = this.handleClickerButton.bind(this);
@@ -107,8 +109,6 @@ class Game extends React.Component {
                 
             }, 250);
         };
-
-
     };
 
     handleClickerButton() {
@@ -191,7 +191,7 @@ class Game extends React.Component {
                 four: this.state.four * 2,
 
                 //clicksCurrent: this.state.clicksCurrent - cost,
-                pineconesCurrent: this.state.pineconesCurrent - cost,
+                pineconesCurrent: pineconesCurrent - cost,
                 increaseBasePrice2xPrice: cost + 1
             });
         }
@@ -222,11 +222,13 @@ class Game extends React.Component {
         return (
         <div style={mainStyles}>
             <h1>Super Cool Clicker Idle</h1>
-            <h2 style={{border: "3px solid #e6e6e6", width: "10em", whiteSpace: "nowrap", padding: '5px', overflow: "hidden"}}> {new Intl.NumberFormat(undefined, { 
+            <h2 style={{border: "3px solid #e6e6e6", width: "10em", whiteSpace: "nowrap", padding: '5px', overflow: "hidden"}}> {NumberCompacter(clicksCurrent)} </h2>
+            
+                                                                                                                                        {/* {new Intl.NumberFormat(undefined, { 
                                                                                                                                             notation: "compact",
                                                                                                                                             compactDisplay: "long"
                                                                                                                                             }).format(clicksCurrent)
-                                                                                                                                        }</h2> {/*h2 is 2em by default*/}
+                                                                                                                                        }</h2>  */}
 
             <div style={{minHeight: "11em", float: 'left', marginRight: '1em', display: 'block', minWidth: "20em", overflow: "hidden"}}> {/* minWidth = 10em * 2 to match the h2 element above*/}
             

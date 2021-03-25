@@ -1,4 +1,5 @@
 import React from 'react';
+import NumberCompacter from './../functions/number-compacter';
 
 const GameStatStyles = {
     padding: '1em',
@@ -16,11 +17,11 @@ class GameStats extends React.Component {
         return(
             <div style={GameStatStyles}>
                 <h3>Stats</h3>
-                    <p style={rowStyles}>Per autoclick:&nbsp;{(this.props.amountPerAutoClick/(this.props.autoClickSpeed/1000)).toFixed(0)}/s</p>
-                    <p style={rowStyles}>Per selfclick:&nbsp;{this.props.amountPerClick.toFixed(0)}</p>
-                    <p style={rowStyles}>Total Clicks:&nbsp;{this.props.clicksTotal.toFixed(0)}</p>
+                    <p style={rowStyles}>Per autoclick:&nbsp;{NumberCompacter(this.props.amountPerAutoClick/(this.props.autoClickSpeed/1000))}/s</p>
+                    <p style={rowStyles}>Per selfclick:&nbsp;{NumberCompacter(this.props.amountPerClick)}</p>
+                    <p style={rowStyles}>Total Clicks:&nbsp;{NumberCompacter(this.props.clicksTotal)}</p>
                     <br />
-                    <p style={rowStyles}>Pinecones:&nbsp;{this.props.pineconesCurrent.toFixed(0)}</p>
+                    <p style={rowStyles}>Pinecones:&nbsp;{NumberCompacter(this.props.pineconesCurrent)}</p>
             </div>
         )
     }

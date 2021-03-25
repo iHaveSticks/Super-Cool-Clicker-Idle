@@ -5,7 +5,6 @@ import "./index.css";
 // Import Components
 import GameStats from "./components/GameStats.js";
 import NumberCompacter from './functions/number-compacter';
-// import CurrentClicksSTR from "./components/CurrentClicksSTR.js";
 
 const mainStyles = {
     color: "#FFFBDB",
@@ -45,9 +44,7 @@ constructor(props) {
             amountPerAutoClickPrice4x: 80,
             amountPerClickPrice2x: 100,
             amountPerClickPrice4x: 120,
-
-            pineconePrice: 100000,  //pinecone price
-
+            pineconePrice: 100000,
             autoClickSpeedPrice: 600,
             
             increaseBasePrice2xPrice: 1, //Buy with pinecones
@@ -63,7 +60,7 @@ constructor(props) {
         this.buyExClick2x = this.buyExClick2x.bind(this);
         this.buyExClick4x = this.buyExClick4x.bind(this);
         this.buyAutoSpeed2x = this.buyAutoSpeed2x.bind(this);
-        this.buyPinecones = this.buyPinecones.bind(this)        //pinecone
+        this.buyPinecones = this.buyPinecones.bind(this);
         this.increaseBasePrice2x = this.increaseBasePrice2x.bind(this);
 
         {
@@ -189,8 +186,7 @@ constructor(props) {
                 amountPerAutoClick: this.state.amountPerAutoClick * 2,
                 two: this.state.two * 2,
                 four: this.state.four * 2,
-
-                //clicksCurrent: this.state.clicksCurrent - cost,
+                
                 pineconesCurrent: pineconesCurrent - cost,
                 increaseBasePrice2xPrice: cost + 1
             });
@@ -216,19 +212,13 @@ constructor(props) {
         const amountPerClick = this.state.amountPerClick;
         const increaseBasePrice2xPrice = this.state.increaseBasePrice2xPrice;
 
-        const two = this.state.two;
-        const four = this.state.four;
+        const two = NumberCompacter(this.state.two);
+        const four = NumberCompacter(this.state.four);
 
         return (
         <div style={mainStyles}>
             <h1>Super Cool Clicker Idle</h1>
             <h2 style={{border: "3px solid #e6e6e6", width: "10em", whiteSpace: "nowrap", padding: '5px', overflow: "hidden"}}> {NumberCompacter(clicksCurrent)} </h2>
-            
-                                                                                                                                        {/* {new Intl.NumberFormat(undefined, { 
-                                                                                                                                            notation: "compact",
-                                                                                                                                            compactDisplay: "long"
-                                                                                                                                            }).format(clicksCurrent)
-                                                                                                                                        }</h2>  */}
 
             <div style={{minHeight: "11em", float: 'left', marginRight: '1em', display: 'block', minWidth: "20em", overflow: "hidden"}}> {/* minWidth = 10em * 2 to match the h2 element above*/}
             
@@ -241,7 +231,7 @@ constructor(props) {
                             onClick={this.buyPinecones}
                             >Pinecones +{two}
                         </button>
-                        &nbsp; {pineconePrice.toFixed(0)} Clicks
+                        &nbsp; {NumberCompacter(pineconePrice)}
                     </p>
                 }
 
@@ -250,7 +240,7 @@ constructor(props) {
                 {/* Buy amount per autoclick 2x*/}
                 {clicksTotal >= 30 &&
                     <p>
-                        {amountPerAutoClickPrice2x.toFixed(0)} Clicks
+                        {NumberCompacter(amountPerAutoClickPrice2x)}
                         <button type="button" 
                             style={clicksCurrent >= amountPerAutoClickPrice2x ? clickerButton : unavailable}
                             onClick={this.buyAuto2x}
@@ -259,13 +249,11 @@ constructor(props) {
                     </p>
                 }
 
-                
-
 
                 {/* Buy amount per autoclick 4x*/}
                 {clicksTotal >= 1500 &&
                     <p>
-                        {amountPerAutoClickPrice4x.toFixed(0)} Clicks
+                        {NumberCompacter(amountPerAutoClickPrice4x)}
                         <button type="button" 
                             style={clicksCurrent >= amountPerAutoClickPrice4x ? clickerButton : unavailable}
                             onClick={this.buyAuto4x}
@@ -277,7 +265,7 @@ constructor(props) {
                 {/* Buy amount per self click 2x */}
                 {clicksTotal >= 60 &&
                     <p>
-                        {amountPerClickPrice2x.toFixed(0)} Clicks
+                        {NumberCompacter(amountPerClickPrice2x)}
                         <button type="button"
                             style={clicksCurrent >= amountPerClickPrice2x ? clickerButton : unavailable}
                             onClick={this.buyExClick2x}
@@ -289,7 +277,7 @@ constructor(props) {
                 {/* Buy amount per self click 4x */}
                 {clicksTotal >= 1700 &&
                     <p>
-                        {amountPerClickPrice4x.toFixed(0)}  Clicks
+                        {NumberCompacter(amountPerClickPrice4x)}
                         <button type="button"
                             style={clicksCurrent >= amountPerClickPrice4x ? clickerButton : unavailable}
                             onClick={this.buyExClick4x}
@@ -301,7 +289,7 @@ constructor(props) {
                 {/* Buy autoclick speed */}
                 {clicksTotal >= 300 && autoClickSpeed > 250 &&
                     <p>
-                        {autoClickSpeedPrice.toFixed(0)} Clicks
+                        {NumberCompacter(autoClickSpeedPrice)}
                         <button type="button"
                             style={clicksCurrent >= autoClickSpeedPrice ? clickerButton : unavailable}
                             onClick={this.buyAutoSpeed2x}
@@ -313,7 +301,7 @@ constructor(props) {
                 {/* Double base incrementals */}
                 {clicksTotal >= 15000 && autoClickSpeed <= 500 &&
                     <p>
-                        {increaseBasePrice2xPrice.toFixed(0)} pinecones
+                        {NumberCompacter(increaseBasePrice2xPrice)} pinecones
                         <button type="button"
                             style={pineconesCurrent >= increaseBasePrice2xPrice ? clickerButton : unavailable}
                             onClick={this.increaseBasePrice2x}

@@ -32,10 +32,10 @@ class Game extends React.Component {
 constructor(props) {
         super(props);
         this.state = {
-            clicksTotal: 0,
-            clicksCurrent: 0,
+            clicksTotal: 9999999999,
+            clicksCurrent: 9999999999,
             pineconesCurrent: 0, //Pinecone currency
-            amountPerClick: 990000000,
+            amountPerClick: 1,
             amountPerAutoClick: 0,
             autoClickSpeed: 1000,
 
@@ -47,7 +47,7 @@ constructor(props) {
             pineconePrice: 100000,
             autoClickSpeedPrice: 600,
             
-            increaseBasePrice2xPrice: 1, //Buy with pinecones
+            increaseBasePrice2xPrice: 0, //Buy with pinecones
 
             // incremental numbers, this will get updated in play
             two: 2,
@@ -172,7 +172,7 @@ constructor(props) {
             this.setState({
                 clicksCurrent: this.state.clicksCurrent - cost,
                 pineconesCurrent: this.state.pineconesCurrent += this.state.two,
-                pineconePrice: this.state.pineconePrice * 1.5
+                pineconePrice: this.state.pineconePrice * 2
             });
         }
     }
@@ -188,8 +188,17 @@ constructor(props) {
                 four: this.state.four * 2,
                 
                 pineconesCurrent: pineconesCurrent - cost,
-                increaseBasePrice2xPrice: cost + 1
+                increaseBasePrice2xPrice: cost + this.state.two
             });
+            if(cost > 0) {
+                this.setState({
+                    increaseBasePrice2xPrice: cost + this.state.two
+                });
+            } else {
+                this.setState({
+                    increaseBasePrice2xPrice: 4
+                });
+            }
         }
     }
 
@@ -301,7 +310,7 @@ constructor(props) {
                 {/* Double base incrementals */}
                 {clicksTotal >= 15000 && autoClickSpeed <= 500 &&
                     <p>
-                        {NumberCompacter(increaseBasePrice2xPrice)} pinecones
+                        {increaseBasePrice2xPrice > 0 ? NumberCompacter(increaseBasePrice2xPrice) + ' pincones' : 'free'}
                         <button type="button"
                             style={pineconesCurrent >= increaseBasePrice2xPrice ? clickerButton : unavailable}
                             onClick={this.increaseBasePrice2x}

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Super-Cool-Clicker-Idle/precache-manifest.fbd8d9d3666b400982fc0ee48be59553.js"
+  "/Super-Cool-Clicker-Idle/precache-manifest.b26a6a5df828db0ad506402c3c0adbe7.js"
 );
 
 self.addEventListener('message', (event) => {

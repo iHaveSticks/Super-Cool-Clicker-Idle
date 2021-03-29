@@ -32,8 +32,8 @@ class Game extends React.Component {
 constructor(props) {
         super(props);
         this.state = {
-            clicksTotal: 9999999999,
-            clicksCurrent: 9999999999,
+            clicksTotal: 0,
+            clicksCurrent: 0,
             pineconesCurrent: 0, //Pinecone currency
             amountPerClick: 1,
             amountPerAutoClick: 0,

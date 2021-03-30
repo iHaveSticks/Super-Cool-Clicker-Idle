@@ -1,17 +1,9 @@
 import React from 'react';
-import NumberCompacter from './../functions/number-compacter';
+import {GameStatStyles, rowStyles} from "./GameStats.css.js";
+import NumberCompacter from './../../functions/number-compacter.js';
 
-const GameStatStyles = {
-    padding: '1em',
-    width: '14em',
-    whiteSpace: "nowrap",
-    display: "block",
-    border: "3px solid #e6e6e6",
-    overflow: "hidden"
-}
-const rowStyles = {
-    margin: '.1em'
-}
+
+
 class GameStats extends React.Component {
     render() {
         return(

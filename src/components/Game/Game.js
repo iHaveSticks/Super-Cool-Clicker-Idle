@@ -52,6 +52,7 @@ constructor(props) {
         this.buyPinecones = this.buyPinecones.bind(this);
         this.buyPineTree = this.buyPineTree.bind(this);
 
+        // The auto clicker
         this.perLoop = this.perLoop.bind(this);
         {
             let counter = 1;
@@ -231,111 +232,111 @@ constructor(props) {
 
             <div style={{minHeight: "11em", float: 'left', marginRight: '1em', display: 'block', minWidth: "20em", overflow: "hidden"}}> {/* minWidth = 10em * 2 to match the h2 element above*/}
 
-            <p>
-                <button type="button"
-                        style={clickerButton}
-                        onClick={this.handleClickerButton}
-                        >Click
-                </button>
-            </p>
-
-            {/* Buy pinecones*/}
-            {clicksTotal >= 15000 &&
                 <p>
-                    <button type="button" 
-                        style={clicksCurrent >= pineconePrice ? clickerButton : unavailable}
-                        onClick={this.buyPinecones}
-                        >Pinecones +{two}
-                    </button>
-                    &nbsp; {NumberCompacter(pineconePrice)}
-                </p>
-            }
-
-             <h3>Store</h3>
-
-            {/* Buy amount per autoclick 2x*/}
-            {clicksTotal >= 30 &&
-                <p>
-                    {NumberCompacter(amountPerAutoClickPrice2x)}
-                    <button type="button" 
-                        style={clicksCurrent >= amountPerAutoClickPrice2x ? clickerButton : unavailable}
-                        onClick={this.buyAuto2x}
-                        >Autoclick +{two}
-                    </button>
-                </p>
-            }
-
-
-            {/* Buy amount per autoclick 4x*/}
-            {clicksTotal >= 1500 &&
-                <p>
-                    {NumberCompacter(amountPerAutoClickPrice4x)}
-                    <button type="button" 
-                        style={clicksCurrent >= amountPerAutoClickPrice4x ? clickerButton : unavailable}
-                        onClick={this.buyAuto4x}
-                        >Autoclick +{four}
-                    </button>
-                </p>
-            }
-
-            {/* Buy amount per self click 2x */}
-            {clicksTotal >= 60 &&
-                <p>
-                    {NumberCompacter(amountPerClickPrice2x)}
                     <button type="button"
-                        style={clicksCurrent >= amountPerClickPrice2x ? clickerButton : unavailable}
-                        onClick={this.buyExClick2x}
-                        >Selfclick +{two}
+                            style={clickerButton}
+                            onClick={this.handleClickerButton}
+                            >Click
                     </button>
                 </p>
-            }
 
-            {/* Buy amount per self click 4x */}
-            {clicksTotal >= 1700 &&
-                <p>
-                    {NumberCompacter(amountPerClickPrice4x)}
-                    <button type="button"
-                        style={clicksCurrent >= amountPerClickPrice4x ? clickerButton : unavailable}
-                        onClick={this.buyExClick4x}
-                        >Selfclick +{four}
-                    </button>
-                </p>
-            }
+                {/* Buy pinecones*/}
+                {clicksTotal >= 15000 &&
+                    <p>
+                        <button type="button" 
+                            style={clicksCurrent >= pineconePrice ? clickerButton : unavailable}
+                            onClick={this.buyPinecones}
+                            >Pinecones +{two}
+                        </button>
+                        &nbsp; {NumberCompacter(pineconePrice)}
+                    </p>
+                }
 
-            {/* Buy autoclick speed */}
-            {clicksTotal >= 300 && autoClickSpeed > 250 &&
-                <p>
-                    {NumberCompacter(autoClickSpeedPrice)}
-                    <button type="button"
-                        style={clicksCurrent >= autoClickSpeedPrice ? clickerButton : unavailable}
-                        onClick={this.buyAutoSpeed2x}
-                        >Autoclick -250ms
-                    </button>
-                </p>
-            }
+                <h3>Store</h3>
 
-            {/* Double base incrementals */}
-            {clicksTotal >= 15000 &&
-                <p>
-                    {increaseBasePrice2xPrice > 0 ? NumberCompacter(increaseBasePrice2xPrice) + ' pincones' : 'free'}
-                    <button type="button"
-                        style={pineconesCurrent >= increaseBasePrice2xPrice ? clickerButton : unavailable}
-                        onClick={this.increaseBasePrice2x}
-                        >Above incrementals *2
-                    </button>
-                </p>
-            }
-            {/* Buy pinetree */}
-            {increaseBasePrice2xPrice > 0 &&
-                <p>
-                    {NumberCompacter(pinetreePrice) + ' pincones'}
-                    <button type="button"
-                        style={pineconesCurrent >= pinetreePrice ? clickerButton : unavailable}
-                        onClick={this.buyPineTree}
-                        >Pinetree +1
-                    </button>
-                </p>
-            }
+                {/* Buy amount per autoclick 2x*/}
+                {clicksTotal >= 30 &&
+                    <p>
+                        {NumberCompacter(amountPerAutoClickPrice2x)}
+                        <button type="button" 
+                            style={clicksCurrent >= amountPerAutoClickPrice2x ? clickerButton : unavailable}
+                            onClick={this.buyAuto2x}
+                            >Autoclick +{two}
+                        </button>
+                    </p>
+                }
+
+
+                {/* Buy amount per autoclick 4x*/}
+                {clicksTotal >= 1500 &&
+                    <p>
+                        {NumberCompacter(amountPerAutoClickPrice4x)}
+                        <button type="button" 
+                            style={clicksCurrent >= amountPerAutoClickPrice4x ? clickerButton : unavailable}
+                            onClick={this.buyAuto4x}
+                            >Autoclick +{four}
+                        </button>
+                    </p>
+                }
+
+                {/* Buy amount per self click 2x */}
+                {clicksTotal >= 60 &&
+                    <p>
+                        {NumberCompacter(amountPerClickPrice2x)}
+                        <button type="button"
+                            style={clicksCurrent >= amountPerClickPrice2x ? clickerButton : unavailable}
+                            onClick={this.buyExClick2x}
+                            >Selfclick +{two}
+                        </button>
+                    </p>
+                }
+
+                {/* Buy amount per self click 4x */}
+                {clicksTotal >= 1700 &&
+                    <p>
+                        {NumberCompacter(amountPerClickPrice4x)}
+                        <button type="button"
+                            style={clicksCurrent >= amountPerClickPrice4x ? clickerButton : unavailable}
+                            onClick={this.buyExClick4x}
+                            >Selfclick +{four}
+                        </button>
+                    </p>
+                }
+
+                {/* Buy autoclick speed */}
+                {clicksTotal >= 300 && autoClickSpeed > 250 &&
+                    <p>
+                        {NumberCompacter(autoClickSpeedPrice)}
+                        <button type="button"
+                            style={clicksCurrent >= autoClickSpeedPrice ? clickerButton : unavailable}
+                            onClick={this.buyAutoSpeed2x}
+                            >Autoclick -250ms
+                        </button>
+                    </p>
+                }
+
+                {/* Double base incrementals */}
+                {clicksTotal >= 15000 &&
+                    <p>
+                        {increaseBasePrice2xPrice > 0 ? NumberCompacter(increaseBasePrice2xPrice) + ' pincones' : 'free'}
+                        <button type="button"
+                            style={pineconesCurrent >= increaseBasePrice2xPrice ? clickerButton : unavailable}
+                            onClick={this.increaseBasePrice2x}
+                            >Above incrementals *2
+                        </button>
+                    </p>
+                }
+                {/* Buy pinetree */}
+                {increaseBasePrice2xPrice > 0 &&
+                    <p>
+                        {NumberCompacter(pinetreePrice) + ' pincones'}
+                        <button type="button"
+                            style={pineconesCurrent >= pinetreePrice ? clickerButton : unavailable}
+                            onClick={this.buyPineTree}
+                            >Pinetree +1
+                        </button>
+                    </p>
+                }
             </div>
 
             <GameStats  amountPerAutoClick={amountPerAutoClick}

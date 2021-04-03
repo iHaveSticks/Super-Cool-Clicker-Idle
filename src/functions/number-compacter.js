@@ -1,6 +1,10 @@
 
 
 export default function NumberCompacter(num) {
+        // Changes a long inputed number into a shorter form starting from millions.
+        // ex int 3784587 changes to '3.78 Million'
+
+
         // fifty-seven Zeroes for Octodecillions
         return Math.abs(Number(num)) >= 1.0e+57
         ? (Math.abs(Number(num)) / 1.0e+57).toFixed(2) + " Octodecillion"

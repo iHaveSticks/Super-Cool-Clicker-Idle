@@ -5,6 +5,9 @@ import NumberCompacter from './../../functions/number-compacter.js';
 
 
 export default function GameStats(props)  {
+    /*
+    Displays game statistics inside a box
+    */
     return(
         <div style={GameStatStyles}>
             <h3>Stats</h3>

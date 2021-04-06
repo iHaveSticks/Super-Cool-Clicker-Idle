@@ -17,6 +17,5 @@ export const unavailable = {
     marginLeft: '20px',
     minWidth: '5em',
     minHeight: '2.3em',
-    backgroundColor: 'grey',
-    pointerEvents: 'none'
+    backgroundColor: 'grey'
 }

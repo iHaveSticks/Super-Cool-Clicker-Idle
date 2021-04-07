@@ -1,19 +1,19 @@
 import React, {useState, useEffect} from 'react';
 
 // Import Components
-import {mainStyles, clickerButton, unavailable} from "./Game.css.js";
+import {mainStyles, buttonAvailable, buttonUnavailable} from "./App.css.js";
 import GameStats from "../GameStats/GameStats.js";
 
 // Import JS Functions
 import NumberCompacter from '../../functions/number-compacter.js';
 
-export default function Game() {
+export default function App() {
 
     // Amounts | Clicks
     const [clicksTotal,setClicksTotal] = useState(0);
     const [clicksCurrent,setClicksCurrent] = useState(0);
-    const [amountPerClick,setAmountPerClick] = useState(1);
-    const [amountPerAutoClick,setAmountPerAutoClick] = useState(0);
+    const [perClick,setPerClick] = useState(1);
+    const [perAutoClick,setPerAutoClick] = useState(0);
     const [autoClickSpeed,setAutoClickSpeed] = useState(1000);
     
     // Amounts | Pine
@@ -22,25 +22,25 @@ export default function Game() {
     const [pinetreesMod,setPinetreesMod] = useState(1);
 
     // Prices | clicks
-    const [amountPerAutoClickPrice2x,setAmountPerAutoClickPrice2x] = useState(60);
-    const [amountPerAutoClickPrice4x,setAmountPerAutoClickPrice4x] = useState(80);
-    const [amountPerClickPrice2x,setAmountPerClickPrice2x] = useState(100);
-    const [amountPerClickPrice4x,setAmountPerClickPrice4x] = useState(120);
+    const [autoClick2xPrice,setAutoClick2xPrice] = useState(60);
+    const [autoClick4xPrice,setAutoClick4xPrice] = useState(80);
+    const [perClick2xPrice,setPerClick2xPrice] = useState(100);
+    const [perClick4xPrice,setPerClick4xPrice] = useState(120);
     const [pineconePrice,setPineconePrice] = useState(100000);
 
     // Prices | Pincones
-    const [increaseBasePrice2xPrice,setIncreaseBasePrice2xPrice] = useState(0);
+    const [doubleBaseS1Price,setDoubleBaseS1Price] = useState(0);
     const [autoClickSpeedPrice,setAutoClickSpeedPrice] = useState(600);
     const [pinetreePrice,setPinetreePrice] = useState(2);
 
     // Incremental numbers that will get updated in play
-    const [two,setTwo] = useState(2);
-    const [four,setFour] = useState(4);
+    const [twoS1,setTwoS1] = useState(2);
+    const [fourS1,setFourS1] = useState(4);
 
     useEffect( () => {
         const interval = setInterval(() => {
-            setClicksTotal(clicksTotal => clicksTotal+ amountPerAutoClick);
-            setClicksCurrent(clicksCurrent => clicksCurrent + amountPerAutoClick);
+            setClicksTotal(clicksTotal => clicksTotal+ perAutoClick);
+            setClicksCurrent(clicksCurrent => clicksCurrent + perAutoClick);
             setPineconesCurrent(pineconesCurrent => pineconesCurrent + (numOfPinetrees * pinetreesMod));
             
         }, autoClickSpeed);
@@ -52,52 +52,52 @@ export default function Game() {
 
     // Handleclicks
     function handleClickerButton() {
-        setClicksTotal(clicksTotal => clicksTotal + amountPerClick);
-        setClicksCurrent(clicksCurrent => clicksCurrent + amountPerClick);
+        setClicksTotal(clicksTotal => clicksTotal + perClick);
+        setClicksCurrent(clicksCurrent => clicksCurrent + perClick);
     }
 
     function buyPinecones() {
         const cost = pineconePrice;
         if (clicksCurrent >= cost) {
             setClicksCurrent(clicksCurrent => clicksCurrent - cost);
-            setPineconesCurrent(pineconesCurrent => pineconesCurrent + two);
+            setPineconesCurrent(pineconesCurrent => pineconesCurrent + twoS1);
             setPineconePrice(pineconePrice => pineconePrice * 2);
         }
     }
 
     function buyAuto2x() {
-        const cost = amountPerAutoClickPrice2x;
+        const cost = autoClick2xPrice;
         if (clicksCurrent >= cost) {
-            setAmountPerAutoClick(amountPerAutoClick => amountPerAutoClick + two);
+            setPerAutoClick(perAutoClick => perAutoClick + twoS1);
             setClicksCurrent(clicksCurrent => clicksCurrent - cost);
-            setAmountPerAutoClickPrice2x(cost + (cost *.10));
+            setAutoClick2xPrice(cost + (cost *.10));
         }
     }
 
     function buyAuto4x() {
-        const cost = amountPerAutoClickPrice4x;
+        const cost = autoClick4xPrice;
         if (clicksCurrent >= cost) {
-            setAmountPerAutoClick(amountPerAutoClick => amountPerAutoClick + four);
+            setPerAutoClick(perAutoClick => perAutoClick + fourS1);
             setClicksCurrent(clicksCurrent => clicksCurrent - cost);
-            setAmountPerAutoClickPrice4x(cost + (cost *.10));
+            setAutoClick4xPrice(cost + (cost *.10));
         }
     }
 
     function buyExClick2x() {
-        const cost = amountPerClickPrice2x;
+        const cost = perClick2xPrice;
         if (clicksCurrent >= cost) {
-            setAmountPerClick(amountPerClick => amountPerClick + two);
+            setPerClick(perClick => perClick + twoS1);
             setClicksCurrent(clicksCurrent => clicksCurrent - cost);
-            setAmountPerClickPrice2x(cost + (cost *.10));
+            setPerClick2xPrice(cost + (cost *.10));
         }
     }
 
     function buyExClick4x() {
-        const cost = amountPerClickPrice4x;
+        const cost = perClick4xPrice;
         if (clicksCurrent >= cost) {
-            setAmountPerClick(amountPerClick => amountPerClick + four);
+            setPerClick(perClick => perClick + fourS1);
             setClicksCurrent(clicksCurrent => clicksCurrent - cost);
-            setAmountPerClickPrice4x(cost + (cost *.10));
+            setPerClick4xPrice(cost + (cost *.10));
         }
     }
 
@@ -111,19 +111,19 @@ export default function Game() {
     }
 
     function increaseBasePrice2x() {
-        const cost = increaseBasePrice2xPrice;
+        const cost = doubleBaseS1Price;
         if (pineconesCurrent >= cost) {
-            setAmountPerClick(amountPerClick => amountPerClick * 2);
-            setAmountPerAutoClick(amountPerAutoClick => amountPerAutoClick * 2);
-            setTwo(two => two * 2);
-            setFour(four => four * 2);
+            setPerClick(perClick => perClick * 2);
+            setPerAutoClick(perAutoClick => perAutoClick * 2);
+            setTwoS1(twoS1 => twoS1 * 2);
+            setFourS1(fourS1 => fourS1 * 2);
 
             setPineconesCurrent(pineconesCurrent => pineconesCurrent - cost);
 
             // Give for free on first purchase (cost should be = 0)
             cost > 0
-            ? setIncreaseBasePrice2xPrice(cost + 2)
-            : setIncreaseBasePrice2xPrice(4)
+            ? setDoubleBaseS1Price(cost + 2)
+            : setDoubleBaseS1Price(4)
         }
     }
 
@@ -140,13 +140,13 @@ export default function Game() {
     return (
     <div style={mainStyles}>
         <h1>Super Cool Clicker Idle</h1>
-        <h2 style={{border: "3px solid #e6e6e6", width: "10em", whiteSpace: "nowrap", padding: '5px', overflow: "hidden"}}> {NumberCompacter(clicksCurrent)} </h2>
+        <h2 style={{border: "3px solid #e6e6e6", width: "10em", whiteSpace: "nowrap", padding: '0.250em', overflow: "hidden"}}> {NumberCompacter(clicksCurrent)} </h2>
 
         <div style={{minHeight: "11em", float: 'left', marginRight: '1em', display: 'block', minWidth: "20em", overflow: "hidden"}}> {/* minWidth = 10em * 2 to match the h2 element above*/}
 
             <p>
                 <button type="button"
-                        style={clickerButton}
+                        style={buttonAvailable}
                         onClick={() => handleClickerButton()}
                         >Click
                 </button>
@@ -156,9 +156,9 @@ export default function Game() {
             {clicksTotal >= 15000 &&
                 <p>
                     <button type="button" 
-                        style={clicksCurrent >= pineconePrice ? clickerButton : unavailable}
+                        style={clicksCurrent >= pineconePrice ? buttonAvailable : buttonUnavailable}
                         onClick={() => buyPinecones()}
-                        >Pinecones +{two}
+                        >Pinecones +{twoS1}
                     </button>
                     &nbsp; {NumberCompacter(pineconePrice)}
                 </p>
@@ -169,11 +169,11 @@ export default function Game() {
             {/* Buy amount per autoclick 2x*/}
             {clicksTotal >= 30 &&
                 <p>
-                    {NumberCompacter(amountPerAutoClickPrice2x)}
+                    {NumberCompacter(autoClick2xPrice)}
                     <button type="button" 
-                        style={clicksCurrent >= amountPerAutoClickPrice2x ? clickerButton : unavailable}
+                        style={clicksCurrent >= autoClick2xPrice ? buttonAvailable : buttonUnavailable}
                         onClick={() => buyAuto2x()}
-                        >Autoclick +{two}
+                        >Autoclick +{twoS1}
                     </button>
                 </p>
             }
@@ -182,11 +182,11 @@ export default function Game() {
             {/* Buy amount per autoclick 4x*/}
             {clicksTotal >= 1500 &&
                 <p>
-                    {NumberCompacter(amountPerAutoClickPrice4x)}
+                    {NumberCompacter(autoClick4xPrice)}
                     <button type="button" 
-                        style={clicksCurrent >= amountPerAutoClickPrice4x ? clickerButton : unavailable}
+                        style={clicksCurrent >= autoClick4xPrice? buttonAvailable : buttonUnavailable}
                         onClick={() => buyAuto4x()}
-                        >Autoclick +{four}
+                        >Autoclick +{fourS1}
                     </button>
                 </p>
             }
@@ -194,11 +194,11 @@ export default function Game() {
             {/* Buy amount per self click 2x */}
             {clicksTotal >= 60 &&
                 <p>
-                    {NumberCompacter(amountPerClickPrice2x)}
+                    {NumberCompacter(perClick2xPrice)}
                     <button type="button"
-                        style={clicksCurrent >= amountPerClickPrice2x ? clickerButton : unavailable}
+                        style={clicksCurrent >= perClick2xPrice ? buttonAvailable : buttonUnavailable}
                         onClick={() => buyExClick2x()}
-                        >Selfclick +{two}
+                        >Selfclick +{twoS1}
                     </button>
                 </p>
             }
@@ -206,11 +206,11 @@ export default function Game() {
             {/* Buy amount per self click 4x */}
             {clicksTotal >= 1700 &&
                 <p>
-                    {NumberCompacter(amountPerClickPrice4x)}
+                    {NumberCompacter(perClick4xPrice)}
                     <button type="button"
-                        style={clicksCurrent >= amountPerClickPrice4x ? clickerButton : unavailable}
+                        style={clicksCurrent >= perClick4xPrice ? buttonAvailable : buttonUnavailable}
                         onClick={() => buyExClick4x()}
-                        >Selfclick +{four}
+                        >Selfclick +{fourS1}
                     </button>
                 </p>
             }
@@ -220,7 +220,7 @@ export default function Game() {
                 <p>
                     {NumberCompacter(autoClickSpeedPrice)}
                     <button type="button"
-                        style={clicksCurrent >= autoClickSpeedPrice ? clickerButton : unavailable}
+                        style={clicksCurrent >= autoClickSpeedPrice ? buttonAvailable : buttonUnavailable}
                         onClick={() => buyAutoSpeed()}
                         >Autoclick -250ms
                     </button>
@@ -230,20 +230,20 @@ export default function Game() {
             {/* Double base incrementals */}
             {clicksTotal >= 15000 &&
                 <p>
-                    {increaseBasePrice2xPrice > 0 ? NumberCompacter(increaseBasePrice2xPrice) + ' pincones' : 'free'}
+                    {doubleBaseS1Price > 0 ? NumberCompacter(doubleBaseS1Price) + ' pincones' : 'free'}
                     <button type="button"
-                        style={pineconesCurrent >= increaseBasePrice2xPrice ? clickerButton : unavailable}
+                        style={pineconesCurrent >= doubleBaseS1Price ? buttonAvailable : buttonUnavailable}
                         onClick={() => increaseBasePrice2x()}
                         >Above incrementals *2
                     </button>
                 </p>
             }
             {/* Buy pinetree */}
-            {increaseBasePrice2xPrice > 0 &&
+            {doubleBaseS1Price > 0 &&
                 <p>
                     {NumberCompacter(pinetreePrice) + ' pincones'}
                     <button type="button"
-                        style={pineconesCurrent >= pinetreePrice ? clickerButton : unavailable}
+                        style={pineconesCurrent >= pinetreePrice ? buttonAvailable : buttonUnavailable}
                         onClick={() => buyPineTree()}
                         >Pinetree +1
                     </button>
@@ -251,9 +251,9 @@ export default function Game() {
             }
         </div>
 
-        <GameStats  amountPerAutoClick={amountPerAutoClick}
+        <GameStats  perAutoClick={perAutoClick}
                     autoClickSpeed={autoClickSpeed}
-                    amountPerClick={amountPerClick}
+                    perClick={perClick}
                     pineconesCurrent={pineconesCurrent}
                     clicksTotal={clicksTotal}
         />

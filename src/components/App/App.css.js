@@ -5,17 +5,19 @@ export const mainStyles = {
     userSelect: "none",
 }
 
-export const clickerButton = {
+export const buttonAvailable = {
+    fontSize: '.8em',
     borderStyle: 'none',
-    marginLeft: '20px',
+    marginLeft: '1em',
     minWidth: '5em',
     backgroundColor: '#DA7422',
     minHeight: '2.3em',
     cursor: "pointer"
 }
-export const unavailable = {
+export const buttonUnavailable = {
+    fontSize: '.8em',
     borderStyle: 'none',
-    marginLeft: '20px',
+    marginLeft: '1em',
     minWidth: '5em',
     minHeight: '2.3em',
     backgroundColor: 'grey',

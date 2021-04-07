@@ -1,21 +1,22 @@
 html {
-    height: 100%;
-    margin: 0;
+  height: 100%;
+  margin: 0;
+  font-size: 20px;
 }
 
 h3 {
-    font-size: 1.5em;
+  font-size: 1.5em;
 }
 
 body {
-    font-family: 'Roboto Condensed', sans-serif;
-    background-color: #30362F;
+  font-family: "Roboto Condensed", sans-serif;
+  background-color: #30362f;
 }
 
-@media only screen and (min-width: 2000px) {
+/* @media only screen and (min-width: 2000px) {
     #root {
         max-width: 2000px;
         margin: 5em 0 0 12em;
         transform: scale(1.2);
     }
-  }
+  } */

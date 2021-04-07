@@ -10,12 +10,15 @@ export const clickerButton = {
     marginLeft: '20px',
     minWidth: '5em',
     backgroundColor: '#DA7422',
-    minHeight: '2.3em'
+    minHeight: '2.3em',
+    cursor: "pointer"
 }
 export const unavailable = {
     borderStyle: 'none',
     marginLeft: '20px',
     minWidth: '5em',
     minHeight: '2.3em',
-    backgroundColor: 'grey'
+    backgroundColor: 'grey',
+    pointerEvents: 'none',
+    cursor: "default"
 }

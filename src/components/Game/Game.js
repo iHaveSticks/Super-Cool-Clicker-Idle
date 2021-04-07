@@ -12,7 +12,7 @@ export default function Game() {
     // Amounts | Clicks
     const [clicksTotal,setClicksTotal] = useState(0);
     const [clicksCurrent,setClicksCurrent] = useState(0);
-    const [amountPerClick,setAmountPerClick] = useState(1000);
+    const [amountPerClick,setAmountPerClick] = useState(1);
     const [amountPerAutoClick,setAmountPerAutoClick] = useState(0);
     const [autoClickSpeed,setAutoClickSpeed] = useState(1000);
     
@@ -116,7 +116,7 @@ export default function Game() {
             setAmountPerClick(amountPerClick => amountPerClick * 2);
             setAmountPerAutoClick(amountPerAutoClick => amountPerAutoClick * 2);
             setTwo(two => two * 2);
-            setFour(four => four * 4);
+            setFour(four => four * 2);
 
             setPineconesCurrent(pineconesCurrent => pineconesCurrent - cost);
 

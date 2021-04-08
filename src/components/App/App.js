@@ -1,8 +1,12 @@
 import React, {useState, useEffect} from 'react';
 
+// Import CSS
+import {mainStyles} from "./App.css.js";
+import {buttonAvailable, buttonUnavailable} from "../../styles/buttonSyles.css";
+
 // Import Components
-import {mainStyles, buttonAvailable, buttonUnavailable} from "./App.css.js";
 import GameStats from "../GameStats/GameStats.js";
+import Store1 from "../Store1/Store1.js";
 
 // Import JS Functions
 import NumberCompacter from '../../functions/number-compacter.js';
@@ -33,18 +37,22 @@ export default function App() {
     const [autoClickSpeedPrice,setAutoClickSpeedPrice] = useState(600);
     const [pinetreePrice,setPinetreePrice] = useState(2);
 
-    // Incremental numbers that will get updated in play
+    // These numbers determine how much to add to per click amounts
+    // They can be doubled infinite times ingame
     const [twoS1,setTwoS1] = useState(2);
     const [fourS1,setFourS1] = useState(4);
 
+
+
     useEffect( () => {
+        // The auto clicker
         const interval = setInterval(() => {
-            setClicksTotal(clicksTotal => clicksTotal+ perAutoClick);
+            setClicksTotal(clicksTotal => clicksTotal + perAutoClick);
             setClicksCurrent(clicksCurrent => clicksCurrent + perAutoClick);
             setPineconesCurrent(pineconesCurrent => pineconesCurrent + (numOfPinetrees * pinetreesMod));
             
         }, autoClickSpeed);
-        return () => clearTimeout(interval);
+        return () => clearInterval(interval);
     });
             
     
@@ -120,7 +128,7 @@ export default function App() {
 
             setPineconesCurrent(pineconesCurrent => pineconesCurrent - cost);
 
-            // Give for free on first purchase (cost should be = 0)
+            // Give for free on first purchase when cost should be == 0
             cost > 0
             ? setDoubleBaseS1Price(cost + 2)
             : setDoubleBaseS1Price(4)
@@ -164,91 +172,39 @@ export default function App() {
                 </p>
             }
 
-            <h3>Store</h3>
-
-            {/* Buy amount per autoclick 2x*/}
+            
             {clicksTotal >= 30 &&
-                <p>
-                    {NumberCompacter(autoClick2xPrice)}
-                    <button type="button" 
-                        style={clicksCurrent >= autoClick2xPrice ? buttonAvailable : buttonUnavailable}
-                        onClick={() => buyAuto2x()}
-                        >Autoclick +{twoS1}
-                    </button>
-                </p>
+            <h3>Store</h3>
             }
 
+            <Store1
+            // Variables
+                clicksTotal = {clicksTotal}
+                clicksCurrent = {clicksCurrent}
+                autoClickSpeed = {autoClickSpeed}
+                pineconesCurrent = {pineconesCurrent}
+                autoClick2xPrice = {autoClick2xPrice}
+                autoClick4xPrice = {autoClick4xPrice}
+                perClick2xPrice = {perClick2xPrice}
+                perClick4xPrice = {perClick4xPrice}
+                pineconePrice = {pineconePrice}
+                doubleBaseS1Price = {doubleBaseS1Price}
+                autoClickSpeedPrice = {autoClickSpeedPrice}
+                pinetreePrice = {pinetreePrice}
+                twoS1 = {twoS1}
+                fourS1 = {fourS1}
 
-            {/* Buy amount per autoclick 4x*/}
-            {clicksTotal >= 1500 &&
-                <p>
-                    {NumberCompacter(autoClick4xPrice)}
-                    <button type="button" 
-                        style={clicksCurrent >= autoClick4xPrice? buttonAvailable : buttonUnavailable}
-                        onClick={() => buyAuto4x()}
-                        >Autoclick +{fourS1}
-                    </button>
-                </p>
-            }
 
-            {/* Buy amount per self click 2x */}
-            {clicksTotal >= 60 &&
-                <p>
-                    {NumberCompacter(perClick2xPrice)}
-                    <button type="button"
-                        style={clicksCurrent >= perClick2xPrice ? buttonAvailable : buttonUnavailable}
-                        onClick={() => buyExClick2x()}
-                        >Selfclick +{twoS1}
-                    </button>
-                </p>
-            }
+            // Functions
+                buyAuto2x = {buyAuto2x}
+                buyAuto4x = {buyAuto4x}
+                buyExClick2x = {buyExClick2x}
+                buyExClick4x = {buyExClick4x}
+                buyAutoSpeed = {buyAutoSpeed}
+                increaseBasePrice2x =  {increaseBasePrice2x}
+                buyPineTree = {buyPineTree}
+            />
 
-            {/* Buy amount per self click 4x */}
-            {clicksTotal >= 1700 &&
-                <p>
-                    {NumberCompacter(perClick4xPrice)}
-                    <button type="button"
-                        style={clicksCurrent >= perClick4xPrice ? buttonAvailable : buttonUnavailable}
-                        onClick={() => buyExClick4x()}
-                        >Selfclick +{fourS1}
-                    </button>
-                </p>
-            }
-
-            {/* Buy autoclick speed */}
-            {clicksTotal >= 300 && autoClickSpeed > 250 &&
-                <p>
-                    {NumberCompacter(autoClickSpeedPrice)}
-                    <button type="button"
-                        style={clicksCurrent >= autoClickSpeedPrice ? buttonAvailable : buttonUnavailable}
-                        onClick={() => buyAutoSpeed()}
-                        >Autoclick -250ms
-                    </button>
-                </p>
-            }
-
-            {/* Double base incrementals */}
-            {clicksTotal >= 15000 &&
-                <p>
-                    {doubleBaseS1Price > 0 ? NumberCompacter(doubleBaseS1Price) + ' pincones' : 'free'}
-                    <button type="button"
-                        style={pineconesCurrent >= doubleBaseS1Price ? buttonAvailable : buttonUnavailable}
-                        onClick={() => increaseBasePrice2x()}
-                        >Above incrementals *2
-                    </button>
-                </p>
-            }
-            {/* Buy pinetree */}
-            {doubleBaseS1Price > 0 &&
-                <p>
-                    {NumberCompacter(pinetreePrice) + ' pincones'}
-                    <button type="button"
-                        style={pineconesCurrent >= pinetreePrice ? buttonAvailable : buttonUnavailable}
-                        onClick={() => buyPineTree()}
-                        >Pinetree +1
-                    </button>
-                </p>
-            }
         </div>
 
         <GameStats  perAutoClick={perAutoClick}

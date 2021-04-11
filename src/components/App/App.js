@@ -43,17 +43,18 @@ export default function App() {
     const [fourS1,setFourS1] = useState(4);
 
 
-
     useEffect( () => {
         // The auto clicker
         const interval = setInterval(() => {
-            setClicksTotal(clicksTotal => clicksTotal + perAutoClick);
-            setClicksCurrent(clicksCurrent => clicksCurrent + perAutoClick);
-            setPineconesCurrent(pineconesCurrent => pineconesCurrent + (numOfPinetrees * pinetreesMod));
+            setClicksTotal(clicksTotal => Math.round(clicksTotal + perAutoClick));
+            setClicksCurrent(clicksCurrent => Math.round(clicksCurrent + perAutoClick));
+            setPineconesCurrent(pineconesCurrent => Math.round(pineconesCurrent + (numOfPinetrees * pinetreesMod)));
             
         }, autoClickSpeed);
         return () => clearInterval(interval);
-    });
+
+        // Only re-render when specific values change
+    }, [autoClickSpeed, perAutoClick, numOfPinetrees, pinetreesMod]);
             
     
 
@@ -78,7 +79,7 @@ export default function App() {
         if (clicksCurrent >= cost) {
             setPerAutoClick(perAutoClick => perAutoClick + twoS1);
             setClicksCurrent(clicksCurrent => clicksCurrent - cost);
-            setAutoClick2xPrice(cost + (cost *.10));
+            setAutoClick2xPrice(cost + Math.round(cost *.10));
         }
     }
 
@@ -87,7 +88,7 @@ export default function App() {
         if (clicksCurrent >= cost) {
             setPerAutoClick(perAutoClick => perAutoClick + fourS1);
             setClicksCurrent(clicksCurrent => clicksCurrent - cost);
-            setAutoClick4xPrice(cost + (cost *.10));
+            setAutoClick4xPrice(cost + Math.round(cost *.10));
         }
     }
 
@@ -96,7 +97,7 @@ export default function App() {
         if (clicksCurrent >= cost) {
             setPerClick(perClick => perClick + twoS1);
             setClicksCurrent(clicksCurrent => clicksCurrent - cost);
-            setPerClick2xPrice(cost + (cost *.10));
+            setPerClick2xPrice(cost + Math.round(cost *.10));
         }
     }
 
@@ -105,7 +106,7 @@ export default function App() {
         if (clicksCurrent >= cost) {
             setPerClick(perClick => perClick + fourS1);
             setClicksCurrent(clicksCurrent => clicksCurrent - cost);
-            setPerClick4xPrice(cost + (cost *.10));
+            setPerClick4xPrice(cost + Math.round(cost *.10));
         }
     }
 
@@ -114,7 +115,7 @@ export default function App() {
         if (clicksCurrent >= cost) {
             setAutoClickSpeed(autoClickSpeed => autoClickSpeed - 250);
             setClicksCurrent(clicksCurrent => clicksCurrent - cost);
-            setAutoClickSpeedPrice(cost + (cost *.5));
+            setAutoClickSpeedPrice(cost + Math.round(cost *.5));
         }
     }
 
@@ -130,7 +131,7 @@ export default function App() {
 
             // Give for free on first purchase when cost should be == 0
             cost > 0
-            ? setDoubleBaseS1Price(cost + 2)
+            ? setDoubleBaseS1Price(cost + (cost * 2))
             : setDoubleBaseS1Price(4)
         }
     }
@@ -140,7 +141,7 @@ export default function App() {
         if (pineconesCurrent >= cost) {
             setPineconesCurrent(pineconesCurrent => pineconesCurrent - cost);
             setNumOfPinetrees(numOfPinetrees => numOfPinetrees + 1);
-            setPinetreePrice(cost + numOfPinetrees);
+            setPinetreePrice(cost + (cost * numOfPinetrees));
         }
     }
 
@@ -168,7 +169,7 @@ export default function App() {
                         onClick={() => buyPinecones()}
                         >Pinecones +{twoS1}
                     </button>
-                    &nbsp; {NumberCompacter(pineconePrice)}
+                    &nbsp;&nbsp; {NumberCompacter(pineconePrice)}
                 </p>
             }
 

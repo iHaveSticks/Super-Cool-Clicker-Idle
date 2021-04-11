@@ -13,50 +13,50 @@ export default function Store1(props) {
 
     return (
         <div>
-            {/* Buy amount per autoclick 2x*/}
+            {/* Buy amount per autoclick 2x */}
             {props.clicksTotal >= 30 &&
                 <p>
                     <button type="button" 
                         style={props.clicksCurrent >= props.autoClick2xPrice ? buttonAvailable : buttonUnavailable}
                         onClick={() => props.buyAuto2x()}
-                        >Autoclick +{props.twoS1}
+                        >Autoclick +{NumberCompacter(props.twoS1)}
                     </button>
                     &nbsp;&nbsp;{NumberCompacter(props.autoClick2xPrice)}
                 </p>
             }
 
 
-            {/* Buy amount per autoclick 4x*/}
+            {/* Buy amount per autoclick 4x */}
             {props.clicksTotal >= 1500 &&
                 <p>
                     <button type="button" 
                         style={props.clicksCurrent >= props.autoClick4xPrice ? buttonAvailable : buttonUnavailable}
                         onClick={() => props.buyAuto4x()}
-                        >Autoclick +{props.fourS1}
+                        >Autoclick +{NumberCompacter(props.fourS1)}
                     </button>
                     &nbsp;&nbsp;{NumberCompacter(props.autoClick4xPrice)}
                 </p>
             }
 
             {/* Buy amount per self click 2x */}
-            {props.clicksTotal >= 60 &&
+            {props.clicksTotal >= 30 &&
                 <p>
                     <button type="button"
                         style={props.clicksCurrent >= props.perClick2xPrice ? buttonAvailable : buttonUnavailable}
                         onClick={() => props.buyExClick2x()}
-                        >Selfclick +{props.twoS1}
+                        >Selfclick +{NumberCompacter(props.twoS1)}
                     </button>
                     &nbsp;&nbsp;{NumberCompacter(props.perClick2xPrice)}
                 </p>
             }
 
             {/* Buy amount per self click 4x */}
-            {props.clicksTotal >= 1700 &&
+            {props.clicksTotal >= 1500 &&
                 <p>
                     <button type="button"
                         style={props.clicksCurrent >= props.perClick4xPrice ? buttonAvailable : buttonUnavailable}
                         onClick={() => props.buyExClick4x()}
-                        >Selfclick +{props.fourS1}
+                        >Selfclick +{NumberCompacter(props.fourS1)}
                     </button>
                     &nbsp;&nbsp;{NumberCompacter(props.perClick4xPrice)}
                 </p>

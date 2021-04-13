@@ -62,18 +62,6 @@ export default function Store1(props) {
                 </p>
             }
 
-            {/* Buy autoclick speed */}
-            {props.clicksTotal >= 300 && props.autoClickSpeed > 250 &&
-                <p>
-                    <button type="button"
-                        style={props.clicksCurrent >= props.autoClickSpeedPrice ? buttonAvailable : buttonUnavailable}
-                        onClick={() => props.buyAutoSpeed()}
-                        >Autoclick -250ms
-                    </button>
-                    &nbsp;&nbsp;{NumberCompacter(props.autoClickSpeedPrice)}
-                </p>
-            }
-
             {/* Double base incrementals */}
             {props.clicksTotal >= 15000 &&
                 <p>
@@ -85,15 +73,28 @@ export default function Store1(props) {
                     &nbsp;&nbsp;{props.doubleBaseS1Price > 0 ? NumberCompacter(props.doubleBaseS1Price) + ' pincones' : 'free'}
                 </p>
             }
+
             {/* Buy pinetree */}
             {props.doubleBaseS1Price > 0 &&
                 <p>
                     <button type="button"
                         style={props.pineconesCurrent >= props.pinetreePrice ? buttonAvailable : buttonUnavailable}
                         onClick={() => props.buyPineTree()}
-                        >Pinetree +1
+                        >Pinetree +10
                     </button>
                     &nbsp;&nbsp;{NumberCompacter(props.pinetreePrice) + ' pincones'}
+                </p>
+            }
+
+            {/* Buy autoclick speed */}
+            {props.clicksTotal >= 300 && props.autoClickSpeed > 250 &&
+                <p>
+                    <button type="button"
+                        style={props.clicksCurrent >= props.autoClickSpeedPrice ? buttonAvailable : buttonUnavailable}
+                        onClick={() => props.buyAutoSpeed()}
+                        >Autoclick -250ms
+                    </button>
+                    &nbsp;&nbsp;{NumberCompacter(props.autoClickSpeedPrice)}
                 </p>
             }
         

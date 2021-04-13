@@ -7,9 +7,11 @@ import {buttonAvailable, buttonUnavailable} from "../../styles/buttonSyles.css";
 // Import Components
 import GameStats from "../GameStats/GameStats.js";
 import Store1 from "../Store1/Store1.js";
+import Store2 from "../Store2/Store2.js";
 
 // Import JS Functions
 import NumberCompacter from '../../functions/number-compacter.js';
+import menuControls from '../../functions/menuControls.js';
 
 export default function App() {
 
@@ -31,11 +33,12 @@ export default function App() {
     const [perClick2xPrice,setPerClick2xPrice] = useState(100);
     const [perClick4xPrice,setPerClick4xPrice] = useState(120);
     const [pineconePrice,setPineconePrice] = useState(100000);
+    const [pinetreesModPrice,setPinetreesModPrice] = useState(1000000);
 
     // Prices | Pincones
     const [doubleBaseS1Price,setDoubleBaseS1Price] = useState(0);
     const [autoClickSpeedPrice,setAutoClickSpeedPrice] = useState(600);
-    const [pinetreePrice,setPinetreePrice] = useState(2);
+    const [pinetreePrice,setPinetreePrice] = useState(10);
 
     // These numbers determine how much to add to per click amounts
     // They can be doubled infinite times ingame
@@ -70,7 +73,7 @@ export default function App() {
         if (clicksCurrent >= cost) {
             setClicksCurrent(clicksCurrent => clicksCurrent - cost);
             setPineconesCurrent(pineconesCurrent => pineconesCurrent + twoS1);
-            setPineconePrice(pineconePrice => pineconePrice * 2);
+            setPineconePrice(pineconePrice => pineconePrice * 1.5);
         }
     }
 
@@ -140,14 +143,22 @@ export default function App() {
         const cost = pinetreePrice;
         if (pineconesCurrent >= cost) {
             setPineconesCurrent(pineconesCurrent => pineconesCurrent - cost);
-            setNumOfPinetrees(numOfPinetrees => numOfPinetrees + 1);
-            setPinetreePrice(cost + (cost * numOfPinetrees));
+            setNumOfPinetrees(numOfPinetrees => numOfPinetrees + 10);
+            setPinetreePrice(Math.round( cost + (10.5 * numOfPinetrees) ));
         }
     }
 
+    function buyPinetreesMod() {
+        const cost = pinetreesModPrice;
+        if (clicksCurrent >= cost) {
+            setClicksCurrent(clicksCurrent => clicksCurrent - cost);
+            setPinetreesMod(pinetreesMod => pinetreesMod + 10);
+            setPinetreesModPrice(Math.round( cost + (pinetreesMod * 100000) ));
+        }
+    }
 
     return (
-    <div style={mainStyles}>
+    <main style={mainStyles}>
         <h1>Super Cool Clicker Idle</h1>
         <h2 style={{border: "3px solid #e6e6e6", width: "10em", whiteSpace: "nowrap", padding: '0.250em', overflow: "hidden"}}> {NumberCompacter(clicksCurrent)} </h2>
 
@@ -175,36 +186,68 @@ export default function App() {
 
             
             {clicksTotal >= 30 &&
-            <h3>Store</h3>
+                <h3>Store
+
+                     {clicksTotal > 1500000 &&
+                        <button
+                        type="button"
+                        id="storeNav"
+                        style={{
+                            "background": "none",
+                            "fontSize": ".8em",
+                            "color": "#DA7422",
+                            "border": "none",
+                            "cursor": "pointer"
+                            }}
+                        onClick={() => menuControls("store1", "store2","storeNav")}
+                        > Next &#62;
+                        </button>
+                    }
+                </h3>
             }
+            
+            <div id="store1" style={{"display": "initial"}}>
+                <Store1
+                // Variables
+                    clicksTotal = {clicksTotal}
+                    clicksCurrent = {clicksCurrent}
+                    autoClickSpeed = {autoClickSpeed}
+                    pineconesCurrent = {pineconesCurrent}
+                    autoClick2xPrice = {autoClick2xPrice}
+                    autoClick4xPrice = {autoClick4xPrice}
+                    perClick2xPrice = {perClick2xPrice}
+                    perClick4xPrice = {perClick4xPrice}
+                    pineconePrice = {pineconePrice}
+                    doubleBaseS1Price = {doubleBaseS1Price}
+                    autoClickSpeedPrice = {autoClickSpeedPrice}
+                    pinetreePrice = {pinetreePrice}
+                    twoS1 = {twoS1}
+                    fourS1 = {fourS1}
 
-            <Store1
-            // Variables
-                clicksTotal = {clicksTotal}
-                clicksCurrent = {clicksCurrent}
-                autoClickSpeed = {autoClickSpeed}
-                pineconesCurrent = {pineconesCurrent}
-                autoClick2xPrice = {autoClick2xPrice}
-                autoClick4xPrice = {autoClick4xPrice}
-                perClick2xPrice = {perClick2xPrice}
-                perClick4xPrice = {perClick4xPrice}
-                pineconePrice = {pineconePrice}
-                doubleBaseS1Price = {doubleBaseS1Price}
-                autoClickSpeedPrice = {autoClickSpeedPrice}
-                pinetreePrice = {pinetreePrice}
-                twoS1 = {twoS1}
-                fourS1 = {fourS1}
 
+                // Functions
+                    buyAuto2x = {buyAuto2x}
+                    buyAuto4x = {buyAuto4x}
+                    buyExClick2x = {buyExClick2x}
+                    buyExClick4x = {buyExClick4x}
+                    buyAutoSpeed = {buyAutoSpeed}
+                    increaseBasePrice2x = {increaseBasePrice2x}
+                    buyPineTree = {buyPineTree}
+                />
+            </div>
+            <div id="store2" style={{"display": "none"}}>
+                <Store2
+                // Variables
+                    clicksTotal = {clicksTotal}
+                    clicksCurrent = {clicksCurrent}
+                    pinetreesMod = {pinetreesMod}
+                    pinetreesModPrice = {pinetreesModPrice}
 
-            // Functions
-                buyAuto2x = {buyAuto2x}
-                buyAuto4x = {buyAuto4x}
-                buyExClick2x = {buyExClick2x}
-                buyExClick4x = {buyExClick4x}
-                buyAutoSpeed = {buyAutoSpeed}
-                increaseBasePrice2x =  {increaseBasePrice2x}
-                buyPineTree = {buyPineTree}
-            />
+                // Functions
+                    buyPinetreesMod = {buyPinetreesMod}
+                />
+            </div>
+
 
         </div>
 
@@ -214,7 +257,7 @@ export default function App() {
                     pineconesCurrent={pineconesCurrent}
                     clicksTotal={clicksTotal}
         />
-    </div>
+    </main>
     )
 }
 

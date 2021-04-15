@@ -10,3 +10,8 @@ export const GameStatStyles = {
 export const rowStyles = {
     margin: '.1em'
 }
+
+export const listStyles = {
+    listStyle: "none",
+    margin: "0 0 .5em 0"
+}

@@ -158,106 +158,112 @@ export default function App() {
     }
 
     return (
-    <main style={mainStyles}>
-        <h1>Super Cool Clicker Idle</h1>
-        <h2 style={{border: "3px solid #e6e6e6", width: "10em", whiteSpace: "nowrap", padding: '0.250em', overflow: "hidden"}}> {NumberCompacter(clicksCurrent)} </h2>
+    <div>
+        <main style={mainStyles}>
+            <h1>Super Cool Clicker Idle</h1>
+            <h2 style={{border: "3px solid #e6e6e6", width: "10em", whiteSpace: "nowrap", padding: '0.250em', overflow: "hidden"}}> {NumberCompacter(clicksCurrent)} </h2>
 
-        <div style={{minHeight: "11em", float: 'left', marginRight: '1em', display: 'block', minWidth: "20em", overflow: "hidden"}}> {/* minWidth = 10em * 2 to match the h2 element above*/}
+            <div style={{minHeight: "11em", float: 'left', marginRight: '1em', display: 'block', minWidth: "20em", overflow: "hidden"}}> {/* minWidth = 10em * 2 to match the h2 element above*/}
 
-            <p>
-                <button type="button"
-                        style={buttonAvailable}
-                        onClick={() => handleClickerButton()}
-                        >Click
-                </button>
-            </p>
-
-            {/* Buy pinecones*/}
-            {clicksTotal >= 15000 &&
                 <p>
-                    <button type="button" 
-                        style={clicksCurrent >= pineconePrice ? buttonAvailable : buttonUnavailable}
-                        onClick={() => buyPinecones()}
-                        >Pinecones +{twoS1}
+                    <button type="button"
+                            style={buttonAvailable}
+                            onClick={() => handleClickerButton()}
+                            >Click
                     </button>
-                    &nbsp;&nbsp; {NumberCompacter(pineconePrice)}
                 </p>
-            }
 
-            
-            {clicksTotal >= 30 &&
-                <h3>Store
-
-                     {clicksTotal > 1500000 &&
-                        <button
-                        type="button"
-                        id="storeNav"
-                        style={{
-                            "background": "none",
-                            "fontSize": ".8em",
-                            "color": "#DA7422",
-                            "border": "none",
-                            "cursor": "pointer"
-                            }}
-                        onClick={() => menuControls("store1", "store2","storeNav")}
-                        > Next &#62;
+                {/* Buy pinecones*/}
+                {clicksTotal >= 15000 &&
+                    <p>
+                        <button type="button" 
+                            style={clicksCurrent >= pineconePrice ? buttonAvailable : buttonUnavailable}
+                            onClick={() => buyPinecones()}
+                            >Pinecones +{twoS1}
                         </button>
-                    }
-                </h3>
-            }
-            
-            <div id="store1" style={{"display": "initial"}}>
-                <Store1
-                // Variables
-                    clicksTotal = {clicksTotal}
-                    clicksCurrent = {clicksCurrent}
-                    autoClickSpeed = {autoClickSpeed}
-                    pineconesCurrent = {pineconesCurrent}
-                    autoClick2xPrice = {autoClick2xPrice}
-                    autoClick4xPrice = {autoClick4xPrice}
-                    perClick2xPrice = {perClick2xPrice}
-                    perClick4xPrice = {perClick4xPrice}
-                    pineconePrice = {pineconePrice}
-                    doubleBaseS1Price = {doubleBaseS1Price}
-                    autoClickSpeedPrice = {autoClickSpeedPrice}
-                    pinetreePrice = {pinetreePrice}
-                    twoS1 = {twoS1}
-                    fourS1 = {fourS1}
+                        &nbsp;&nbsp; {NumberCompacter(pineconePrice)}
+                    </p>
+                }
+
+                
+                {clicksTotal >= 30 &&
+                    <h3>Store
+
+                        {clicksTotal > 1500000 &&
+                            <button
+                            type="button"
+                            id="storeNav"
+                            style={{
+                                "background": "none",
+                                "fontSize": ".8em",
+                                "color": "#DA7422",
+                                "border": "none",
+                                "cursor": "pointer"
+                                }}
+                            onClick={() => menuControls("store1", "store2", "storeNav")}
+                            > Next &#62;
+                            </button>
+                        }
+                    </h3>
+                }
+                
+                <div id="store1" style={{"display": "initial"}}>
+                    <Store1
+                    // Variables
+                        clicksTotal = {clicksTotal}
+                        clicksCurrent = {clicksCurrent}
+                        autoClickSpeed = {autoClickSpeed}
+                        pineconesCurrent = {pineconesCurrent}
+                        autoClick2xPrice = {autoClick2xPrice}
+                        autoClick4xPrice = {autoClick4xPrice}
+                        perClick2xPrice = {perClick2xPrice}
+                        perClick4xPrice = {perClick4xPrice}
+                        pineconePrice = {pineconePrice}
+                        doubleBaseS1Price = {doubleBaseS1Price}
+                        autoClickSpeedPrice = {autoClickSpeedPrice}
+                        pinetreePrice = {pinetreePrice}
+                        twoS1 = {twoS1}
+                        fourS1 = {fourS1}
 
 
-                // Functions
-                    buyAuto2x = {buyAuto2x}
-                    buyAuto4x = {buyAuto4x}
-                    buyExClick2x = {buyExClick2x}
-                    buyExClick4x = {buyExClick4x}
-                    buyAutoSpeed = {buyAutoSpeed}
-                    increaseBasePrice2x = {increaseBasePrice2x}
-                    buyPineTree = {buyPineTree}
-                />
+                    // Functions
+                        buyAuto2x = {buyAuto2x}
+                        buyAuto4x = {buyAuto4x}
+                        buyExClick2x = {buyExClick2x}
+                        buyExClick4x = {buyExClick4x}
+                        buyAutoSpeed = {buyAutoSpeed}
+                        increaseBasePrice2x = {increaseBasePrice2x}
+                        buyPineTree = {buyPineTree}
+                    />
+                </div>
+                <div id="store2" style={{"display": "none"}}>
+                    <Store2
+                    // Variables
+                        clicksTotal = {clicksTotal}
+                        clicksCurrent = {clicksCurrent}
+                        pinetreesMod = {pinetreesMod}
+                        pinetreesModPrice = {pinetreesModPrice}
+
+                    // Functions
+                        buyPinetreesMod = {buyPinetreesMod}
+                    />
+                </div>
             </div>
-            <div id="store2" style={{"display": "none"}}>
-                <Store2
-                // Variables
-                    clicksTotal = {clicksTotal}
-                    clicksCurrent = {clicksCurrent}
-                    pinetreesMod = {pinetreesMod}
-                    pinetreesModPrice = {pinetreesModPrice}
 
-                // Functions
-                    buyPinetreesMod = {buyPinetreesMod}
-                />
-            </div>
-
-
-        </div>
-
-        <GameStats  perAutoClick={perAutoClick}
-                    autoClickSpeed={autoClickSpeed}
-                    perClick={perClick}
-                    pineconesCurrent={pineconesCurrent}
-                    clicksTotal={clicksTotal}
-        />
-    </main>
+            <GameStats  perAutoClick={perAutoClick}
+                        autoClickSpeed={autoClickSpeed}
+                        perClick={perClick}
+                        pineconesCurrent={pineconesCurrent}
+                        numOfPinetrees={numOfPinetrees}
+                        pinetreesMod={pinetreesMod}
+                        clicksTotal={clicksTotal}
+            />
+        </main>
+        <footer style={{bottom: "0", position: "absolute", width: "20em", marginLeft: "20vw", display: "flex", justifyContent: "space-between"}}>
+                    <p>Version 1.0.0</p>
+                    <p>MIT © Michael Parker</p>
+        </footer>
+    </div>
     )
 }
 

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
 // Import CSS
-import {mainStyles} from "./App.css.js";
+import  "./App.css";
 import {buttonAvailable, buttonUnavailable} from "../../styles/buttonSyles.css";
 
 // Import Components
@@ -158,12 +158,15 @@ export default function App() {
     }
 
     return (
-    <div>
-        <main style={mainStyles}>
-            <h1>Super Cool Clicker Idle</h1>
-            <h2 style={{border: "3px solid #e6e6e6", width: "10em", whiteSpace: "nowrap", padding: '0.250em', overflow: "hidden"}}> {NumberCompacter(clicksCurrent)} </h2>
-
-            <div style={{minHeight: "11em", float: 'left', marginRight: '1em', display: 'block', minWidth: "20em", overflow: "hidden"}}> {/* minWidth = 10em * 2 to match the h2 element above*/}
+    <div style={{
+        margin: "none"
+        }}>
+        <main id={"main"}>
+            <div id="mainHead">
+                <h1>Super Cool Clicker Idle</h1>
+                <h2 id={"clicksCurrent"}> {NumberCompacter(clicksCurrent)} </h2>
+            </div>
+            <div id="storeContainer"> {/* minWidth = 10em * 2 to match the h2 element above*/}
 
                 <p>
                     <button type="button"
@@ -250,18 +253,23 @@ export default function App() {
                 </div>
             </div>
 
-            <GameStats  perAutoClick={perAutoClick}
-                        autoClickSpeed={autoClickSpeed}
-                        perClick={perClick}
-                        pineconesCurrent={pineconesCurrent}
-                        numOfPinetrees={numOfPinetrees}
-                        pinetreesMod={pinetreesMod}
-                        clicksTotal={clicksTotal}
-            />
+            <div id="gameStatsContainer">
+                <GameStats  perAutoClick={perAutoClick}
+                            autoClickSpeed={autoClickSpeed}
+                            perClick={perClick}
+                            pineconesCurrent={pineconesCurrent}
+                            numOfPinetrees={numOfPinetrees}
+                            pinetreesMod={pinetreesMod}
+                            clicksTotal={clicksTotal}
+                />
+            </div>
         </main>
-        <footer style={{bottom: "0", position: "absolute", width: "20em", marginLeft: "20vw", display: "flex", justifyContent: "space-between"}}>
-                    <p>Version 1.0.0</p>
-                    <p>MIT © Michael Parker</p>
+        <footer id="footer">
+            <div id="footerInside">
+                <p>Version 1.0.0</p>
+                <p>MIT © Michael Parker</p>
+                <p><a href="https://github.com/iHaveSticks/Super-Cool-Clicker-Idle/">View github</a></p>
+            </div>
         </footer>
     </div>
     )

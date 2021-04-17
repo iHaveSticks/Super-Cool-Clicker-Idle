@@ -11,8 +11,10 @@ export default function GameStats(props)  {
     return(
         <aside id={"gameStatsInside"}>
             <h3>Stats</h3>
-                <p className={"rowStyles"}>Per selfclick:&nbsp;{NumberCompacter(props.perClick)}</p>
-                <p className={"rowStyles"}>Clicks:&nbsp;{NumberCompacter(props.perAutoClick/(props.autoClickSpeed/1000))}/s</p>
+                <p className={"rowStyles"}>Selfclick:&nbsp;{NumberCompacter(props.perClick)}</p>
+                {props.perAutoClick > 0 &&
+                    <p className={"rowStyles"}>Auto:&nbsp;{NumberCompacter(props.perAutoClick/(props.autoClickSpeed/1000))}/s</p>
+                }
                 {props.numOfPinetrees > 0 &&
                     <div>
                         <p className={"rowStyles"}> 
@@ -23,10 +25,11 @@ export default function GameStats(props)  {
                             <li><em>Pinetrees: {NumberCompacter(props.numOfPinetrees)}</em></li>
                             <li><em>Modifier: {NumberCompacter(props.pinetreesMod)}</em></li>
                         </ul>
+                        
+                        <br />
+                        <p className={"rowStyles"}>Pinecones:&nbsp;{NumberCompacter(props.pineconesCurrent)}</p>
                     </div>
                 }
-                <br />
-                <p className={"rowStyles"}>Pinecones:&nbsp;{NumberCompacter(props.pineconesCurrent)}</p>
                 <p className={"rowStyles"}>Total Clicks:&nbsp;{NumberCompacter(props.clicksTotal)}</p>
         </aside>
     )

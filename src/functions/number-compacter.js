@@ -3,7 +3,7 @@
 export default function NumberCompacter(num) {
         /*
                 Changes numbers over a thousand into a shorter form
-                or adds a comma if in the thousands - octodecillions range
+                or adds a comma if in the thousands range
 
                 EX: 3784587 changes to '3.78 Million'
                 EX: 1000 changes to '1,000'

@@ -21,7 +21,7 @@ export default function Store1(props) {
                         onClick={() => props.buyAuto2x()}
                         >Autoclick +{NumberCompacter(props.twoS1)}
                     </button>
-                    &nbsp;&nbsp;{NumberCompacter(props.autoClick2xPrice)}
+                    {NumberCompacter(props.autoClick2xPrice)}
                 </p>
             }
 
@@ -34,7 +34,7 @@ export default function Store1(props) {
                         onClick={() => props.buyAuto4x()}
                         >Autoclick +{NumberCompacter(props.fourS1)}
                     </button>
-                    &nbsp;&nbsp;{NumberCompacter(props.autoClick4xPrice)}
+                    {NumberCompacter(props.autoClick4xPrice)}
                 </p>
             }
 
@@ -46,7 +46,7 @@ export default function Store1(props) {
                         onClick={() => props.buyExClick2x()}
                         >Selfclick +{NumberCompacter(props.twoS1)}
                     </button>
-                    &nbsp;&nbsp;{NumberCompacter(props.perClick2xPrice)}
+                    {NumberCompacter(props.perClick2xPrice)}
                 </p>
             }
 
@@ -58,7 +58,7 @@ export default function Store1(props) {
                         onClick={() => props.buyExClick4x()}
                         >Selfclick +{NumberCompacter(props.fourS1)}
                     </button>
-                    &nbsp;&nbsp;{NumberCompacter(props.perClick4xPrice)}
+                    {NumberCompacter(props.perClick4xPrice)}
                 </p>
             }
 
@@ -70,7 +70,7 @@ export default function Store1(props) {
                         onClick={() => props.buyAutoSpeed()}
                         >Autoclick -250ms
                     </button>
-                    &nbsp;&nbsp;{NumberCompacter(props.autoClickSpeedPrice)}
+                    {NumberCompacter(props.autoClickSpeedPrice)}
                 </p>
             }
         

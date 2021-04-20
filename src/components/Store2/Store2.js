@@ -23,7 +23,7 @@ export default function Store2(props) {
                         onClick={() => props.buyPineTree()}
                         >Pinetree +1
                     </button>
-                    &nbsp;&nbsp;{props.pinetreePrice > 0 ? NumberCompacter(props.pinetreePrice) + ' pincones' : 'free'}
+                    {props.pinetreePrice > 0 ? NumberCompacter(props.pinetreePrice) + ' pincones' : 'free'}
                 </p>
             }
 
@@ -35,7 +35,7 @@ export default function Store2(props) {
                         onClick={() => props.increaseBasePrice2x()}
                         >Click incrementals *2
                     </button>
-                    &nbsp;&nbsp;{NumberCompacter(props.doubleBaseS1Price) + ' pincones'}
+                    {NumberCompacter(props.doubleBaseS1Price) + ' pincones'}
                 </p>
             }
 
@@ -46,7 +46,7 @@ export default function Store2(props) {
                         onClick={() => props.buyPinetreesMod()}
                         >Pintree mod + 10
                     </button>
-                    &nbsp;&nbsp;{NumberCompacter(props.pinetreesModPrice)}
+                    {NumberCompacter(props.pinetreesModPrice)}
                 </p>
             }
 

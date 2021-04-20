@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 
 // Import CSS
 import  "./App.css";
-import {buttonAvailable, buttonUnavailable} from "../../styles/buttonSyles.css";
+import {buttonAvailable} from "../../styles/buttonSyles.css";
 
 // Import Components
 import GameStats from "../GameStats/GameStats.js";

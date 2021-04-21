@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 
 // Import CSS
 import  "./App.css";
-import {buttonAvailable} from "../../styles/buttonSyles.css";
+import "../../styles/buttonSyles.css";
 
 // Import Components
 import GameStats from "../GameStats/GameStats.js";
@@ -159,9 +159,9 @@ export default function App() {
 
                 <p>
                     <button type="button"
-                            style={buttonAvailable}
-                            onClick={() => handleClickerButton()}
-                            >Click
+                        className={"buttonAvailable button"}
+                        onClick={() => handleClickerButton()}
+                        >Click
                     </button>
                 </p>
                 

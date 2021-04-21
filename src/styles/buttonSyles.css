@@ -1,0 +1,32 @@
+/* 
+    Specific styles for whether a button is available
+    If unavailable pointer events are disabled
+*/
+
+.button {
+  font-size: 0.8em;
+  border-style: none;
+  min-width: 5em;
+  min-height: 2.3em;
+  margin: 0 0.5em;
+  border-radius: 0.2em;
+}
+
+.buttonAvailable {
+  background-color: #da7422;
+  cursor: pointer;
+}
+
+.buttonUnavailable {
+  background-color: grey;
+  pointer-events: none;
+  cursor: default;
+}
+
+@media screen and (max-device-width: 900px) {
+  /* fontsize for mobile */
+
+  .button {
+    font-size: 1.2em;
+  }
+}

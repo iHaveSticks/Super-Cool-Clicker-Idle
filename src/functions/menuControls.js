@@ -1,4 +1,9 @@
 export default function menuControls(menu1ID, menu2ID, storeNavID = "") {
+	/*
+		Switch between elements by closing one and opening another
+	*/
+
+
 	const menu1 = document.getElementById(menu1ID);
 	const menu2 = document.getElementById(menu2ID);
 	const storeNav = document.getElementById(storeNavID);

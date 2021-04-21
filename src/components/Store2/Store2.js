@@ -23,7 +23,7 @@ export default function Store2(props) {
                         onClick={() => props.buyPineTree()}
                         >Pinetree +1
                     </button>
-                    {props.pinetreePrice > 0 ? NumberCompacter(props.pinetreePrice) + ' pincones' : 'free'}
+                    {props.pinetreePrice > 0 ? NumberCompacter(props.pinetreePrice) + ' pincones' : 'free'} {/* Display as free for first purchase */}
                 </p>
             }
 

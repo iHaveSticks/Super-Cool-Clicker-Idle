@@ -12,7 +12,8 @@ export const buttonAvailable = {
     backgroundColor: '#DA7422',
     minHeight: '2.3em',
     cursor: "pointer",
-    margin: "0 .5em"
+    margin: "0 0.5em",
+    borderRadius: ".2em"
 }
 export const buttonUnavailable = {
     fontSize: '.8em',
@@ -22,5 +23,6 @@ export const buttonUnavailable = {
     backgroundColor: 'grey',
     pointerEvents: 'none',
     cursor: "default",
-    margin: "0 .5em"
+    margin: "0 0.5em",
+    borderRadius: ".2em"
 }

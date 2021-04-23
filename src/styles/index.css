@@ -1,16 +1,20 @@
+html {
+  box-sizing: border-box;
+  font-size: 123%;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 #root {
   color: #fffbdb;
-  font-size: 20px;
   user-select: none;
 }
 
-h1 {
-  margin: 0;
-  padding-top: 1em;
-}
-
 h3 {
-  font-size: 1.5em;
+  font-size: 1.5rem;
 }
 
 a {

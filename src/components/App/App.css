@@ -16,7 +16,7 @@
 
 #clicksCurrent {
   border: 3px solid #e6e6e6;
-  width: 10em;
+  width: 11em;
   white-space: nowrap;
   padding: 0.25em;
   overflow: hidden;
@@ -28,14 +28,7 @@
   overflow: hidden;
 }
 
-#gameStatsContainer {
-  width: 100%;
-}
-
 #footer {
-  width: 100%;
-  height: 1em;
-  margin: 0;
   padding: 0.5em 0;
   background-color: #252b25;
 }
@@ -49,11 +42,14 @@
 }
 
 #footer p {
+  height: 1em;
   margin: 0;
 }
 
-@media screen and (max-width: 40em), screen and (max-device-width: 900px) {
-  /* small window size or mobile */
+@media screen and (max-width: 46.75em), screen and (max-device-width: 900px) {
+  /* 
+    Max-width is different from main because browser default is used
+  */
 
   #main {
     grid-template-columns: 100%;
@@ -80,8 +76,10 @@
   }
 
   #gameStatsContainer {
-    width: inherit;
     text-align: center;
+    width: 100%;
+    max-width: 20em;
+    margin: auto;
   }
 }
 

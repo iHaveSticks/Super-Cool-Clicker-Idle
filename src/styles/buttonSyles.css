@@ -22,11 +22,3 @@
   pointer-events: none;
   cursor: default;
 }
-
-@media screen and (max-device-width: 900px) {
-  /* fontsize for mobile */
-
-  .button {
-    font-size: 1.2em;
-  }
-}

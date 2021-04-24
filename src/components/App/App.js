@@ -152,7 +152,7 @@ export default function App() {
         }}>
         <main id={"main"}>
             <div id="mainHead">
-                <h1>Super Cool Clicker Idle</h1>
+                <h1>Super Cool Clicker&nbsp;Idle</h1>
                 <h2 id={"clicksCurrent"}> {NumberCompacter(clicksCurrent)} </h2>
             </div>
             <div id="storeContainer"> {/* minWidth = 10em * 2 to match the h2 element above*/}

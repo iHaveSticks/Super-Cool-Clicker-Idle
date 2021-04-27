@@ -8,6 +8,7 @@ import "../../styles/buttonSyles.css";
 import GameStats from "../GameStats/GameStats.js";
 import Store1 from "../Store1/Store1.js";
 import Store2 from "../Store2/Store2.js";
+import Footer from "../Footer/Footer.js";
 
 // Import JS Functions
 import NumberCompacter from '../../functions/number-compacter.js';
@@ -240,11 +241,7 @@ export default function App() {
             </div>
         </main>
         <footer id="footer">
-            <div id="footerInside">
-                <p>Version 1.0.0</p>
-                <p>MIT © Michael Parker</p>
-                <p><a href="https://github.com/iHaveSticks/Super-Cool-Clicker-Idle/">View github</a></p>
-            </div>
+            <Footer />
         </footer>
     </div>
     )

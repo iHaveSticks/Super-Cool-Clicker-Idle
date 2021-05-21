@@ -16,6 +16,9 @@
   background-color: #da7422;
   cursor: pointer;
 }
+.buttonAvailable:hover {
+  box-shadow: inset 1px 1px 6px #63340e;
+}
 
 .buttonUnavailable {
   background-color: grey;

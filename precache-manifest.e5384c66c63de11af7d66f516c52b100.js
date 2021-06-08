@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "605d765b5e4d286e865931ca9323c619",
+    "revision": "1051937006ff8d1c7d2094409c740739",
     "url": "/Super-Cool-Clicker-Idle/index.html"
   },
   {
-    "revision": "21ee645407daa9e2b85f",
-    "url": "/Super-Cool-Clicker-Idle/static/css/main.5e55c2a6.chunk.css"
+    "revision": "6fdfcba179c7a1810939",
+    "url": "/Super-Cool-Clicker-Idle/static/css/main.b05e62a4.chunk.css"
   },
   {
     "revision": "90cccfc26cbd6d31c2ea",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Super-Cool-Clicker-Idle/static/js/2.2d414985.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "21ee645407daa9e2b85f",
+    "revision": "6fdfcba179c7a1810939",
     "url": "/Super-Cool-Clicker-Idle/static/js/main.8b04e2d5.chunk.js"
   },
   {

@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Super-Cool-Clicker-Idle/static/css/main.5e55c2a6.chunk.css",
+    "main.css": "/Super-Cool-Clicker-Idle/static/css/main.b05e62a4.chunk.css",
     "main.js": "/Super-Cool-Clicker-Idle/static/js/main.8b04e2d5.chunk.js",
     "main.js.map": "/Super-Cool-Clicker-Idle/static/js/main.8b04e2d5.chunk.js.map",
     "runtime-main.js": "/Super-Cool-Clicker-Idle/static/js/runtime-main.2ab5e551.js",
@@ -8,15 +8,15 @@
     "static/js/2.2d414985.chunk.js": "/Super-Cool-Clicker-Idle/static/js/2.2d414985.chunk.js",
     "static/js/2.2d414985.chunk.js.map": "/Super-Cool-Clicker-Idle/static/js/2.2d414985.chunk.js.map",
     "index.html": "/Super-Cool-Clicker-Idle/index.html",
-    "precache-manifest.986f052fca93c50ccc40c13c9fa3f459.js": "/Super-Cool-Clicker-Idle/precache-manifest.986f052fca93c50ccc40c13c9fa3f459.js",
+    "precache-manifest.e5384c66c63de11af7d66f516c52b100.js": "/Super-Cool-Clicker-Idle/precache-manifest.e5384c66c63de11af7d66f516c52b100.js",
     "service-worker.js": "/Super-Cool-Clicker-Idle/service-worker.js",
-    "static/css/main.5e55c2a6.chunk.css.map": "/Super-Cool-Clicker-Idle/static/css/main.5e55c2a6.chunk.css.map",
+    "static/css/main.b05e62a4.chunk.css.map": "/Super-Cool-Clicker-Idle/static/css/main.b05e62a4.chunk.css.map",
     "static/js/2.2d414985.chunk.js.LICENSE.txt": "/Super-Cool-Clicker-Idle/static/js/2.2d414985.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.2ab5e551.js",
     "static/js/2.2d414985.chunk.js",
-    "static/css/main.5e55c2a6.chunk.css",
+    "static/css/main.b05e62a4.chunk.css",
     "static/js/main.8b04e2d5.chunk.js"
   ]
 }

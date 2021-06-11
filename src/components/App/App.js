@@ -46,20 +46,22 @@ export default function App() {
     const [fourS1,setFourS1] = useState(4);
 
 
-    useEffect( () => {
-        // The auto clicker
-        const interval = setInterval(() => {
+    // reRender will make auto clicker update only between loops
+    // allowing the auto clicker to work regardless of buttons spammed
+    const [reRender,setReRender] = useState(0);
+
+    //Auto Clicker
+    useEffect( () => autoClicker(), [reRender]);
+    function autoClicker() {
+        const timeout = setTimeout(() => {
             setClicksTotal(clicksTotal => Math.round(clicksTotal + perAutoClick));
             setClicksCurrent(clicksCurrent => Math.round(clicksCurrent + perAutoClick));
             setPineconesCurrent(pineconesCurrent => Math.round(pineconesCurrent + (numOfPinetrees * pinetreesMod)));
             
+            setReRender(timeout); // Tell useEffect to reRender
+                                  // (In browsers timeout should return timeout id)
         }, autoClickSpeed);
-        return () => clearInterval(interval);
-
-        // Only re-render when specific values change
-    }, [autoClickSpeed, perAutoClick, numOfPinetrees, pinetreesMod]);
-            
-    
+    }
 
 
     // Handleclicks

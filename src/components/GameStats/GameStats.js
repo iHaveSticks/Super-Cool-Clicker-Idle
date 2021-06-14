@@ -1,7 +1,7 @@
 import React from 'react';
 import "./GameStats.css";
 import NumberCompacter from './../../functions/number-compacter.js';
-
+/* global BigInt */ //<-- enable BigInt()
 
 
 export default function GameStats(props)  {
@@ -13,12 +13,22 @@ export default function GameStats(props)  {
             <h3>Stats</h3>
                 <p className={"rowStyles"}>Selfclick:&nbsp;{NumberCompacter(props.perClick)}</p>
                 {props.perAutoClick > 0 &&
-                    <p className={"rowStyles"}>Auto:&nbsp;{NumberCompacter(props.perAutoClick/(props.autoClickSpeed/1000))}/s</p>
+                    <p className={"rowStyles"}>Auto:&nbsp;{
+                        NumberCompacter(
+                            (props.perAutoClick
+                            * BigInt(Math.round(1000 / props.autoClickSpeed * 10))
+                            / 10n)
+                        )}/s
+                    </p>
                 }
                 {props.numOfPinetrees > 0 &&
                     <div>
                         <p className={"rowStyles"}> 
-                            Pinecones:&nbsp;{NumberCompacter((props.numOfPinetrees * props.pinetreesMod)/(props.autoClickSpeed/1000))}/s&nbsp;
+                            Pinecones:&nbsp;{NumberCompacter(
+                                ((props.numOfPinetrees * props.pinetreesMod) 
+                                * BigInt(1000 / props.autoClickSpeed * 10) 
+                                / 10n)
+                            )}/s&nbsp;
                             
                         </p>
                         <ul className={"listStyles"}>

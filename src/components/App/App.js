@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
+
 // Import CSS
 import  "./App.css";
 import "../../styles/buttonSyles.css";
@@ -14,53 +15,115 @@ import Footer from "../Footer/Footer.js";
 import NumberCompacter from '../../functions/number-compacter.js';
 import menuControls from '../../functions/menuControls.js';
 
+/* global BigInt */ //<-- enable BigInt()
+
+
 export default function App() {
 
     // Amounts | Clicks
-    const [clicksTotal,setClicksTotal] = useState(0);
-    const [clicksCurrent,setClicksCurrent] = useState(0);
-    const [perClick,setPerClick] = useState(1);
-    const [perAutoClick,setPerAutoClick] = useState(0);
+    const [clicksTotal,setClicksTotal] = useState(0n);
+    const [clicksCurrent,setClicksCurrent] = useState(0n);
+    const [perClick,setPerClick] = useState(1n);
+    const [perAutoClick,setPerAutoClick] = useState(0n);
     const [autoClickSpeed,setAutoClickSpeed] = useState(1000);
     
     // Amounts | Pine
-    const [pineconesCurrent,setPineconesCurrent] = useState(0);
-    const [numOfPinetrees,setNumOfPinetrees] = useState(0);
-    const [pinetreesMod,setPinetreesMod] = useState(1);
+    const [pineconesCurrent,setPineconesCurrent] = useState(0n);
+    const [numOfPinetrees,setNumOfPinetrees] = useState(0n);
+    const [pinetreesMod,setPinetreesMod] = useState(1n);
 
     // Prices | clicks
-    const [autoClick2xPrice,setAutoClick2xPrice] = useState(60);
-    const [autoClick4xPrice,setAutoClick4xPrice] = useState(80);
-    const [perClick2xPrice,setPerClick2xPrice] = useState(100);
-    const [perClick4xPrice,setPerClick4xPrice] = useState(120);
-    const [pinetreesModPrice,setPinetreesModPrice] = useState(1000000);
-    const [autoClickSpeedPrice,setAutoClickSpeedPrice] = useState(600);
+    const [autoClick2xPrice,setAutoClick2xPrice] = useState(60n);
+    const [autoClick4xPrice,setAutoClick4xPrice] = useState(80n);
+    const [perClick2xPrice,setPerClick2xPrice] = useState(100n);
+    const [perClick4xPrice,setPerClick4xPrice] = useState(120n);
+    const [pinetreesModPrice,setPinetreesModPrice] = useState(1000000n);
+    const [autoClickSpeedPrice,setAutoClickSpeedPrice] = useState(600n);
 
     // Prices | Pincones
-    const [doubleBaseS1Price,setDoubleBaseS1Price] = useState(60);
-    const [pinetreePrice,setPinetreePrice] = useState(0);
+    const [doubleBaseS1Price,setDoubleBaseS1Price] = useState(60n);
+    const [pinetreePrice,setPinetreePrice] = useState(0n);
 
     // These numbers determine how much to add to per click amounts
     // They can be doubled infinite times ingame
-    const [twoS1,setTwoS1] = useState(2);
-    const [fourS1,setFourS1] = useState(4);
-
+    const [twoS1,setTwoS1] = useState(2n);
+    const [fourS1,setFourS1] = useState(4n);
 
     // reRender will make auto clicker update only between loops
     // allowing the auto clicker to work regardless of buttons spammed
-    const [reRender,setReRender] = useState(0);
+    const [reRender1,setReRender1] = useState(0);
+    const [didInitialLoad,setDidInitialLoad] = useState(false);
+
+    //autoload
+    useEffect(() => {
+        const data = localStorage.getItem('SavedGame');
+        const SavedGame = JSON.parse(data);
+        if(SavedGame) {
+            setClicksTotal(BigInt(SavedGame.clicksTotal));
+            setClicksCurrent(BigInt(SavedGame.clicksCurrent));
+            setPerClick(BigInt(SavedGame.perClick));
+            setPerAutoClick(BigInt(SavedGame.perAutoClick));
+            setAutoClickSpeed(parseInt(SavedGame.autoClickSpeed));
+            setPineconesCurrent(BigInt(SavedGame.pineconesCurrent));
+            setNumOfPinetrees(BigInt(SavedGame.numOfPinetrees));
+            setPinetreesMod(BigInt(SavedGame.pinetreesMod));
+            setAutoClick2xPrice(BigInt(SavedGame.autoClick2xPrice));
+            setAutoClick4xPrice(BigInt(SavedGame.autoClick4xPrice));
+            setPerClick2xPrice(BigInt(SavedGame.perClick2xPrice));
+            setPerClick4xPrice(BigInt(SavedGame.perClick4xPrice));
+            setPinetreesModPrice(BigInt(SavedGame.pinetreesModPrice));
+            setAutoClickSpeedPrice(BigInt(SavedGame.autoClickSpeedPrice));
+            setDoubleBaseS1Price(BigInt(SavedGame.doubleBaseS1Price));
+            setPinetreePrice(BigInt(SavedGame.pinetreePrice));
+            setTwoS1(BigInt(SavedGame.twoS1));
+            setFourS1(BigInt(SavedGame.fourS1));
+        }
+        setDidInitialLoad(true);
+    }, [])
 
     //Auto Clicker
-    useEffect( () => autoClicker(), [reRender]);
+    useEffect( () => autoClicker(), [reRender1]);
     function autoClicker() {
         const timeout = setTimeout(() => {
-            setClicksTotal(clicksTotal => Math.round(clicksTotal + perAutoClick));
-            setClicksCurrent(clicksCurrent => Math.round(clicksCurrent + perAutoClick));
-            setPineconesCurrent(pineconesCurrent => Math.round(pineconesCurrent + (numOfPinetrees * pinetreesMod)));
+            setClicksTotal(clicksTotal => clicksTotal + perAutoClick);
+            setClicksCurrent(clicksCurrent => clicksCurrent + perAutoClick);
+            setPineconesCurrent(pineconesCurrent => pineconesCurrent + (numOfPinetrees * pinetreesMod));
             
-            setReRender(timeout); // Tell useEffect to reRender
+            setReRender1(timeout); // Tell useEffect to reRender
                                   // (In browsers timeout should return timeout id)
         }, autoClickSpeed);
+    }
+
+    //autosave
+
+    useEffect( () => {
+        if (didInitialLoad) saveGame();
+    });
+
+
+    function saveGame() {
+        localStorage.setItem('SavedGame',
+            `{
+                "clicksTotal": "${clicksTotal}",
+                "clicksCurrent": "${clicksCurrent}",
+                "perClick": "${perClick}",
+                "perAutoClick": "${perAutoClick}",
+                "autoClickSpeed": "${autoClickSpeed}",
+                "pineconesCurrent": "${pineconesCurrent}",
+                "numOfPinetrees": "${numOfPinetrees}",
+                "pinetreesMod": "${pinetreesMod}",
+                "autoClick2xPrice": "${autoClick2xPrice}",
+                "autoClick4xPrice": "${autoClick4xPrice}",
+                "perClick2xPrice": "${perClick2xPrice}",
+                "perClick4xPrice": "${perClick4xPrice}",
+                "pinetreesModPrice": "${pinetreesModPrice}",
+                "autoClickSpeedPrice": "${autoClickSpeedPrice}",
+                "doubleBaseS1Price": "${doubleBaseS1Price}",
+                "pinetreePrice": "${pinetreePrice}",
+                "twoS1": ${twoS1},
+                "fourS1": "${fourS1}"
+            }`
+        );
     }
 
 
@@ -75,7 +138,7 @@ export default function App() {
         if (clicksCurrent >= cost) {
             setPerAutoClick(perAutoClick => perAutoClick + twoS1);
             setClicksCurrent(clicksCurrent => clicksCurrent - cost);
-            setAutoClick2xPrice(cost + Math.round(cost *.10));
+            setAutoClick2xPrice(cost + ((cost * 1n) / 10n));
         }
     }
 
@@ -84,7 +147,7 @@ export default function App() {
         if (clicksCurrent >= cost) {
             setPerAutoClick(perAutoClick => perAutoClick + fourS1);
             setClicksCurrent(clicksCurrent => clicksCurrent - cost);
-            setAutoClick4xPrice(cost + Math.round(cost *.10));
+            setAutoClick4xPrice(cost + ((cost * 1n) / 10n));
         }
     }
 
@@ -93,7 +156,7 @@ export default function App() {
         if (clicksCurrent >= cost) {
             setPerClick(perClick => perClick + twoS1);
             setClicksCurrent(clicksCurrent => clicksCurrent - cost);
-            setPerClick2xPrice(cost + Math.round(cost *.10));
+            setPerClick2xPrice(cost + ((cost * 1n) / 10n));
         }
     }
 
@@ -102,7 +165,7 @@ export default function App() {
         if (clicksCurrent >= cost) {
             setPerClick(perClick => perClick + fourS1);
             setClicksCurrent(clicksCurrent => clicksCurrent - cost);
-            setPerClick4xPrice(cost + Math.round(cost *.10));
+            setPerClick4xPrice(cost + ((cost * 1n) / 10n));
         }
     }
 
@@ -111,20 +174,20 @@ export default function App() {
         if (clicksCurrent >= cost) {
             setAutoClickSpeed(autoClickSpeed => autoClickSpeed - 250);
             setClicksCurrent(clicksCurrent => clicksCurrent - cost);
-            setAutoClickSpeedPrice(cost + Math.round(cost *.5));
+            setAutoClickSpeedPrice(cost + ((cost * 5n) / 10n));
         }
     }
 
     function increaseBasePrice2x() {
         const cost = doubleBaseS1Price;
         if (pineconesCurrent >= cost) {
-            setPerClick(perClick => perClick * 2);
-            setPerAutoClick(perAutoClick => perAutoClick * 2);
-            setTwoS1(twoS1 => twoS1 * 2);
-            setFourS1(fourS1 => fourS1 * 2);
+            setPerClick(perClick => perClick * 2n);
+            setPerAutoClick(perAutoClick => perAutoClick * 2n);
+            setTwoS1(twoS1 => twoS1 * 2n);
+            setFourS1(fourS1 => fourS1 * 2n);
 
             setPineconesCurrent(pineconesCurrent => pineconesCurrent - cost);
-            setDoubleBaseS1Price(cost + (cost * 2.5))
+            setDoubleBaseS1Price(cost + ((cost * 25n) / 100n));
         }
     }
 
@@ -132,11 +195,11 @@ export default function App() {
         const cost = pinetreePrice;
         if (pineconesCurrent >= cost) {
             setPineconesCurrent(pineconesCurrent => pineconesCurrent - cost);
-            setNumOfPinetrees(numOfPinetrees => numOfPinetrees + 1);
+            setNumOfPinetrees(numOfPinetrees => numOfPinetrees + 1n);
 
             cost > 0
-            ? setPinetreePrice(Math.round( cost + (1.5 * numOfPinetrees) ))
-            : setPinetreePrice(100)
+            ? setPinetreePrice(cost + ((numOfPinetrees * 15n) / 100n))
+            : setPinetreePrice(100n)
         }
     }
 
@@ -144,8 +207,8 @@ export default function App() {
         const cost = pinetreesModPrice;
         if (clicksCurrent >= cost) {
             setClicksCurrent(clicksCurrent => clicksCurrent - cost);
-            setPinetreesMod(pinetreesMod => pinetreesMod + 10);
-            setPinetreesModPrice(Math.round( cost + (pinetreesMod * 100000) ));
+            setPinetreesMod(pinetreesMod => pinetreesMod + 10n);
+            setPinetreesModPrice(cost + (pinetreesMod * 100000n));
         }
     }
 
@@ -171,7 +234,7 @@ export default function App() {
                 {clicksTotal >= 30 &&
                     <h3>Store
 
-                        {clicksTotal > 15000 &&
+                        {clicksTotal > 15000n &&
                             <button
                             type="button"
                             id="storeNav"

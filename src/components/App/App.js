@@ -3,10 +3,11 @@ import React, {useState, useEffect} from 'react';
 
 // Import CSS
 import  "./App.css";
-import "../../styles/buttonSyles.css";
+import "../../styles/buttonStyles.css";
 
 // Import Components
 import GameStats from "../GameStats/GameStats.js";
+import Settings from '../Settings/Settings';
 import Store1 from "../Store1/Store1.js";
 import Store2 from "../Store2/Store2.js";
 import Footer from "../Footer/Footer.js";
@@ -49,37 +50,25 @@ export default function App() {
     const [twoS1,setTwoS1] = useState(2n);
     const [fourS1,setFourS1] = useState(4n);
 
+
+    /*        Don't save these values        */
     // reRender will make auto clicker update only between loops
     // allowing the auto clicker to work regardless of buttons spammed
-    const [reRender1,setReRender1] = useState(0);
+    const [reRender1,setReRender1] = useState(0);    
     const [didInitialLoad,setDidInitialLoad] = useState(false);
+    const [autoSaveOn, setAutoSaveOn] = useState(true);
 
-    //autoload
+    // autoload - autosave
     useEffect(() => {
-        const data = localStorage.getItem('SavedGame');
-        const SavedGame = JSON.parse(data);
-        if(SavedGame) {
-            setClicksTotal(BigInt(SavedGame.clicksTotal));
-            setClicksCurrent(BigInt(SavedGame.clicksCurrent));
-            setPerClick(BigInt(SavedGame.perClick));
-            setPerAutoClick(BigInt(SavedGame.perAutoClick));
-            setAutoClickSpeed(parseInt(SavedGame.autoClickSpeed));
-            setPineconesCurrent(BigInt(SavedGame.pineconesCurrent));
-            setNumOfPinetrees(BigInt(SavedGame.numOfPinetrees));
-            setPinetreesMod(BigInt(SavedGame.pinetreesMod));
-            setAutoClick2xPrice(BigInt(SavedGame.autoClick2xPrice));
-            setAutoClick4xPrice(BigInt(SavedGame.autoClick4xPrice));
-            setPerClick2xPrice(BigInt(SavedGame.perClick2xPrice));
-            setPerClick4xPrice(BigInt(SavedGame.perClick4xPrice));
-            setPinetreesModPrice(BigInt(SavedGame.pinetreesModPrice));
-            setAutoClickSpeedPrice(BigInt(SavedGame.autoClickSpeedPrice));
-            setDoubleBaseS1Price(BigInt(SavedGame.doubleBaseS1Price));
-            setPinetreePrice(BigInt(SavedGame.pinetreePrice));
-            setTwoS1(BigInt(SavedGame.twoS1));
-            setFourS1(BigInt(SavedGame.fourS1));
-        }
+    },[]);
+    useEffect(() => {
+        if(autoSaveOn && didInitialLoad) {
+            saveGame();
+        } else if (!didInitialLoad) {
+        loadGame();
         setDidInitialLoad(true);
-    }, [])
+        }
+    });
 
     //Auto Clicker
     useEffect( () => autoClicker(), [reRender1]);
@@ -93,13 +82,6 @@ export default function App() {
                                   // (In browsers timeout should return timeout id)
         }, autoClickSpeed);
     }
-
-    //autosave
-
-    useEffect( () => {
-        if (didInitialLoad) saveGame();
-    });
-
 
     function saveGame() {
         localStorage.setItem('SavedGame',
@@ -124,6 +106,40 @@ export default function App() {
                 "fourS1": "${fourS1}"
             }`
         );
+    }
+
+    function loadGame(Game = 'SavedGame') {
+        let SavedGame;
+        if((  SavedGame = JSON.parse(localStorage.getItem(Game))  )) {
+            setClicksTotal(BigInt(SavedGame.clicksTotal));
+            setClicksCurrent(BigInt(SavedGame.clicksCurrent));
+            setPerClick(BigInt(SavedGame.perClick));
+            setPerAutoClick(BigInt(SavedGame.perAutoClick));
+            setAutoClickSpeed(parseInt(SavedGame.autoClickSpeed));
+            setPineconesCurrent(BigInt(SavedGame.pineconesCurrent));
+            setNumOfPinetrees(BigInt(SavedGame.numOfPinetrees));
+            setPinetreesMod(BigInt(SavedGame.pinetreesMod));
+            setAutoClick2xPrice(BigInt(SavedGame.autoClick2xPrice));
+            setAutoClick4xPrice(BigInt(SavedGame.autoClick4xPrice));
+            setPerClick2xPrice(BigInt(SavedGame.perClick2xPrice));
+            setPerClick4xPrice(BigInt(SavedGame.perClick4xPrice));
+            setPinetreesModPrice(BigInt(SavedGame.pinetreesModPrice));
+            setAutoClickSpeedPrice(BigInt(SavedGame.autoClickSpeedPrice));
+            setDoubleBaseS1Price(BigInt(SavedGame.doubleBaseS1Price));
+            setPinetreePrice(BigInt(SavedGame.pinetreePrice));
+            setTwoS1(BigInt(SavedGame.twoS1));
+            setFourS1(BigInt(SavedGame.fourS1));
+        };
+        let autoSaveOnMem = JSON.parse(localStorage.getItem("autoSaveOn"));
+        if(autoSaveOnMem !== null) {
+            setAutoSaveOn(Boolean(autoSaveOnMem));
+        }
+        console.log(autoSaveOn)
+    }
+
+    function switchAutoSave() {
+        localStorage.setItem("autoSaveOn", `${!autoSaveOn}`);
+        setAutoSaveOn(autoSaveOn => !autoSaveOn);
     }
 
 
@@ -216,10 +232,29 @@ export default function App() {
     <div style={{
         margin: "none"
         }}>
-        <main id={"main"}>
+
+        <div id="settingsContainer">
+            <Settings
+                //variables
+                autoSaveOn = {autoSaveOn}
+                //funtions
+                setAutoSaveOn = {setAutoSaveOn}
+                switchAutoSave = {switchAutoSave}
+            />
+        </div>
+        <main id="main">
             <div id="mainHead">
+                
                 <h1>Super Cool Clicker&nbsp;Idle</h1>
-                <h2 id={"clicksCurrent"}> {NumberCompacter(clicksCurrent)} </h2>
+                
+                <div style={{display: "flex"}}>
+                    <h2 id={"clicksCurrent"}> {NumberCompacter(clicksCurrent)} </h2>
+                    <button className="btnNoStyle" id="openSettingBtn"
+                    onClick={()=>{document.getElementById("settingsBackground").style.display = "initial"}}
+                    >Settings
+                    </button>
+                </div>
+                
             </div>
             <div id="storeContainer"> {/* minWidth = 10em * 2 to match the h2 element above*/}
 

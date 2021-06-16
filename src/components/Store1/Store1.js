@@ -1,7 +1,7 @@
 import React  from 'react';
 
 // Import CSS
-import "../../styles/buttonSyles.css";
+import "../../styles/buttonStyles.css";
 
 // Import JS Functions
 import NumberCompacter from '../../functions/number-compacter.js';

@@ -22,6 +22,26 @@
   overflow: hidden;
 }
 
+#openSettingBtn {
+  margin: auto;
+  margin-left: 10px;
+  display: block;
+
+  transition: 0.2s;
+  cursor: pointer;
+  width: 1.5em;
+  height: 1.5em;
+  filter: invert(99%) sepia(0%) saturate(6441%) hue-rotate(244deg)
+    brightness(120%) contrast(80%);
+}
+
+#openSettingBtn:hover {
+  transform: rotate(0.1turn);
+}
+#openSettingBtn::focus-visible {
+  outline: auto;
+}
+
 #storeContainer {
   min-height: 22em;
   overflow: hidden;
@@ -61,6 +81,15 @@
 
   #clicksCurrent {
     margin: auto;
+  }
+  #openSettingBtn {
+    position: fixed;
+    right: 0;
+    top: 0;
+    margin-top: 20px;
+    margin-right: 20px;
+    height: 2em;
+    width: 2em;
   }
 
   #storeContainer {

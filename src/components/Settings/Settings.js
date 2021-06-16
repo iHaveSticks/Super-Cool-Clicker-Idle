@@ -18,12 +18,12 @@ export default function settings(props) {
                   <button type="button"
                       className={"button buttonAvailable"}
                       onClick={() => props.switchAutoSave()}
-                      >{props.autoSaveOn ? "on" : "off"}
+                      >{props.autoSaveOn ? "ON" : "OFF"}
                   </button>
               </p>
               <p className="settingsOption">
-                  <button type="button"
-                      className={"button buttonAvailable"}
+                  <button type="button" id="deleteSaveBtn"
+                      className={"button"}
                       onClick={() =>
                         {
                           props.setAutoSaveOn(false);

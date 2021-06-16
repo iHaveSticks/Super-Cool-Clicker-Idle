@@ -19,9 +19,9 @@
   background-color: #fffbdb;
   margin: 10% auto;
   padding: 20px;
-  border: 1px solid #888;
   max-width: 19em;
   min-height: 20em;
+  max-height: 80%;
 }
 
 #settingsHead {
@@ -29,22 +29,33 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  border-bottom: 2px dotted #252b25;
+  font-family: "Arial", sans-serif;
 }
 
 #closeSettings {
   position: relative;
   top: -20px;
   right: -20px;
-  background-color: darksalmon;
-  width: 1.1em;
-  height: 1.1em;
+  height: 1.5rem;
+  width: 1.5rem;
+
+  font-size: 1.5rem;
+  font-family: "Arial Narrow", sans-serif;
 }
 #closeSettings:hover {
-  background-color: red;
+  background-color: rgba(255, 151, 132, 0.808);
 }
-#closeSettings::focus-visible {
-  background-color: red;
+#closeSettings:focus {
+  background-color: rgba(255, 151, 132, 0.808);
   outline: auto;
+}
+#settingsContent {
+  flex-grow: 2;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .settingsOption {
@@ -55,4 +66,25 @@
   font-size: 0.7rem;
   min-width: 3rem;
   min-height: 1.5rem;
+}
+
+#deleteSaveBtn {
+  align-self: flex-end;
+  width: 6.5rem;
+  height: 3.5em;
+  display: block;
+  margin: auto;
+
+  background-color: transparent;
+  border: solid #252b25;
+  font-size: 0.8rem;
+}
+
+#deleteSaveBtn:hover {
+  background-color: #252b25;
+  color: #e6e6e6;
+}
+#deleteSaveBtn:focus {
+  background-color: #252b25;
+  color: #e6e6e6;
 }

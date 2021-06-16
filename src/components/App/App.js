@@ -12,9 +12,13 @@ import Store1 from "../Store1/Store1.js";
 import Store2 from "../Store2/Store2.js";
 import Footer from "../Footer/Footer.js";
 
+// import icons
+import gearSVG from "../../assets/icons/gear.svg";
+
 // Import JS Functions
 import NumberCompacter from '../../functions/number-compacter.js';
 import menuControls from '../../functions/menuControls.js';
+import openSettings from '../../functions/openSettings.js';
 
 /* global BigInt */ //<-- enable BigInt()
 
@@ -60,8 +64,6 @@ export default function App() {
 
     // autoload - autosave
     useEffect(() => {
-    },[]);
-    useEffect(() => {
         if(autoSaveOn && didInitialLoad) {
             saveGame();
         } else if (!didInitialLoad) {
@@ -72,6 +74,9 @@ export default function App() {
 
     //Auto Clicker
     useEffect( () => autoClicker(), [reRender1]);
+
+
+    /*      Functions      */
     function autoClicker() {
         const timeout = setTimeout(() => {
             setClicksTotal(clicksTotal => clicksTotal + perAutoClick);
@@ -134,7 +139,6 @@ export default function App() {
         if(autoSaveOnMem !== null) {
             setAutoSaveOn(Boolean(autoSaveOnMem));
         }
-        console.log(autoSaveOn)
     }
 
     function switchAutoSave() {
@@ -143,7 +147,7 @@ export default function App() {
     }
 
 
-    // Handleclicks
+    /*      Handler Functions      */
     function handleClickerButton() {
         setClicksTotal(clicksTotal => clicksTotal + perClick);
         setClicksCurrent(clicksCurrent => clicksCurrent + perClick);
@@ -249,12 +253,12 @@ export default function App() {
                 
                 <div style={{display: "flex"}}>
                     <h2 id={"clicksCurrent"}> {NumberCompacter(clicksCurrent)} </h2>
-                    <button className="btnNoStyle" id="openSettingBtn"
-                    onClick={()=>{document.getElementById("settingsBackground").style.display = "initial"}}
-                    >Settings
-                    </button>
+                    <img id="openSettingBtn" src={gearSVG} alt="settings" tabIndex="0"
+                    onClick={()=>openSettings()}
+                    onKeyDown={ (event)=>{if(event.key === "Enter") openSettings()} }
+                    />
+                    
                 </div>
-                
             </div>
             <div id="storeContainer"> {/* minWidth = 10em * 2 to match the h2 element above*/}
 
@@ -346,6 +350,4 @@ export default function App() {
     </div>
     )
 }
-
-
 

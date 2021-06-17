@@ -241,7 +241,7 @@ export default function App() {
             <Settings
                 //variables
                 autoSaveOn = {autoSaveOn}
-                //funtions
+                //functions
                 setAutoSaveOn = {setAutoSaveOn}
                 switchAutoSave = {switchAutoSave}
             />
@@ -255,7 +255,7 @@ export default function App() {
                     <h2 id={"clicksCurrent"}> {NumberCompacter(clicksCurrent)} </h2>
                     <img id="openSettingBtn" src={gearSVG} alt="settings" tabIndex="0"
                     onClick={()=>openSettings()}
-                    onKeyDown={ (event)=>{if(event.key === "Enter") openSettings()} }
+                    onKeyDown={ (event) => {if(event.key === "Enter") openSettings()} }
                     />
                     
                 </div>
@@ -266,6 +266,8 @@ export default function App() {
                     <button type="button"
                         className={"buttonAvailable button"}
                         onClick={() => handleClickerButton()}
+                        onKeyPress={ (event) => {if(event.key === "Enter") {event.preventDefault()}} }
+                        onKeyUp={ (event) => {if(event.key === "Enter") {handleClickerButton()}} }
                         >Click
                     </button>
                 </p>

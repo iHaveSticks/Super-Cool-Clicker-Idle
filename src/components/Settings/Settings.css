@@ -17,7 +17,7 @@
 
   color: #30362f;
   background-color: #fffbdb;
-  margin: 10% auto;
+  margin: 10vh auto;
   padding: 20px;
   max-width: 19em;
   min-height: 20em;
@@ -37,8 +37,8 @@
   position: relative;
   top: -20px;
   right: -20px;
-  height: 1.5rem;
-  width: 1.5rem;
+  height: 2rem;
+  width: 2rem;
 
   font-size: 1.5rem;
   font-family: "Arial Narrow", sans-serif;

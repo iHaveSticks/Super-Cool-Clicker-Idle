@@ -4,16 +4,18 @@ import './Settings.css';
 export default function settings(props) {
 
   return (
-    <div id="settingsBackground">
-        <div id="settingsMenu">
+    <div id="settingsBackground" onClick={(event)=> {if(event.target.id === "settingsBackground") closeSettings()} }>
+        <div id="settingsMenu" >
             <div id="settingsHead">
-              <p style={{margin: "0"}}>Settings</p>
+            {/* close menu button */}
+              <p style={{margin: "0"}}>Settings</p> 
               <button type="button" className="btnNoStyle" id="closeSettings"
-              onClick={()=> {document.getElementById("settingsBackground").style.display = "none"}}
+              onClick={()=> closeSettings()}
               >X</button>
             </div>
             
             <div id="settingsContent">
+            {/* autosave button */}
               <p className="settingsOption">Autosave 
                   <button type="button"
                       className={"button buttonAvailable"}
@@ -21,6 +23,7 @@ export default function settings(props) {
                       >{props.autoSaveOn ? "ON" : "OFF"}
                   </button>
               </p>
+            {/* delete save button */}
               <p className="settingsOption">
                   <button type="button" id="deleteSaveBtn"
                       className={"button"}
@@ -38,4 +41,9 @@ export default function settings(props) {
         </div>
     </div>
   )
+}
+
+function closeSettings() {
+  document.getElementById("settingsBackground").style.display = "none";
+  document.body.style.overflow = "auto";
 }

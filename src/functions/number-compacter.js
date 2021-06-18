@@ -1,98 +1,95 @@
-/* global BigInt */ //<-- enable BigInt()
 
 export default function NumberCompacter(num) {
+  /*
+    Changes numbers over a thousand into a shorter form
+    or adds a comma if in the thousands range
+    EX: 3784587 changes to '3.78 Million'
+    EX: 1000 changes to '1,000'
+    EX: 222 stays the same
+  */
+  num = Number(num); //Ensure num is Number not BigInt
 
-        /*
-                Changes numbers(BigInts) over a thousand into a shorter form
-                or adds a comma if in the thousands range
+  return num < 1.0e+3
+  ? num
 
-                EX: 3784587 changes to '3.78 Million'
-                EX: 1000 changes to '1,000'
-                EX: 222 stays the same
-        */
-        num = BigInt(num);
+  // Thousands
+  : num < 1.0e+6
+  ?  // Slice string to add comma and then rejoin
+  num.toString().slice(0, num.toString().length - 3)
+  + ',' +
+  num.toString().slice(num.toString().length - 3)
 
-        return num < BigInt(1.0e+3)
-        ? `${num}`
+  // Millions 
+  : num < 1.0e+9
+  ? (num / 1.0e+6).toFixed(2) + " Million"
 
-        // Thousands
-        : num < BigInt(1.0e+6)
-        ?  // Slice string to add comma and then rejoin
-        num.toString().slice(0, num.toString().length - 3)
-        + ',' +
-        num.toString().slice(num.toString().length - 3)
+  // Billions
+  : num < 1.0e+12
+  ? (num / 1.0e+9).toFixed(2) + " Billion"
 
-        // Millions 
-        : num < BigInt(1.0e+9)
-        ? (num / BigInt(1.0e+6)) + " Million"
+  // Trillions
+  : num < 1.0e+15
+  ? (num / 1.0e+12).toFixed(2) + " Trillion"
 
-        // Billions
-        : num < BigInt(1.0e+12)
-        ? (num / BigInt(1.0e+9)) + " Billion"
+  // Quadrillions
+  : num < 1.0e+18
+  ? (num / 1.0e+15).toFixed(2) + " Quadrillion"
 
-        // Trillions
-        : num < BigInt(1.0e+15)
-        ? (num / BigInt(1.0e+12)) + " Trillion"
+  // Quintillions
+  : num < 1.0e+21
+  ? (num / 1.0e+18).toFixed(2) + " Quintillion"
 
-        // Quadrillions
-        : num < BigInt(1.0e+18)
-        ? (num / BigInt(1.0e+15)) + " Quadrillion"
+  // Sextillions
+  : num < 1.0e+24
+  ? (num / 1.0e+21).toFixed(2) + " Sextillion"
 
-        // Quintillions
-        : num < BigInt(1.0e+21)
-        ? (num / BigInt(1.0e+18)) + " Quintillion"
+  // Septillions
+  : num < 1.0e+27
+  ? (num / 1.0e+24).toFixed(2) + " Septillion"
 
-        // Sextillions
-        : num < BigInt(1.0e+24)
-        ? (num / BigInt(1.0e+21)) + " Sextillion"
+  // Octillions
+  : num < 1.0e+30
+  ? (num / 1.0e+27).toFixed(2) + " Octillion"
 
-        // Septillions
-        : num < BigInt(1.0e+27)
-        ? (num / BigInt(1.0e+24)) + " Septillion"
+  // Nonillions
+  : num < 1.0e+33
+  ? (num / 1.0e+30).toFixed(2) + " Nonillion"
 
-        // Octillions
-        : num < BigInt(1.0e+30)
-        ? (num / BigInt(1.0e+27)) + " Octillion"
+  // Decillions
+  : num < 1.0e+36
+  ? (num / 1.0e+33).toFixed(2) + " Decillion"
 
-        // Nonillions
-        : num < BigInt(1.0e+33)
-        ? (num / BigInt(1.0e+30)) + " Nonillion"
+  // Undecillions
+  : num < 1.0e+39
+  ? (num / 1.0e+36).toFixed(2) + " Undecillion"
 
-        // Decillions
-        : num < BigInt(1.0e+36)
-        ? (num / BigInt(1.0e+33)) + " Decillion"
+  // Duodecillions
+  : num < 1.0e+42
+  ? (num / 1.0e+39).toFixed(2) + " Duodecillion"
 
-        // Undecillions
-        : num < BigInt(1.0e+39)
-        ? (num / BigInt(1.0e+36)) + " Undecillion"
+  // Tredecillions
+  : num < 1.0e+45
+  ? (num / 1.0e+42).toFixed(2) + " Tredecillion"
 
-        // Duodecillions
-        : num < BigInt(1.0e+42)
-        ? (num / BigInt(1.0e+39)) + " Duodecillion"
+  // Quattuordecillions
+  : num < 1.0e+48
+  ? (num / 1.0e+45).toFixed(2) + " Quattuordecillion"
 
-        // Tredecillions
-        : num < BigInt(1.0e+45)
-        ? (num / BigInt(1.0e+42)) + " Tredecillion"
+  // Tredecillions
+  : num < 1.0e+51
+  ? (num / 1.0e+48).toFixed(2) + " Quindecillion"
 
-        // Quattuordecillions
-        : num < BigInt(1.0e+48)
-        ? (num / BigInt(1.0e+45)) + " Quattuordecillion"
+  // Sexdecillions
+  : num < 1.0e+54
+  ? (num / 1.0e+51).toFixed(2) + " Sexdecillion"
 
-        // Tredecillions
-        : num < BigInt(1.0e+51)
-        ? (num / BigInt(1.0e+48)) + " Quindecillion"
+  // Septendecillions
+  : num < 1.0e+57
+  ? (num / 1.0e+54).toFixed(2) + " Septendecillion"
 
-        // Sexdecillions
-        : num < BigInt(1.0e+54)
-        ? (num / BigInt(1.0e+51)) + " Sexdecillion"
+  // Octodecillions
+  : num < 1.0e+60
+  ? (num / 1.0e+57).toFixed(2) + " Octodecillion"
 
-        // Septendecillions
-        : num < BigInt(1.0e+57)
-        ? (num / BigInt(1.0e+54)) + " Septendecillion"
-
-        // Octodecillions
-        : num < BigInt(1.0e+60)
-        ? (num / BigInt(1.0e+57)) + " Octodecillion"
-
-        : `${num}`
+  : num
 }

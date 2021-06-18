@@ -44,7 +44,7 @@ export default function Store2(props) {
                     <button type="button"
                         className={`button ${props.clicksCurrent >= props.pinetreesModPrice ? "buttonAvailable" : "buttonUnavailable"}`}
                         onClick={() => props.buyPinetreesMod()}
-                        >Pintree mod + 10
+                        >Pintree mod + 1
                     </button>
                     {NumberCompacter(props.pinetreesModPrice)}
                 </p>

@@ -220,7 +220,7 @@ export default function App() {
             setFourS1(fourS1 => fourS1 * 2n);
 
             setPineconesCurrent(pineconesCurrent => pineconesCurrent - cost);
-            setDoubleBaseS1Price(cost + ((cost * 25n) / 100n));
+            setDoubleBaseS1Price(cost + ((cost * 15n) / 10n));
         }
     }
 
@@ -231,7 +231,7 @@ export default function App() {
             setNumOfPinetrees(numOfPinetrees => numOfPinetrees + 1n);
 
             cost > 0
-            ? setPinetreePrice(cost + ((numOfPinetrees * 15n) / 100n))
+            ? setPinetreePrice(cost + (cost * 2n))
             : setPinetreePrice(100n)
         }
     }
@@ -240,7 +240,7 @@ export default function App() {
         const cost = pinetreesModPrice;
         if (clicksCurrent >= cost) {
             setClicksCurrent(clicksCurrent => clicksCurrent - cost);
-            setPinetreesMod(pinetreesMod => pinetreesMod + 10n);
+            setPinetreesMod(pinetreesMod => pinetreesMod + 1n);
             setPinetreesModPrice(cost + (pinetreesMod * 100000n));
         }
     }

@@ -107,8 +107,9 @@ export default function App() {
                 "autoClickSpeedPrice": "${autoClickSpeedPrice}",
                 "doubleBaseS1Price": "${doubleBaseS1Price}",
                 "pinetreePrice": "${pinetreePrice}",
-                "twoS1": ${twoS1},
-                "fourS1": "${fourS1}"
+                "twoS1": "${twoS1}",
+                "fourS1": "${fourS1}",
+                "timeSaved": "${Date.now()}"
             }`
         );
     }
@@ -116,12 +117,24 @@ export default function App() {
     function loadGame(Game = 'SavedGame') {
         let SavedGame;
         if((  SavedGame = JSON.parse(localStorage.getItem(Game))  )) {
-            setClicksTotal(BigInt(SavedGame.clicksTotal));
-            setClicksCurrent(BigInt(SavedGame.clicksCurrent));
+
+            // Find amount for offline clicks
+            const clicksGarnered = BigInt(Math.floor(  ((Date.now() - SavedGame.timeSaved) / SavedGame.autoClickSpeed)
+                                                            * SavedGame.perAutoClick  ));
+            const pinconesGarnered = BigInt(Math.floor(  ((Date.now() - SavedGame.timeSaved) / SavedGame.autoClickSpeed)
+                                                            * SavedGame.numOfPinetrees * SavedGame.pinetreesMod ));
+            // Log to console
+            console.log(`Offline Clicks: ${clicksGarnered}`);
+            console.log(`Offline Pinecones: ${pinconesGarnered}`);
+
+            setClicksTotal(BigInt(SavedGame.clicksTotal) + clicksGarnered);
+            setClicksCurrent(BigInt(SavedGame.clicksCurrent) + clicksGarnered);
+
+            // load other stuff
             setPerClick(BigInt(SavedGame.perClick));
             setPerAutoClick(BigInt(SavedGame.perAutoClick));
             setAutoClickSpeed(parseInt(SavedGame.autoClickSpeed));
-            setPineconesCurrent(BigInt(SavedGame.pineconesCurrent));
+            setPineconesCurrent(BigInt(SavedGame.pineconesCurrent) + pinconesGarnered);
             setNumOfPinetrees(BigInt(SavedGame.numOfPinetrees));
             setPinetreesMod(BigInt(SavedGame.pinetreesMod));
             setAutoClick2xPrice(BigInt(SavedGame.autoClick2xPrice));

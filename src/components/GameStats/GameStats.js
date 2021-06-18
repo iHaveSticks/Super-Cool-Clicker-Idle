@@ -26,7 +26,7 @@ export default function GameStats(props)  {
                         <p className={"rowStyles"}> 
                             Pinecones:&nbsp;{NumberCompacter(
                                 ((props.numOfPinetrees * props.pinetreesMod) 
-                                * BigInt(1000 / props.autoClickSpeed * 10) 
+                                * BigInt(Math.round(1000 / props.autoClickSpeed * 10))
                                 / 10n)
                             )}/s&nbsp;
                             

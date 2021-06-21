@@ -1,0 +1,26 @@
+#messageBoxContainer {
+  position: fixed;
+  margin: 0;
+  margin-bottom: 2.5em;
+  bottom: 0;
+  width: 100vw;
+  overflow: clip;
+
+  transition: ease-out 0.25s;
+  pointer-events: none;
+}
+
+.messageBox {
+  text-align: center;
+  font-family: "Roboto Condensed", sans-serif;
+
+  width: 10em;
+  min-height: 2em;
+  margin: 0 20px 5px auto;
+
+  background-color: #30362f;
+  color: #fffbdb;
+  border: 2px solid #da7422;
+
+  pointer-events: all;
+}

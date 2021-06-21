@@ -11,6 +11,7 @@ import Settings from '../Settings/Settings';
 import Store1 from "../Store1/Store1.js";
 import Store2 from "../Store2/Store2.js";
 import Footer from "../Footer/Footer.js";
+import MessageContainer from '../MessageContainer/MessageContainer.js';
 
 // import icons
 import gearSVG from "../../assets/icons/gear.svg";
@@ -18,7 +19,10 @@ import gearSVG from "../../assets/icons/gear.svg";
 // Import JS Functions
 import NumberCompacter from '../../functions/number-compacter.js';
 import menuControls from '../../functions/menuControls.js';
+
+//import DOM functions
 import openSettings from '../../functions/openSettings.js';
+import showMessage from '../../functions/showMessage';
 
 /* global BigInt */ //<-- enable BigInt()
 
@@ -150,12 +154,16 @@ export default function App() {
         };
         let autoSaveOnMem = JSON.parse(localStorage.getItem("autoSaveOn"));
         if(autoSaveOnMem !== null) {
-            setAutoSaveOn(Boolean(autoSaveOnMem));
+            setAutoSaveOn(autoSaveOnMem);
+            if(!autoSaveOnMem) {
+                showMessage("Autosave is turned off");
+            }
         }
     }
 
     function switchAutoSave() {
         localStorage.setItem("autoSaveOn", `${!autoSaveOn}`);
+        showMessage(`Autosave is turned ${!autoSaveOn ? "ON" : "OFF"}`);
         setAutoSaveOn(autoSaveOn => !autoSaveOn);
     }
 
@@ -362,6 +370,9 @@ export default function App() {
         <footer id="footer">
             <Footer />
         </footer>
+        <aside>
+            <MessageContainer />
+        </aside>
     </div>
     )
 }

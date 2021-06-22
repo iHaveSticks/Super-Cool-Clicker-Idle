@@ -370,12 +370,8 @@ export default function App() {
                 />
             </div>
         </main>
-        <footer id="footer">
-            <Footer />
-        </footer>
-        <aside>
-            <MessageContainer />
-        </aside>
+        <Footer />
+        <MessageContainer />
     </div>
     )
 }

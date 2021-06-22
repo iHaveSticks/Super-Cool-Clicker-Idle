@@ -1,4 +1,6 @@
 import React  from 'react';
+import closeSettings from '../../functions/closeSettings';
+
 import './Settings.css';
 import '../../styles/switchStyles.css';
 
@@ -15,13 +17,14 @@ export default function settings(props) {
               >X</button>
             </div>
             
-            <div id="settingsContent">
+            <div id="settingsContent" tabIndex="-1">
             {/* autosave switch */}
               <div style={{display: "flex", flexDirection: "row"}}>
                 <p className="settingsOption">Autosave</p>
                   <div className="switch">
                     <input type="checkbox" name="switch" className="switchCheckbox" id="switchAutosave" tabIndex="0" defaultChecked
-                      onClick={() => props.switchAutoSave()}
+                      onKeyDown={(event) => {if(event.key === "Enter") {event.target.checked = !event.target.checked; props.switchAutoSave()}}}
+                      onChange={() => props.switchAutoSave()}
                     />
                     <label className="switchLabel" htmlFor="switchAutosave" />
                   </div>
@@ -46,9 +49,4 @@ export default function settings(props) {
         </div>
     </div>
   )
-}
-
-function closeSettings() {
-  document.getElementById("settingsBackground").style.display = "none";
-  document.body.style.overflow = "auto";
 }

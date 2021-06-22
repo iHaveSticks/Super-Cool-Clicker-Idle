@@ -1,0 +1,31 @@
+#footer {
+  padding: 0.5em 0;
+  background-color: #252b25;
+}
+
+#footerInside {
+  max-width: 40em;
+  margin: auto;
+  padding: 0 0.5em;
+  display: flex;
+  justify-content: space-between;
+}
+
+#footer p {
+  height: 1em;
+  margin: 0;
+}
+@media screen and (max-device-width: 900px) {
+  /* fontsize for mobile */
+  #root {
+    touch-action: manipulation;
+  }
+
+  #main {
+    gap: 0.5em;
+  }
+
+  #footer p {
+    font-size: 85%;
+  }
+}

@@ -52,3 +52,14 @@
   right: 0px;
   background-color: #96d771;
 }
+
+.switchCheckbox:focus-visible + .switchLabel:before,
+.switchCheckbox:hover + .switchLabel:before {
+  box-shadow: 0 0 0 6px rgba(30, 30, 30, 20%);
+  transition: ease-in 0.1s;
+}
+
+.switchCheckbox:active + .switchLabel:before {
+  transition-delay: 50ms;
+  box-shadow: 0 0 6px 6px rgba(30, 30, 30, 20%);
+}

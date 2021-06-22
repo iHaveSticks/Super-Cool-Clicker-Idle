@@ -3,6 +3,7 @@
 
   margin: 0;
   margin-bottom: 2.5em;
+  padding-top: 5px;
   bottom: 0;
   width: 100vw;
 
@@ -14,17 +15,23 @@
   text-align: center;
   font-family: "Roboto Condensed", sans-serif;
 
-  width: 10rem;
+  width: 12rem;
   min-height: 2rem;
   margin: 0 20px 5px auto;
 
-  background-color: #30362f;
+  background-color: rgba(48, 54, 47, 95%);
   color: #fffbdb;
-  border: 2px solid #da7422;
+  border: 2px solid rgba(218, 116, 34, 95%);
 
   pointer-events: all;
 }
 
 .messageBox > p {
   pointer-events: none;
+}
+
+.messageBox:hover {
+  background-color: rgba(48, 54, 47, 100%); /*#30362f*/
+  border: 2px solid rgba(218, 116, 34, 100%); /*#da7422*/
+  transform: scale(1.02);
 }

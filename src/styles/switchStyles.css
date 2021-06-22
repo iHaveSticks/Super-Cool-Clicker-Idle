@@ -1,0 +1,54 @@
+.switch {
+  /* variables */
+  --switchHeight: 10px;
+
+  position: relative;
+  width: 30px;
+  height: var(--switchHeight);
+  margin: auto 0;
+  margin-left: 20px;
+  user-select: none;
+}
+
+.switchCheckbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.switchLabel {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  height: var(--switchHeight);
+  padding: 0;
+  line-height: var(--switchHeight);
+  border-radius: 10px;
+  background-color: #9f5b50;
+}
+
+.switchLabel:before {
+  content: "";
+  display: block;
+  width: 18px;
+  margin: -4px;
+  background: #d77f71;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 20px;
+  border-radius: 30px;
+}
+
+.switchCheckbox:checked + .switchLabel {
+  background-color: #6c9f50;
+}
+
+.switchCheckbox:checked + .switchLabel .switchInner {
+  margin-left: 0;
+}
+
+.switchCheckbox:checked + .switchLabel:before {
+  right: 0px;
+  background-color: #96d771;
+}

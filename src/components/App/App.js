@@ -128,7 +128,7 @@ export default function App() {
             const pinconesGarnered = BigInt(Math.floor(((Date.now() - SavedGame.timeSaved) / SavedGame.autoClickSpeed)
                 * SavedGame.numOfPinetrees * SavedGame.pinetreesMod));
             // Log to console
-            showMessage(`Offline Clicks: ${NumberCompacter(clicksGarnered)}
+            showMessage(`Offline Clicks: ${NumberCompacter(clicksGarnered)}<br>
             ${pinconesGarnered ? "Offline Pinecones " + NumberCompacter(pinconesGarnered) : "" }`
             )
 
@@ -159,6 +159,7 @@ export default function App() {
             setAutoSaveOn(autoSaveOnMem);
             if (!autoSaveOnMem) {
                 showMessage("Autosave is turned off");
+                document.getElementById("switchAutosave").checked = false;
             }
         }
     }

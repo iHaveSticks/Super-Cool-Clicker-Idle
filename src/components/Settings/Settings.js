@@ -1,5 +1,6 @@
 import React  from 'react';
 import './Settings.css';
+import '../../styles/switchStyles.css';
 
 export default function settings(props) {
 
@@ -15,21 +16,23 @@ export default function settings(props) {
             </div>
             
             <div id="settingsContent">
-            {/* autosave button */}
-              <p className="settingsOption">Autosave 
-                  <button type="button"
-                      className={"button buttonAvailable"}
+            {/* autosave switch */}
+              <div style={{display: "flex", flexDirection: "row"}}>
+                <p className="settingsOption">Autosave</p>
+                  <div className="switch">
+                    <input type="checkbox" name="switch" className="switchCheckbox" id="switchAutosave" tabIndex="0" defaultChecked
                       onClick={() => props.switchAutoSave()}
-                      >{props.autoSaveOn ? "ON" : "OFF"}
-                  </button>
-              </p>
+                    />
+                    <label className="switchLabel" htmlFor="switchAutosave" />
+                  </div>
+                </div>
             {/* delete save button */}
               <p className="settingsOption">
                   <button type="button" id="deleteSaveBtn"
                       className={"button"}
                       onClick={() =>
                         {
-                          if(window.confirm("Do you really want to delete yopur save?")) {
+                          if(window.confirm("Do you really want to delete your save?\nThis cannot be undone.")) {
                             props.setAutoSaveOn(false);
                             localStorage.removeItem("SavedGame");
                             window.location.reload();

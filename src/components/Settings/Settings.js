@@ -29,9 +29,11 @@ export default function settings(props) {
                       className={"button"}
                       onClick={() =>
                         {
-                          props.setAutoSaveOn(false);
-                          localStorage.removeItem("SavedGame");
-                          window.location.reload()
+                          if(window.confirm("Do you really want to delete yopur save?")) {
+                            props.setAutoSaveOn(false);
+                            localStorage.removeItem("SavedGame");
+                            window.location.reload();
+                          }
                         }
                       }>
                       Delete Save

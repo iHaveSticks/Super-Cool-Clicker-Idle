@@ -10,14 +10,28 @@ export default function showMessage(message = "") {
   if (messageBoxContainer.childElementCount > 5) {
     messageBoxContainer.firstElementChild.remove();
   }
-  
+
   // Add and remember message
   messageBoxContainer.appendChild(messageBox);
   const currentMessage = messageBoxContainer.lastElementChild;
 
+  // Play animation
+  currentMessage.animate(
+    [
+      { transform: 'translate(-100px)' },
+      { transform: 'translate(0)' }
+    ],
+    {
+      duration: 200,
+      iterations: 1
+    }
+  )
+
   // Remove message later
-  setTimeout (() => {
-    if(currentMessage) {currentMessage.remove();}
+  setTimeout(() => {
+    if (currentMessage) {
+      currentMessage.remove();
+    }
   }, 5000);
 
 }

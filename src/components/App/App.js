@@ -68,16 +68,16 @@ export default function App() {
 
     // autoload - autosave
     useEffect(() => {
-        if(autoSaveOn && didInitialLoad) {
+        if (autoSaveOn && didInitialLoad) {
             saveGame();
         } else if (!didInitialLoad) {
-        loadGame();
-        setDidInitialLoad(true);
+            loadGame();
+            setDidInitialLoad(true);
         }
     });
 
     //Auto Clicker
-    useEffect( () => autoClicker(), [reRender1]);
+    useEffect(() => autoClicker(), [reRender1]);
 
 
     /*      Functions      */
@@ -86,9 +86,9 @@ export default function App() {
             setClicksTotal(clicksTotal => clicksTotal + perAutoClick);
             setClicksCurrent(clicksCurrent => clicksCurrent + perAutoClick);
             setPineconesCurrent(pineconesCurrent => pineconesCurrent + (numOfPinetrees * pinetreesMod));
-            
+
             setReRender1(timeout); // Tell useEffect to reRender
-                                  // (In browsers timeout should return timeout id)
+            // (In browsers timeout should return timeout id)
         }, autoClickSpeed);
     }
 
@@ -120,21 +120,22 @@ export default function App() {
 
     function loadGame(Game = 'SavedGame') {
         let SavedGame;
-        if((  SavedGame = JSON.parse(localStorage.getItem(Game))  )) {
+        if ((SavedGame = JSON.parse(localStorage.getItem(Game)))) {
 
             // Find amount for offline clicks
-            const clicksGarnered = BigInt(Math.floor(  ((Date.now() - SavedGame.timeSaved) / SavedGame.autoClickSpeed)
-                                                            * SavedGame.perAutoClick  ));
-            const pinconesGarnered = BigInt(Math.floor(  ((Date.now() - SavedGame.timeSaved) / SavedGame.autoClickSpeed)
-                                                            * SavedGame.numOfPinetrees * SavedGame.pinetreesMod ));
+            const clicksGarnered = BigInt(Math.floor(((Date.now() - SavedGame.timeSaved) / SavedGame.autoClickSpeed)
+                * SavedGame.perAutoClick));
+            const pinconesGarnered = BigInt(Math.floor(((Date.now() - SavedGame.timeSaved) / SavedGame.autoClickSpeed)
+                * SavedGame.numOfPinetrees * SavedGame.pinetreesMod));
             // Log to console
-            console.log(`Offline Clicks: ${clicksGarnered}`);
-            console.log(`Offline Pinecones: ${pinconesGarnered}`);
+            showMessage(`Offline Clicks: ${NumberCompacter(clicksGarnered)}
+            ${pinconesGarnered ? "Offline Pinecones " + NumberCompacter(pinconesGarnered) : "" }`
+            )
 
             setClicksTotal(BigInt(SavedGame.clicksTotal) + clicksGarnered);
             setClicksCurrent(BigInt(SavedGame.clicksCurrent) + clicksGarnered);
 
-            // load other stuff
+            // Load other stuff
             setPerClick(BigInt(SavedGame.perClick));
             setPerAutoClick(BigInt(SavedGame.perAutoClick));
             setAutoClickSpeed(parseInt(SavedGame.autoClickSpeed));
@@ -152,10 +153,11 @@ export default function App() {
             setTwoS1(BigInt(SavedGame.twoS1));
             setFourS1(BigInt(SavedGame.fourS1));
         };
+        // Determine autosave settings
         let autoSaveOnMem = JSON.parse(localStorage.getItem("autoSaveOn"));
-        if(autoSaveOnMem !== null) {
+        if (autoSaveOnMem !== null) {
             setAutoSaveOn(autoSaveOnMem);
-            if(!autoSaveOnMem) {
+            if (!autoSaveOnMem) {
                 showMessage("Autosave is turned off");
             }
         }

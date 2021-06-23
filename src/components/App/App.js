@@ -297,65 +297,59 @@ export default function App() {
                 </p>
                 
                 {clicksTotal >= 30 &&
-                    <h3>Store
-
-                        {clicksTotal > 15000n &&
-                            <button
-                            type="button"
-                            id="storeNav"
-                            style={{
-                                "background": "none",
-                                "fontSize": ".8em",
-                                "color": "#DA7422",
-                                "border": "none",
-                                "cursor": "pointer"
-                                }}
-                            onClick={() => menuControls("store1", "store2", "storeNav")}
-                            > Next &#62;
-                            </button>
-                        }
-                    </h3>
-                }
-                
-                <div id="store1" style={{"display": "initial"}}>
-                    <Store1
-                    // Variables
-                        clicksTotal = {clicksTotal}
-                        clicksCurrent = {clicksCurrent}
-                        autoClickSpeed = {autoClickSpeed}
-                        autoClick2xPrice = {autoClick2xPrice}
-                        autoClick4xPrice = {autoClick4xPrice}
-                        perClick2xPrice = {perClick2xPrice}
-                        perClick4xPrice = {perClick4xPrice}
-                        autoClickSpeedPrice = {autoClickSpeedPrice}
-                        twoS1 = {twoS1}
-                        fourS1 = {fourS1}
-
-
-                    // Functions
-                        buyAuto2x = {buyAuto2x}
-                        buyAuto4x = {buyAuto4x}
-                        buyExClick2x = {buyExClick2x}
-                        buyExClick4x = {buyExClick4x}
-                        buyAutoSpeed = {buyAutoSpeed}
-                    />
+                <div style={{padding: "0 .5em 1em .5em"}}>
+                    <h3 style={{marginBottom: ".2em"}}>Store</h3>
+                    <nav id="storeMenu" >
+                        <button id="storeTown" className={`active`}
+                            onClick={()=>{menuControls("store1", "storeTown")}}
+                        >Town</button>
+                        <button id="storeForest" className={`inactive`}
+                            onClick={()=>{menuControls("store2", "storeForest")}}
+                        >Forest</button>
+                    </nav>
                 </div>
-                <div id="store2" style={{"display": "none"}}>
-                    <Store2
-                    // Variables
-                        clicksTotal = {clicksTotal}
-                        clicksCurrent = {clicksCurrent}
-                        pineconesCurrent = {pineconesCurrent}
-                        pinetreePrice = {pinetreePrice}
-                        doubleBaseS1Price = {doubleBaseS1Price}
-                        pinetreesMod = {pinetreesMod}
-                        pinetreesModPrice = {pinetreesModPrice}
+                }
+                <div id="store">
+                    <div id="store1" style={{"display": "initial"}}>
+                        <Store1
+                        // Variables
+                            clicksTotal = {clicksTotal}
+                            clicksCurrent = {clicksCurrent}
+                            autoClickSpeed = {autoClickSpeed}
+                            autoClick2xPrice = {autoClick2xPrice}
+                            autoClick4xPrice = {autoClick4xPrice}
+                            perClick2xPrice = {perClick2xPrice}
+                            perClick4xPrice = {perClick4xPrice}
+                            autoClickSpeedPrice = {autoClickSpeedPrice}
+                            twoS1 = {twoS1}
+                            fourS1 = {fourS1}
 
-                    // Functions
-                        buyPinetreesMod = {buyPinetreesMod}
-                        increaseBasePrice2x = {increaseBasePrice2x}
-                        buyPineTree = {buyPineTree}
-                    />
+
+                        // Functions
+                            buyAuto2x = {buyAuto2x}
+                            buyAuto4x = {buyAuto4x}
+                            buyExClick2x = {buyExClick2x}
+                            buyExClick4x = {buyExClick4x}
+                            buyAutoSpeed = {buyAutoSpeed}
+                        />
+                    </div>
+                    <div id="store2" style={{"display": "none"}}>
+                        <Store2
+                        // Variables
+                            clicksTotal = {clicksTotal}
+                            clicksCurrent = {clicksCurrent}
+                            pineconesCurrent = {pineconesCurrent}
+                            pinetreePrice = {pinetreePrice}
+                            doubleBaseS1Price = {doubleBaseS1Price}
+                            pinetreesMod = {pinetreesMod}
+                            pinetreesModPrice = {pinetreesModPrice}
+
+                        // Functions
+                            buyPinetreesMod = {buyPinetreesMod}
+                            increaseBasePrice2x = {increaseBasePrice2x}
+                            buyPineTree = {buyPineTree}
+                        />
+                    </div>
                 </div>
             </div>
 

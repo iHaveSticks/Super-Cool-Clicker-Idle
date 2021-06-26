@@ -8,20 +8,16 @@ import "../../styles/buttonStyles.css";
 // Import Components
 import GameStats from "../GameStats/GameStats.js";
 import Settings from '../Settings/Settings';
-import Store1 from "../Store1/Store1.js";
-import Store2 from "../Store2/Store2.js";
 import Footer from "../Footer/Footer.js";
 import MessageContainer from '../MessageContainer/MessageContainer.js';
+import MainHead from '../MainHead';
+import Store from "../Store/Store.js"
 
-// import icons
-import gearSVG from "../../assets/icons/gear.svg";
 
 // Import JS Functions
 import NumberCompacter from '../../functions/number-compacter.js';
-import menuControls from '../../functions/menuControls.js';
 
 //import DOM functions
-import openSettings from '../../functions/openSettings.js';
 import showMessage from '../../functions/showMessage';
 
 /* global BigInt */ //<-- enable BigInt()
@@ -257,101 +253,46 @@ export default function App() {
     }
 
     return (
-    <div style={{
-        margin: "none"
-        }}>
-
-        <div id="settingsContainer">
-            <Settings
-                //variables
-                autoSaveOn = {autoSaveOn}
-                //functions
-                setAutoSaveOn = {setAutoSaveOn}
-                switchAutoSave = {switchAutoSave}
-            />
-        </div>
+    <div style={{margin: "none"}}>
+        <Settings
+            //variables
+            autoSaveOn = {autoSaveOn}
+            //functions
+            setAutoSaveOn = {setAutoSaveOn}
+            switchAutoSave = {switchAutoSave}
+        />
         <main id="main">
-            <div id="mainHead">
-                
-                <h1>Super Cool Clicker&nbsp;Idle</h1>
-                
-                <div style={{display: "flex"}}>
-                    <h2 id={"clicksCurrent"}> {NumberCompacter(clicksCurrent)} </h2>
-                    <img id="openSettingBtn" src={gearSVG} alt="settings" tabIndex="0"
-                    onClick={()=>openSettings()}
-                    onKeyDown={ (event) => {if(event.key === "Enter") openSettings()} }
-                    />
-                    
-                </div>
-            </div>
-            <div id="storeContainer"> {/* minWidth = 10em * 2 to match the h2 element above*/}
+            <MainHead  
+                clicksCurrent = {clicksCurrent}
+            />
+            <Store 
+                clicksTotal = {clicksTotal}
+                clicksCurrent = {clicksCurrent}
+                autoClickSpeed = {autoClickSpeed}
+                autoClick2xPrice = {autoClick2xPrice}
+                autoClick4xPrice = {autoClick4xPrice}
+                perClick2xPrice = {perClick2xPrice}
+                perClick4xPrice = {perClick4xPrice}
+                autoClickSpeedPrice = {autoClickSpeedPrice}
+                pineconesCurrent = {pineconesCurrent}
+                pinetreePrice = {pinetreePrice}
+                doubleBaseS1Price = {doubleBaseS1Price}
+                pinetreesMod = {pinetreesMod}
+                pinetreesModPrice = {pinetreesModPrice}
+                twoS1 = {twoS1}
+                fourS1 = {fourS1}
 
-                <p>
-                    <button type="button"
-                        className={"buttonAvailable button"}
-                        onClick={() => handleClickerButton()}
-                        onKeyPress={ (event) => {if(event.key === "Enter") {event.preventDefault()}} }
-                        onKeyUp={ (event) => {if(event.key === "Enter") {handleClickerButton()}} }
-                        >Click
-                    </button>
-                </p>
-                
-                {clicksTotal >= 30 &&
-                <div style={{padding: "0 .5em 1em .5em"}}>
-                    <h3 style={{marginBottom: ".2em"}}>Store</h3>
-                    <nav id="storeMenu" >
-                        <button id="storeTown" className={`active`}
-                            onClick={()=>{menuControls("store1", "storeTown")}}
-                        >Town</button>
-                        <button id="storeForest" className={`inactive`}
-                            onClick={()=>{menuControls("store2", "storeForest")}}
-                        >Forest</button>
-                    </nav>
-                </div>
-                }
-                <div id="store">
-                    <div id="store1" style={{"display": "initial"}}>
-                        <Store1
-                        // Variables
-                            clicksTotal = {clicksTotal}
-                            clicksCurrent = {clicksCurrent}
-                            autoClickSpeed = {autoClickSpeed}
-                            autoClick2xPrice = {autoClick2xPrice}
-                            autoClick4xPrice = {autoClick4xPrice}
-                            perClick2xPrice = {perClick2xPrice}
-                            perClick4xPrice = {perClick4xPrice}
-                            autoClickSpeedPrice = {autoClickSpeedPrice}
-                            twoS1 = {twoS1}
-                            fourS1 = {fourS1}
+                handleClickerButton = {handleClickerButton}
+                buyAuto2x = {buyAuto2x}
+                buyAuto4x = {buyAuto4x}
+                buyExClick2x = {buyExClick2x}
+                buyExClick4x = {buyExClick4x}
+                buyAutoSpeed = {buyAutoSpeed}
+                buyPinetreesMod = {buyPinetreesMod}
+                increaseBasePrice2x = {increaseBasePrice2x}
+                buyPineTree = {buyPineTree}
 
-
-                        // Functions
-                            buyAuto2x = {buyAuto2x}
-                            buyAuto4x = {buyAuto4x}
-                            buyExClick2x = {buyExClick2x}
-                            buyExClick4x = {buyExClick4x}
-                            buyAutoSpeed = {buyAutoSpeed}
-                        />
-                    </div>
-                    <div id="store2" style={{"display": "none"}}>
-                        <Store2
-                        // Variables
-                            clicksTotal = {clicksTotal}
-                            clicksCurrent = {clicksCurrent}
-                            pineconesCurrent = {pineconesCurrent}
-                            pinetreePrice = {pinetreePrice}
-                            doubleBaseS1Price = {doubleBaseS1Price}
-                            pinetreesMod = {pinetreesMod}
-                            pinetreesModPrice = {pinetreesModPrice}
-
-                        // Functions
-                            buyPinetreesMod = {buyPinetreesMod}
-                            increaseBasePrice2x = {increaseBasePrice2x}
-                            buyPineTree = {buyPineTree}
-                        />
-                    </div>
-                </div>
-            </div>
+            />
 
             <div id="gameStatsContainer">
                 <GameStats  perAutoClick={perAutoClick}

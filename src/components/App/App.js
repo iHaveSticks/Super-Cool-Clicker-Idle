@@ -16,6 +16,7 @@ import Store from "../Store/Store.js"
 
 // Import JS Functions
 import NumberCompacter from '../../functions/number-compacter.js';
+import onUnload from '../../functions/onUnload.js';
 
 //import DOM functions
 import showMessage from '../../functions/showMessage';
@@ -156,14 +157,23 @@ export default function App() {
             if (!autoSaveOnMem) {
                 showMessage("Autosave is turned off");
                 document.getElementById("switchAutosave").checked = false;
+                window.addEventListener('beforeunload', onUnload, {capture: true});
             }
         }
     }
 
     function switchAutoSave() {
-        localStorage.setItem("autoSaveOn", `${!autoSaveOn}`);
-        showMessage(`Autosave is turned ${!autoSaveOn ? "ON" : "OFF"}`);
-        setAutoSaveOn(autoSaveOn => !autoSaveOn);
+        const autoSave = !autoSaveOn; //Save value to ensure correct one is used
+        setAutoSaveOn(autoSave);
+
+        localStorage.setItem("autoSaveOn", `${autoSave}`);
+        showMessage(`Autosave is turned ${autoSave ? "ON" : "OFF"}`);
+        
+        if(!autoSaveOn) {
+            window.removeEventListener('beforeunload', onUnload, {capture: true});
+        } else {
+            window.addEventListener('beforeunload', onUnload, {capture: true});
+        }
     }
 
 

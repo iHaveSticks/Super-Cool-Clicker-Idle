@@ -11,11 +11,11 @@ export default function GameStats(props)  {
     return(
         <aside id={"gameStatsInside"}>
             <h3>Stats</h3>
-                <p className={"rowStyles"}>Selfclick:&nbsp;{NumberCompacter(props.perClick)}</p>
+                <p className={"rowStyles"}>Selfclick:&nbsp;{NumberCompacter(props.perClick * props.weirdRockAmount)}</p>
                 {props.perAutoClick > 0 &&
                     <p className={"rowStyles"}>Auto:&nbsp;{
                         NumberCompacter(
-                            (props.perAutoClick
+                            ((props.perAutoClick * props.weirdRockAmount)
                             * BigInt(Math.round(1000 / props.autoClickSpeed * 10))
                             / 10n)
                         )}/s
@@ -41,6 +41,10 @@ export default function GameStats(props)  {
                     </div>
                 }
                 <p className={"rowStyles"}>Total Clicks:&nbsp;{NumberCompacter(props.clicksTotal)}</p>
+                
+                {props.weirdRockAmount > 1 &&
+                    <p className={"rowStyles"}>Weird Rocks:&nbsp;{NumberCompacter(props.weirdRockAmount)}</p>
+                }
         </aside>
     )
 }

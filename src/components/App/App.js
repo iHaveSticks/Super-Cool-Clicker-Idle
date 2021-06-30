@@ -38,6 +38,9 @@ export default function App() {
     const [numOfPinetrees,setNumOfPinetrees] = useState(0n);
     const [pinetreesMod,setPinetreesMod] = useState(1n);
 
+    // Amounts | Weird Rocks
+    const [weirdRockAmount, setWeirdRockAmount] = useState(1n);
+
     // Prices | clicks
     const [autoClick2xPrice,setAutoClick2xPrice] = useState(60n);
     const [autoClick4xPrice,setAutoClick4xPrice] = useState(80n);
@@ -49,6 +52,9 @@ export default function App() {
     // Prices | Pincones
     const [doubleBaseS1Price,setDoubleBaseS1Price] = useState(60n);
     const [pinetreePrice,setPinetreePrice] = useState(0n);
+
+    // Prices | Weird Rocks
+    const [weirdRockPrice, setWeirdRockPrice] = useState(1000000n);
 
     // These numbers determine how much to add to per click amounts
     // They can be doubled infinite times ingame
@@ -80,8 +86,8 @@ export default function App() {
     /*      Functions      */
     function autoClicker() {
         const timeout = setTimeout(() => {
-            setClicksTotal(clicksTotal => clicksTotal + perAutoClick);
-            setClicksCurrent(clicksCurrent => clicksCurrent + perAutoClick);
+            setClicksTotal(clicksTotal => clicksTotal + (perAutoClick * weirdRockAmount));
+            setClicksCurrent(clicksCurrent => clicksCurrent + (perAutoClick * weirdRockAmount));
             setPineconesCurrent(pineconesCurrent => pineconesCurrent + (numOfPinetrees * pinetreesMod));
 
             setReRender1(timeout); // Tell useEffect to reRender
@@ -100,6 +106,7 @@ export default function App() {
                 "pineconesCurrent": "${pineconesCurrent}",
                 "numOfPinetrees": "${numOfPinetrees}",
                 "pinetreesMod": "${pinetreesMod}",
+                "weirdRockAmount": "${weirdRockAmount}",
                 "autoClick2xPrice": "${autoClick2xPrice}",
                 "autoClick4xPrice": "${autoClick4xPrice}",
                 "perClick2xPrice": "${perClick2xPrice}",
@@ -108,6 +115,7 @@ export default function App() {
                 "autoClickSpeedPrice": "${autoClickSpeedPrice}",
                 "doubleBaseS1Price": "${doubleBaseS1Price}",
                 "pinetreePrice": "${pinetreePrice}",
+                "weirdRockPrice": "${weirdRockPrice}",
                 "twoS1": "${twoS1}",
                 "fourS1": "${fourS1}",
                 "timeSaved": "${Date.now()}"
@@ -121,7 +129,7 @@ export default function App() {
 
             // Find amount for offline clicks
             const clicksGarnered = BigInt(Math.floor(((Date.now() - SavedGame.timeSaved) / SavedGame.autoClickSpeed)
-                * SavedGame.perAutoClick));
+                * SavedGame.perAutoClick * SavedGame.weirdRockAmount));
             const pinconesGarnered = BigInt(Math.floor(((Date.now() - SavedGame.timeSaved) / SavedGame.autoClickSpeed)
                 * SavedGame.numOfPinetrees * SavedGame.pinetreesMod));
             // Log to console
@@ -139,6 +147,7 @@ export default function App() {
             setPineconesCurrent(BigInt(SavedGame.pineconesCurrent) + pinconesGarnered);
             setNumOfPinetrees(BigInt(SavedGame.numOfPinetrees));
             setPinetreesMod(BigInt(SavedGame.pinetreesMod));
+            setWeirdRockAmount(BigInt(SavedGame.weirdRockAmount));
             setAutoClick2xPrice(BigInt(SavedGame.autoClick2xPrice));
             setAutoClick4xPrice(BigInt(SavedGame.autoClick4xPrice));
             setPerClick2xPrice(BigInt(SavedGame.perClick2xPrice));
@@ -147,6 +156,7 @@ export default function App() {
             setAutoClickSpeedPrice(BigInt(SavedGame.autoClickSpeedPrice));
             setDoubleBaseS1Price(BigInt(SavedGame.doubleBaseS1Price));
             setPinetreePrice(BigInt(SavedGame.pinetreePrice));
+            setWeirdRockPrice(BigInt(SavedGame.weirdRockPrice));
             setTwoS1(BigInt(SavedGame.twoS1));
             setFourS1(BigInt(SavedGame.fourS1));
         };
@@ -179,8 +189,8 @@ export default function App() {
 
     /*      Handler Functions      */
     function handleClickerButton() {
-        setClicksTotal(clicksTotal => clicksTotal + perClick);
-        setClicksCurrent(clicksCurrent => clicksCurrent + perClick);
+        setClicksTotal(clicksTotal => clicksTotal + (perClick * weirdRockAmount));
+        setClicksCurrent(clicksCurrent => clicksCurrent + (perClick * weirdRockAmount));
     }
 
     function buyAuto2x() {
@@ -262,6 +272,15 @@ export default function App() {
         }
     }
 
+    function buyWeirdRock() {
+        const cost = weirdRockPrice;
+        if (pineconesCurrent >= cost) {
+            setPineconesCurrent(pineconesCurrent => pineconesCurrent - cost);
+            setWeirdRockAmount(weirdRockAmount => weirdRockAmount * 2n);
+            setWeirdRockPrice(cost + ((cost * 5n) / 10n))
+        }
+    }
+
     return (
     <div style={{margin: "none"}}>
         <Settings
@@ -284,6 +303,8 @@ export default function App() {
                 perClick2xPrice = {perClick2xPrice}
                 perClick4xPrice = {perClick4xPrice}
                 autoClickSpeedPrice = {autoClickSpeedPrice}
+                weirdRockPrice = {weirdRockPrice}
+                weirdRockAmount = {weirdRockAmount}
                 pineconesCurrent = {pineconesCurrent}
                 pinetreePrice = {pinetreePrice}
                 doubleBaseS1Price = {doubleBaseS1Price}
@@ -301,6 +322,7 @@ export default function App() {
                 buyPinetreesMod = {buyPinetreesMod}
                 increaseBasePrice2x = {increaseBasePrice2x}
                 buyPineTree = {buyPineTree}
+                buyWeirdRock = {buyWeirdRock}
 
             />
 
@@ -312,6 +334,7 @@ export default function App() {
                             numOfPinetrees={numOfPinetrees}
                             pinetreesMod={pinetreesMod}
                             clicksTotal={clicksTotal}
+                            weirdRockAmount = {weirdRockAmount}
                 />
             </div>
         </main>

@@ -3,6 +3,7 @@ import Store2 from "./Store2.js";
 import Store3 from "./Store3.js";
 
 import menuControls from '../../functions/menuControls.js';
+import './Store.css'
 
 export default function Store(props) {
   return (
@@ -32,16 +33,18 @@ export default function Store(props) {
 
             <button 
                 id="storeForest" 
-                className={`inactive`}
-                onClick={()=>{menuControls("store2", "storeForest")}}
+                className={`${props.clicksTotal > 15000 ? 'inactive' : 'buttonUnavailable'}`} 
+                onClick={()=>{  if(props.clicksTotal > 15000) menuControls("store2", "storeForest")  }}
+                disabled={!props.clicksTotal > 15000}
             >
                 Forest
             </button>
 
             <button 
                 id="storeMountain" 
-                className={`inactive`}
-                onClick={()=>{menuControls("store3", "storeMountain")}}
+                className={`${props.clicksTotal > 1e+9 ? 'inactive' : 'buttonUnavailable'}`} 
+                onClick={()=>{  if(props.clicksTotal > 1e+9) menuControls("store3", "storeMountain")   }}
+                disabled={!props.clicksTotal > 1e+9}
             >
                 Mountain
             </button>

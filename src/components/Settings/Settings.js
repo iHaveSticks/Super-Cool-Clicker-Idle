@@ -1,6 +1,7 @@
 import React  from 'react';
 import closeSettings from '../../functions/closeSettings';
 
+import onUnload from '../../functions/onUnload.js';
 import './Settings.css';
 import '../../styles/switchStyles.css';
 
@@ -38,6 +39,7 @@ export default function settings(props) {
                           if(window.confirm("Do you really want to delete your save?\nThis cannot be undone.")) {
                             props.setAutoSaveOn(false);
                             localStorage.removeItem("SavedGame");
+                            window.removeEventListener('beforeunload', onUnload, {capture: true});
                             window.location.reload();
                           }
                         }

@@ -38,28 +38,3 @@
   cursor: pointer;
   outline: inherit;
 }
-
-/* store nav */
-#storeMenu {
-  display: flex;
-  justify-content: flex-start;
-}
-
-#storeMenu > button {
-  background-color: #939049;
-  margin: 2px;
-  font-size: 0.8em;
-  border-style: none;
-  min-width: 5em;
-  min-height: 2.3em;
-  cursor: pointer;
-}
-
-#storeMenu > .active {
-  background-color: #bcb860;
-  cursor: initial;
-}
-
-#storeMenu > .inactive:hover {
-  background-color: #bcb860;
-}

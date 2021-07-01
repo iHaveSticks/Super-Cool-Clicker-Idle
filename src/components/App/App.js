@@ -125,41 +125,48 @@ export default function App() {
 
     function loadGame(Game = 'SavedGame') {
         let SavedGame;
-        if ((SavedGame = JSON.parse(localStorage.getItem(Game)))) {
+        try {
+            if ((SavedGame = JSON.parse(localStorage.getItem(Game)))) {
 
-            // Find amount for offline clicks
-            const clicksGarnered = BigInt(Math.floor(((Date.now() - SavedGame.timeSaved) / SavedGame.autoClickSpeed)
-                * SavedGame.perAutoClick * SavedGame.weirdRockAmount));
-            const pinconesGarnered = BigInt(Math.floor(((Date.now() - SavedGame.timeSaved) / SavedGame.autoClickSpeed)
-                * SavedGame.numOfPinetrees * SavedGame.pinetreesMod));
-            // Log to console
-            showMessage(`Offline Clicks: ${NumberCompacter(clicksGarnered)}<br>
-            ${pinconesGarnered ? "Offline Pinecones " + NumberCompacter(pinconesGarnered) : "" }`
-            )
+                // Find amount for offline clicks
+                const clicksGarnered = BigInt(Math.floor(((Date.now() - SavedGame.timeSaved) / SavedGame.autoClickSpeed)
+                    * SavedGame.perAutoClick * SavedGame.weirdRockAmount));
+                const pinconesGarnered = BigInt(Math.floor(((Date.now() - SavedGame.timeSaved) / SavedGame.autoClickSpeed)
+                    * SavedGame.numOfPinetrees * SavedGame.pinetreesMod));
+                // Show offline clicks in a message
+                showMessage(`Offline Clicks: ${NumberCompacter(clicksGarnered)}<br>
+                ${pinconesGarnered ? "Offline Pinecones " + NumberCompacter(pinconesGarnered) : "" }`
+                )
 
-            setClicksTotal(BigInt(SavedGame.clicksTotal) + clicksGarnered);
-            setClicksCurrent(BigInt(SavedGame.clicksCurrent) + clicksGarnered);
+                // Add offline clicks to variables
+                setClicksTotal(BigInt(SavedGame.clicksTotal) + clicksGarnered);
+                setClicksCurrent(BigInt(SavedGame.clicksCurrent) + clicksGarnered);
 
-            // Load other stuff
-            setPerClick(BigInt(SavedGame.perClick));
-            setPerAutoClick(BigInt(SavedGame.perAutoClick));
-            setAutoClickSpeed(parseInt(SavedGame.autoClickSpeed));
-            setPineconesCurrent(BigInt(SavedGame.pineconesCurrent) + pinconesGarnered);
-            setNumOfPinetrees(BigInt(SavedGame.numOfPinetrees));
-            setPinetreesMod(BigInt(SavedGame.pinetreesMod));
-            setWeirdRockAmount(BigInt(SavedGame.weirdRockAmount));
-            setAutoClick2xPrice(BigInt(SavedGame.autoClick2xPrice));
-            setAutoClick4xPrice(BigInt(SavedGame.autoClick4xPrice));
-            setPerClick2xPrice(BigInt(SavedGame.perClick2xPrice));
-            setPerClick4xPrice(BigInt(SavedGame.perClick4xPrice));
-            setPinetreesModPrice(BigInt(SavedGame.pinetreesModPrice));
-            setAutoClickSpeedPrice(BigInt(SavedGame.autoClickSpeedPrice));
-            setDoubleBaseS1Price(BigInt(SavedGame.doubleBaseS1Price));
-            setPinetreePrice(BigInt(SavedGame.pinetreePrice));
-            setWeirdRockPrice(BigInt(SavedGame.weirdRockPrice));
-            setTwoS1(BigInt(SavedGame.twoS1));
-            setFourS1(BigInt(SavedGame.fourS1));
-        };
+                // Load other stuff
+                setPerClick(BigInt(SavedGame.perClick));
+                setPerAutoClick(BigInt(SavedGame.perAutoClick));
+                setAutoClickSpeed(parseInt(SavedGame.autoClickSpeed));
+                setPineconesCurrent(BigInt(SavedGame.pineconesCurrent) + pinconesGarnered);
+                setNumOfPinetrees(BigInt(SavedGame.numOfPinetrees));
+                setPinetreesMod(BigInt(SavedGame.pinetreesMod));
+                setWeirdRockAmount(BigInt(SavedGame.weirdRockAmount));
+                setAutoClick2xPrice(BigInt(SavedGame.autoClick2xPrice));
+                setAutoClick4xPrice(BigInt(SavedGame.autoClick4xPrice));
+                setPerClick2xPrice(BigInt(SavedGame.perClick2xPrice));
+                setPerClick4xPrice(BigInt(SavedGame.perClick4xPrice));
+                setPinetreesModPrice(BigInt(SavedGame.pinetreesModPrice));
+                setAutoClickSpeedPrice(BigInt(SavedGame.autoClickSpeedPrice));
+                setDoubleBaseS1Price(BigInt(SavedGame.doubleBaseS1Price));
+                setPinetreePrice(BigInt(SavedGame.pinetreePrice));
+                setWeirdRockPrice(BigInt(SavedGame.weirdRockPrice));
+                setTwoS1(BigInt(SavedGame.twoS1));
+                setFourS1(BigInt(SavedGame.fourS1));
+            };
+        } catch(error) {
+            console.log(error);
+            showMessage("Save file corrupted");
+        }
+
         // Determine autosave settings
         let autoSaveOnMem = JSON.parse(localStorage.getItem("autoSaveOn"));
         if (autoSaveOnMem !== null) {

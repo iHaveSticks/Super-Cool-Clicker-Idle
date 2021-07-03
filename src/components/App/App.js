@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect , useRef} from 'react';
 
 
 // Import CSS
@@ -65,17 +65,19 @@ export default function App() {
     /*        Don't save these values        */
     // reRender will make auto clicker update only between loops
     // allowing the auto clicker to work regardless of buttons spammed
-    const [reRender1,setReRender1] = useState(0);    
-    const [didInitialLoad,setDidInitialLoad] = useState(false);
+    const [reRender1,setReRender1] = useState(0);
     const [autoSaveOn, setAutoSaveOn] = useState(true);
+
+    const didInitialLoad = useRef(false); //Makes sure game loads first before saving
 
     // autoload - autosave
     useEffect(() => {
-        if (autoSaveOn && didInitialLoad) {
+        console.log(didInitialLoad.current)
+        if (autoSaveOn && didInitialLoad.current) {
             saveGame();
-        } else if (!didInitialLoad) {
+        } else if (!didInitialLoad.current) {
             loadGame();
-            setDidInitialLoad(true);
+            didInitialLoad.current = true;
         }
     });
 

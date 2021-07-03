@@ -4,7 +4,7 @@ import React  from 'react';
 import "../../styles/buttonStyles.css";
 
 // Import JS Functions
-import NumberCompacter from '../../functions/number-compacter.js';
+import NumberCompacter from '../../functions/numberCompacter.js';
 
 
 

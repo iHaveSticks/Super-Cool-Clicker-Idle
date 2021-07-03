@@ -1,6 +1,6 @@
 import gearSVG from "../assets/icons/gear.svg";
 import openSettings from '../functions/openSettings.js';
-import NumberCompacter from '../functions/number-compacter.js';
+import NumberCompacter from '../functions/numberCompacter.js';
 
 
 export default function MainHead(props) {

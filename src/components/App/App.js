@@ -15,7 +15,7 @@ import Store from "../Store/Store.js"
 
 
 // Import JS Functions
-import NumberCompacter from '../../functions/number-compacter.js';
+import NumberCompacter from '../../functions/numberCompacter.js';
 import onUnload from '../../functions/onUnload.js';
 
 //import DOM functions
@@ -72,7 +72,6 @@ export default function App() {
 
     // autoload - autosave
     useEffect(() => {
-        console.log(didInitialLoad.current)
         if (autoSaveOn && didInitialLoad.current) {
             saveGame();
         } else if (!didInitialLoad.current) {

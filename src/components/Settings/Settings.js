@@ -8,7 +8,10 @@ import '../../styles/switchStyles.css';
 export default function settings(props) {
 
   return (
-    <div id="settingsBackground" onClick={(event)=> {if(event.target.id === "settingsBackground") closeSettings()} }>
+    <div id="settingsBackground" 
+    onClick={(event)=> {if(event.target.id === "settingsBackground") closeSettings()} }
+    onKeyDown={(event)=> {if(event.key === "Escape") closeSettings()} }
+    >
         <div id="settingsMenu" >
             <div id="settingsHead">
             {/* close menu button */}

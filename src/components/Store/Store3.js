@@ -19,7 +19,7 @@ export default function Store3(props) {
                     <button type="button"
                         className={`button ${props.pineconesCurrent >= props.weirdRockPrice ? "buttonAvailable" : "buttonUnavailable"}`}
                         onClick={() => props.buyWeirdRock()}
-                        >Weird rock * 2
+                        >Weird rock *2
                     </button>
                     {numberCompacter(props.weirdRockPrice) + " pinecones"}
                 </p>

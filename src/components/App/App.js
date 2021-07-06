@@ -276,7 +276,7 @@ export default function App() {
         if (clicksCurrent >= cost) {
             setClicksCurrent(clicksCurrent => clicksCurrent - cost);
             setPinetreesMod(pinetreesMod => pinetreesMod + 1n);
-            setPinetreesModPrice(cost + (pinetreesMod * 100000n));
+            setPinetreesModPrice(cost + ((cost * 15n) / 100n));
         }
     }
 

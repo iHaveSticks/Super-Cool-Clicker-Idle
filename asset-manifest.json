@@ -1,22 +1,21 @@
 {
   "files": {
-    "main.css": "/Super-Cool-Clicker-Idle/static/css/main.b05e62a4.chunk.css",
-    "main.js": "/Super-Cool-Clicker-Idle/static/js/main.8b04e2d5.chunk.js",
-    "main.js.map": "/Super-Cool-Clicker-Idle/static/js/main.8b04e2d5.chunk.js.map",
-    "runtime-main.js": "/Super-Cool-Clicker-Idle/static/js/runtime-main.2ab5e551.js",
-    "runtime-main.js.map": "/Super-Cool-Clicker-Idle/static/js/runtime-main.2ab5e551.js.map",
-    "static/js/2.2d414985.chunk.js": "/Super-Cool-Clicker-Idle/static/js/2.2d414985.chunk.js",
-    "static/js/2.2d414985.chunk.js.map": "/Super-Cool-Clicker-Idle/static/js/2.2d414985.chunk.js.map",
+    "main.css": "/Super-Cool-Clicker-Idle/static/css/main.7c3a5685.chunk.css",
+    "main.js": "/Super-Cool-Clicker-Idle/static/js/main.ed451222.chunk.js",
+    "main.js.map": "/Super-Cool-Clicker-Idle/static/js/main.ed451222.chunk.js.map",
+    "runtime-main.js": "/Super-Cool-Clicker-Idle/static/js/runtime-main.e7a667b6.js",
+    "runtime-main.js.map": "/Super-Cool-Clicker-Idle/static/js/runtime-main.e7a667b6.js.map",
+    "static/js/2.d658c5b7.chunk.js": "/Super-Cool-Clicker-Idle/static/js/2.d658c5b7.chunk.js",
+    "static/js/2.d658c5b7.chunk.js.map": "/Super-Cool-Clicker-Idle/static/js/2.d658c5b7.chunk.js.map",
     "index.html": "/Super-Cool-Clicker-Idle/index.html",
-    "precache-manifest.e5384c66c63de11af7d66f516c52b100.js": "/Super-Cool-Clicker-Idle/precache-manifest.e5384c66c63de11af7d66f516c52b100.js",
-    "service-worker.js": "/Super-Cool-Clicker-Idle/service-worker.js",
-    "static/css/main.b05e62a4.chunk.css.map": "/Super-Cool-Clicker-Idle/static/css/main.b05e62a4.chunk.css.map",
-    "static/js/2.2d414985.chunk.js.LICENSE.txt": "/Super-Cool-Clicker-Idle/static/js/2.2d414985.chunk.js.LICENSE.txt"
+    "static/css/main.7c3a5685.chunk.css.map": "/Super-Cool-Clicker-Idle/static/css/main.7c3a5685.chunk.css.map",
+    "static/js/2.d658c5b7.chunk.js.LICENSE.txt": "/Super-Cool-Clicker-Idle/static/js/2.d658c5b7.chunk.js.LICENSE.txt",
+    "static/media/gear.d4904ba7.svg": "/Super-Cool-Clicker-Idle/static/media/gear.d4904ba7.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.2ab5e551.js",
-    "static/js/2.2d414985.chunk.js",
-    "static/css/main.b05e62a4.chunk.css",
-    "static/js/main.8b04e2d5.chunk.js"
+    "static/js/runtime-main.e7a667b6.js",
+    "static/js/2.d658c5b7.chunk.js",
+    "static/css/main.7c3a5685.chunk.css",
+    "static/js/main.ed451222.chunk.js"
   ]
 }

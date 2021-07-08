@@ -3,6 +3,7 @@ import React, {useState, useEffect , useRef} from 'react';
 
 // Import CSS
 import  "./App.css";
+import "../../styles/mobile.css";
 import "../../styles/buttonStyles.css";
 
 // Import Components
@@ -61,14 +62,13 @@ export default function App() {
     const [twoS1,setTwoS1] = useState(2n);
     const [fourS1,setFourS1] = useState(4n);
 
+    const [autoSaveOn, setAutoSaveOn] = useState(true);
 
     /*        Don't save these values        */
     // reRender will make auto clicker update only between loops
     // allowing the auto clicker to work regardless of buttons spammed
     const [reRender1,setReRender1] = useState(0);
-    const [autoSaveOn, setAutoSaveOn] = useState(true);
-
-    const didInitialLoad = useRef(false); //Makes sure game loads first before saving
+    const didInitialLoad = useRef(false); // Makes sure game loads first before saving
 
     // autoload - autosave
     useEffect(() => {

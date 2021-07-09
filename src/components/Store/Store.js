@@ -29,8 +29,8 @@ export default function Store(props) {
       </p>
       
       
-      {props.clicksTotal >= 30 &&
-      /*    Navigation Menu    */
+      
+      {/*    Navigation Menu    */}
 
       <div style={{padding: "0 .5em 1em .5em"}}>
         <h3 style={{marginBottom: ".2em"}}>Store</h3>
@@ -77,7 +77,6 @@ export default function Store(props) {
         </nav>
         
       </div>
-      }
 
       {/* Store */}
       <div id="store">

@@ -14,7 +14,6 @@ export default function Store1(props) {
     return (
         <div>
             {/* Buy amount per autoclick 2x */}
-            {props.clicksTotal >= 30 &&
                 <p>
                     <button type="button" 
                         className={`button ${props.clicksCurrent >= props.autoClick2xPrice ? "buttonAvailable" : "buttonUnavailable"}`}
@@ -23,7 +22,6 @@ export default function Store1(props) {
                     </button>
                     {NumberCompacter(props.autoClick2xPrice)}
                 </p>
-            }
 
 
             {/* Buy amount per autoclick 4x */}

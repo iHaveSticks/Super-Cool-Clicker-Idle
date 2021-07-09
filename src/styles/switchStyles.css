@@ -1,12 +1,12 @@
 .switch {
   /* variables */
-  --switchHeight: 10px;
+  --switchHeight: 0.625em;
 
   position: relative;
-  width: 30px;
+  width: 1.875rem;
   height: var(--switchHeight);
   margin: auto 0;
-  margin-left: 20px;
+  margin-left: 1.25rem;
   user-select: none;
 }
 
@@ -23,21 +23,21 @@
   height: var(--switchHeight);
   padding: 0;
   line-height: var(--switchHeight);
-  border-radius: 10px;
+  border-radius: 0.625rem;
   background-color: #9f5b50;
 }
 
 .switchLabel:before {
   content: "";
   display: block;
-  width: 18px;
-  margin: -4px;
+  width: 1.125rem;
+  margin: -0.25rem;
   background: #d77f71;
   position: absolute;
   top: 0;
   bottom: 0;
-  right: 20px;
-  border-radius: 30px;
+  right: 1.25rem;
+  border-radius: 1.875rem;
 }
 
 .switchCheckbox:checked + .switchLabel {
@@ -55,11 +55,11 @@
 
 .switchCheckbox:focus-visible + .switchLabel:before,
 .switchCheckbox:hover + .switchLabel:before {
-  box-shadow: 0 0 0 6px rgba(30, 30, 30, 20%);
+  box-shadow: 0 0 0 0.375rem rgba(30, 30, 30, 20%);
   transition: ease-in 0.1s;
 }
 
 .switchCheckbox:active + .switchLabel:before {
   transition-delay: 50ms;
-  box-shadow: 0 0 6px 6px rgba(30, 30, 30, 20%);
+  box-shadow: 0 0 0.375rem 0.375rem rgba(30, 30, 30, 20%);
 }

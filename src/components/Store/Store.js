@@ -15,7 +15,7 @@ export default function Store(props) {
   const mountainReq = useRef(1e+9);
 
   return (
-    <div id="storeContainer">
+    <section id="storeContainer">
         <p> {/* clicker button */}
           <button type="button"
               className={"buttonAvailable button"}
@@ -134,7 +134,7 @@ export default function Store(props) {
             />
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

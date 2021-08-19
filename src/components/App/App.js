@@ -81,6 +81,7 @@ export default function App() {
     });
 
     //Auto Clicker
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => autoClicker(), [reRender1]);
 
 
@@ -136,7 +137,8 @@ export default function App() {
                     * SavedGame.numOfPinetrees * SavedGame.pinetreesMod));
                 // Show offline clicks in a message
                 showMessage(`Offline Clicks: ${NumberCompacter(clicksGarnered)}<br>
-                ${pinconesGarnered ? "Offline Pinecones " + NumberCompacter(pinconesGarnered) : "" }`
+                ${pinconesGarnered ? "Offline Pinecones " + NumberCompacter(pinconesGarnered) : "" }`,
+                8000
                 )
 
                 // Add offline clicks to variables

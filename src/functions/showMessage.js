@@ -1,4 +1,4 @@
-export default function showMessage(message = "") {
+export default function showMessage(message = "", duration = 5000) {
   const messageBoxContainer = document.getElementById("messageBoxContainer");
 
   // Create message
@@ -32,6 +32,6 @@ export default function showMessage(message = "") {
     if (currentMessage) {
       currentMessage.remove();
     }
-  }, 5000);
+  }, duration);
 
 }

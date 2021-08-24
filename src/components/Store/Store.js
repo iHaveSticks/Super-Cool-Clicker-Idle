@@ -7,7 +7,6 @@ import Store3 from "./Store3.js";
 import menuControls from '../../functions/menuControls.js';
 import showMessage from "../../functions/showMessage.js";
 import NumberCompacter from '../../functions/numberCompacter.js';
-import './Store.css'
 
 export default function Store(props) {
 

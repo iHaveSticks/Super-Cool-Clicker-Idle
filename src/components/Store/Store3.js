@@ -1,12 +1,5 @@
 import React  from 'react';
-
-// Import CSS
-import "../../styles/buttonStyles.css";
-
-// Import JS Functions
 import numberCompacter from '../../functions/numberCompacter.js';
-
-
 
 export default function Store3(props) {
     // Contains the jsx for store 3

@@ -2,11 +2,8 @@ import React  from 'react';
 import closeSettings from '../../functions/closeSettings';
 
 import onUnload from '../../functions/onUnload.js';
-import './Settings.css';
-import '../../styles/switchStyles.css';
 
 export default function settings(props) {
-
   return (
     <div id="settingsBackground" 
     onClick={(event)=> {if(event.target.id === "settingsBackground") closeSettings()} }

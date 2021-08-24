@@ -1,10 +1,7 @@
 import React, {useState, useEffect , useRef} from 'react';
 
+import "../../styles/index.css"
 
-// Import CSS
-import  "./App.css";
-import "../../styles/mobile.css";
-import "../../styles/buttonStyles.css";
 
 // Import Components
 import GameStats from "../GameStats/GameStats.js";

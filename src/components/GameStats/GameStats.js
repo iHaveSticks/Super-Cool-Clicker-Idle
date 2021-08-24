@@ -1,5 +1,4 @@
 import React from 'react';
-import "./GameStats.css";
 import NumberCompacter from '../../functions/numberCompacter.js';
 /* global BigInt */ //<-- enable BigInt()
 

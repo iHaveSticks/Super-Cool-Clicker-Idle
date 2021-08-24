@@ -1,3 +1,15 @@
+@forward "./mobile.scss";
+
+@forward "./components/switchStyles.scss";
+@forward "./components/buttonStyles.scss";
+
+@forward "./layouts/App.scss";
+@forward "./layouts/Footer.scss";
+@forward "./layouts/GameStats.scss";
+@forward "./layouts/MessageContainer.scss";
+@forward "./layouts/Settings.scss";
+@forward "./layouts/Store.scss";
+
 html {
   box-sizing: border-box;
   font-size: 123%;

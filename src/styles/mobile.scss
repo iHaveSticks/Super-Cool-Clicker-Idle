@@ -1,0 +1,64 @@
+@media screen and (max-width: 46.75em), screen and (max-device-width: 900px) {
+  /* 
+    Max-width is different from #main because browser default is used
+  */
+
+  #main {
+    grid-template-columns: 100%;
+
+    #mainHead {
+      text-align: center;
+      grid-column: 1;
+
+      #clicksCurrent {
+        margin: auto;
+      }
+    }
+
+    #openSettingBtn {
+      position: fixed;
+      right: 0;
+      top: 0;
+      margin-top: 10px;
+      margin-right: 10px;
+      height: 2em;
+      width: 2em;
+    }
+
+    #storeContainer {
+      text-align: center;
+      min-height: 21em;
+      margin: auto;
+
+      #storeMenu {
+        justify-content: center;
+      }
+      #store1 div p,
+      #store2 div p {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+    }
+
+    #gameStatsContainer {
+      text-align: center;
+      width: 100%;
+      max-width: 20em;
+      margin: auto;
+    }
+  }
+}
+
+@media screen and (max-device-width: 900px) {
+  #root {
+    touch-action: manipulation;
+  }
+
+  #main {
+    gap: 0.5em;
+  }
+
+  #footer p {
+    font-size: 85%;
+  }
+}

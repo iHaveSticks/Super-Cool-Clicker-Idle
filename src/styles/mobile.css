@@ -2,20 +2,19 @@
   /* 
     Max-width is different from #main because browser default is used
   */
-
   #main {
-    grid-template-columns: 100%;
+    -ms-grid-columns: 100%;
+        grid-template-columns: 100%;
   }
-
-  #mainHead {
+  #main #mainHead {
     text-align: center;
+    -ms-grid-column: 1;
     grid-column: 1;
   }
-
-  #clicksCurrent {
+  #main #mainHead #clicksCurrent {
     margin: auto;
   }
-  #openSettingBtn {
+  #main #openSettingBtn {
     position: fixed;
     right: 0;
     top: 0;
@@ -24,24 +23,27 @@
     height: 2em;
     width: 2em;
   }
-
-  #storeContainer {
+  #main #storeContainer {
     text-align: center;
     min-height: 21em;
     margin: auto;
   }
-
-  #storeMenu {
-    justify-content: center;
+  #main #storeContainer #storeMenu {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
-
-  #store1 div p,
-  #store2 div p {
+  #main #storeContainer #store1 div p,
+  #main #storeContainer #store2 div p {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row-reverse;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
   }
-
-  #gameStatsContainer {
+  #main #gameStatsContainer {
     text-align: center;
     width: 100%;
     max-width: 20em;
@@ -51,14 +53,14 @@
 
 @media screen and (max-device-width: 900px) {
   #root {
-    touch-action: manipulation;
+    -ms-touch-action: manipulation;
+        touch-action: manipulation;
   }
-
   #main {
     gap: 0.5em;
   }
-
   #footer p {
     font-size: 85%;
   }
 }
+/*# sourceMappingURL=mobile.css.map */

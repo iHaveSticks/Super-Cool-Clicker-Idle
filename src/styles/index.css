@@ -1,32 +1,22 @@
 html {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   font-size: 123%;
 }
+
 *,
 *:before,
 *:after {
-  box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
 }
 
 #root {
   color: #fffbdb;
-  user-select: none;
-}
-
-h3 {
-  font-size: 1.5rem;
-}
-
-a {
-  font-family: inherit;
-  font-size: inherit;
-  color: #da7422;
-  text-decoration: none;
-}
-
-a:hover,
-a:focus {
-  color: #fffbdb;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 body {
@@ -34,3 +24,20 @@ body {
   background-color: #30362f;
   margin: 0;
 }
+
+body a {
+  font-family: inherit;
+  font-size: inherit;
+  color: #da7422;
+  text-decoration: none;
+}
+
+body h3 {
+  font-size: 1.5rem;
+}
+
+body a:hover,
+body a:focus {
+  color: #fffbdb;
+}
+/*# sourceMappingURL=index.css.map */

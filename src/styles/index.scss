@@ -1,0 +1,36 @@
+html {
+  box-sizing: border-box;
+  font-size: 123%;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+#root {
+  color: #fffbdb;
+  user-select: none;
+}
+
+body {
+  font-family: "Roboto Condensed", sans-serif;
+  background-color: #30362f;
+  margin: 0;
+
+  a {
+    font-family: inherit;
+    font-size: inherit;
+    color: #da7422;
+    text-decoration: none;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  a:hover,
+  a:focus {
+    color: #fffbdb;
+  }
+}

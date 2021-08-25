@@ -1,9 +1,11 @@
+@use "../_master.scss" as m;
+
 #gameStatsInside {
   margin: 0;
   padding: 1em;
   white-space: nowrap;
   display: block;
-  border: 3px solid #e6e6e6;
+  border: 3px solid m.$color-borders;
   overflow: hidden;
 }
 

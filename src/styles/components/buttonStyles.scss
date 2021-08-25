@@ -1,3 +1,5 @@
+@use "../_master.scss" as m;
+
 .button {
   font-size: 0.8em;
   border-style: none;
@@ -5,17 +7,23 @@
   min-height: 2.3em;
   margin: 0 0.5em;
   border-radius: 0.2em;
+  color: m.$color-words-dark;
 }
 
 .buttonAvailable {
-  background-color: #da7422;
+  //Use CSS variables instead so they work inside box-shadow property
+  --primary-color-dark: #{m.$primary-color-dark};
+  --secondary-color-dark: #{m.$secondary-color-dark};
+
+  background-color: m.$secondary-color;
   cursor: pointer;
-}
-.buttonAvailable:hover {
-  box-shadow: -3px 6px 6px #252b25;
-}
-.buttonAvailable:active {
-  box-shadow: inset 0 0 2px 1px #63340e;
+
+  &:hover {
+    box-shadow: -3px 6px 6px var(--primary-color-dark);
+  }
+  &:active {
+    box-shadow: inset 0 0 2px 1px var(--secondary-color-dark);
+  }
 }
 
 .buttonUnavailable {

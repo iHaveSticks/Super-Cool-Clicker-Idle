@@ -1,6 +1,8 @@
+@use "../_master.scss" as m;
+
 #footer {
   padding: 0.5em 0;
-  background-color: #252b25;
+  background-color: m.$primary-color-dark;
 }
 
 #footerInside {
@@ -17,9 +19,9 @@
 }
 
 #footer a {
-  color: #ffcb9f;
+  color: m.$secondary-color;
 }
 
 #footer a:hover {
-  color: #fffbdb;
+  color: m.$color-words;
 }

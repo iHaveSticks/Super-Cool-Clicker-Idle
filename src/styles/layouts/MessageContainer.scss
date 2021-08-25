@@ -1,3 +1,5 @@
+@use "../_master.scss" as m;
+
 #messageBoxContainer {
   position: fixed;
 
@@ -19,9 +21,9 @@
   min-height: 2rem;
   margin: 0 20px 5px auto;
 
-  background-color: rgba(48, 54, 47, 95%);
-  color: #fffbdb;
-  border: 2px solid rgba(218, 116, 34, 95%);
+  background-color: m.$primary-color-dark;
+  color: m.$color-words;
+  border: 2px solid m.$secondary-color;
 
   pointer-events: all;
 }
@@ -31,7 +33,5 @@
 }
 
 .messageBox:hover {
-  background-color: rgba(48, 54, 47, 100%); /*#30362f*/
-  border: 2px solid rgba(218, 116, 34, 100%); /*#da7422*/
   transform: scale(1.02);
 }

@@ -1,3 +1,5 @@
+@use "../_master.scss" as m;
+
 #main {
   display: grid;
   grid-template-columns: 55% 45%;
@@ -15,7 +17,7 @@
 }
 
 #clicksCurrent {
-  border: 3px solid #e6e6e6;
+  border: 3px solid m.$color-borders;
   width: 11em;
   white-space: nowrap;
   padding: 0.25em;
@@ -38,6 +40,6 @@
 #openSettingBtn:hover {
   transform: rotate(0.1turn);
 }
-#openSettingBtn::focus-visible {
+#openSettingBtn:focus-visible {
   outline: auto;
 }

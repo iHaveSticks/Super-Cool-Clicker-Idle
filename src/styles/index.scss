@@ -1,14 +1,14 @@
-@forward "./mobile.scss";
-
 @forward "./components/switchStyles.scss";
 @forward "./components/buttonStyles.scss";
 
 @forward "./layouts/App.scss";
-@forward "./layouts/Footer.scss";
-@forward "./layouts/GameStats.scss";
-@forward "./layouts/MessageContainer.scss";
 @forward "./layouts/Settings.scss";
 @forward "./layouts/Store.scss";
+@forward "./layouts/GameStats.scss";
+@forward "./layouts/MessageContainer.scss";
+@forward "./layouts/Footer.scss";
+
+@forward "./mobile.scss";
 
 html {
   box-sizing: border-box;
@@ -25,24 +25,24 @@ html {
   user-select: none;
 }
 
+h3 {
+  font-size: 1.5rem;
+}
+
+a {
+  font-family: inherit;
+  font-size: inherit;
+  color: #da7422;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: #fffbdb;
+}
+
 body {
   font-family: "Roboto Condensed", sans-serif;
   background-color: #30362f;
   margin: 0;
-
-  a {
-    font-family: inherit;
-    font-size: inherit;
-    color: #da7422;
-    text-decoration: none;
-  }
-
-  h3 {
-    font-size: 1.5rem;
-  }
-
-  a:hover,
-  a:focus {
-    color: #fffbdb;
-  }
 }

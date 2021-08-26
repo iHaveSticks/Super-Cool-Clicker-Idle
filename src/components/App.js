@@ -1,23 +1,23 @@
 import React, {useState, useEffect , useRef} from 'react';
 
-import "../../styles/index.css"
+import "../styles/index.css"
 
 
 // Import Components
-import GameStats from "../GameStats/GameStats.js";
-import Settings from '../Settings/Settings';
-import Footer from "../Footer/Footer.js";
-import MessageContainer from '../MessageContainer/MessageContainer.js';
-import MainHead from '../MainHead';
-import Store from "../Store/Store.js"
+import GameStats from "./GameStats.js";
+import Settings from './Settings';
+import Footer from "./Footer.js";
+import MessageContainer from './MessageContainer.js';
+import MainHead from './MainHead';
+import Store from "./Store/Store.js"
 
 
 // Import JS Functions
-import NumberCompacter from '../../functions/numberCompacter.js';
-import onUnload from '../../functions/onUnload.js';
+import NumberCompacter from '../functions/numberCompacter.js';
+import onUnload from '../functions/onUnload.js';
 
 //import DOM functions
-import showMessage from '../../functions/showMessage';
+import showMessage from '../functions/showMessage';
 
 /* global BigInt */ //<-- enable BigInt()
 

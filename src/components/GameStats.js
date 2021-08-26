@@ -1,5 +1,5 @@
 import React from 'react';
-import NumberCompacter from '../../functions/numberCompacter.js';
+import NumberCompacter from '../functions/numberCompacter.js';
 /* global BigInt */ //<-- enable BigInt()
 
 

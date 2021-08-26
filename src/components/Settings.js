@@ -1,7 +1,7 @@
 import React  from 'react';
-import closeSettings from '../../functions/closeSettings';
+import closeSettings from '../functions/closeSettings';
 
-import onUnload from '../../functions/onUnload.js';
+import onUnload from '../functions/onUnload.js';
 
 export default function settings(props) {
   return (

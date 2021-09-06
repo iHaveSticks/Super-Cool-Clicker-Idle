@@ -26,12 +26,12 @@
   border: 2px solid m.$secondary-color;
 
   pointer-events: all;
-}
 
-.messageBox > p {
-  pointer-events: none;
-}
+  p {
+    pointer-events: none;
+  }
 
-.messageBox:hover {
-  transform: scale(1.02);
+  &:hover {
+    transform: scale(1.02);
+  }
 }

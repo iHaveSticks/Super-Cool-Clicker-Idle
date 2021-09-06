@@ -35,11 +35,11 @@
   height: 1.5em;
   filter: invert(99%) sepia(0%) saturate(6441%) hue-rotate(244deg)
     brightness(120%) contrast(80%);
-}
 
-#openSettingBtn:hover {
-  transform: rotate(0.1turn);
-}
-#openSettingBtn:focus-visible {
-  outline: auto;
+  &:hover {
+    transform: rotate(0.1turn);
+  }
+  &:focus-visible {
+    outline: auto;
+  }
 }

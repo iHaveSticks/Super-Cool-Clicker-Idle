@@ -3,6 +3,19 @@
 #footer {
   padding: 0.5em 0;
   background-color: m.$primary-color-dark;
+
+  p {
+    height: 1em;
+    margin: 0;
+  }
+
+  a {
+    color: m.$secondary-color;
+
+    &:hover {
+      color: m.$color-words;
+    }
+  }
 }
 
 #footerInside {
@@ -11,17 +24,4 @@
   padding: 0 0.5em;
   display: flex;
   justify-content: space-between;
-}
-
-#footer p {
-  height: 1em;
-  margin: 0;
-}
-
-#footer a {
-  color: m.$secondary-color;
-}
-
-#footer a:hover {
-  color: m.$color-words;
 }

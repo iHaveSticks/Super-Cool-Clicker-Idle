@@ -135,11 +135,9 @@
   height: 1.5em;
   filter: invert(99%) sepia(0%) saturate(6441%) hue-rotate(244deg) brightness(120%) contrast(80%);
 }
-
 #openSettingBtn:hover {
   transform: rotate(0.1turn);
 }
-
 #openSettingBtn:focus-visible {
   outline: auto;
 }
@@ -235,7 +233,6 @@
   display: flex;
   justify-content: flex-start;
 }
-
 #storeMenu > button {
   margin: 2px;
   font-size: 0.8em;
@@ -244,16 +241,13 @@
   min-height: 2.3em;
   cursor: pointer;
 }
-
 #storeMenu > .active {
   background-color: #bcb860;
   cursor: initial;
 }
-
 #storeMenu > .inactive {
   background-color: #939049;
 }
-
 #storeMenu > .inactive:hover {
   background-color: #bcb860;
 }
@@ -266,8 +260,7 @@
   border: 3px solid #e6e6e6;
   overflow: hidden;
 }
-
-h3 {
+#gameStatsInside h3 {
   margin-top: 0;
 }
 
@@ -302,11 +295,9 @@ h3 {
   border: 2px solid #da7422;
   pointer-events: all;
 }
-
-.messageBox > p {
+.messageBox p {
   pointer-events: none;
 }
-
 .messageBox:hover {
   transform: scale(1.02);
 }
@@ -315,6 +306,16 @@ h3 {
   padding: 0.5em 0;
   background-color: #252b25;
 }
+#footer p {
+  height: 1em;
+  margin: 0;
+}
+#footer a {
+  color: #da7422;
+}
+#footer a:hover {
+  color: #fffbdb;
+}
 
 #footerInside {
   max-width: 40em;
@@ -322,19 +323,6 @@ h3 {
   padding: 0 0.5em;
   display: flex;
   justify-content: space-between;
-}
-
-#footer p {
-  height: 1em;
-  margin: 0;
-}
-
-#footer a {
-  color: #da7422;
-}
-
-#footer a:hover {
-  color: #fffbdb;
 }
 
 @media screen and (max-width: 46.75em), screen and (max-device-width: 900px) {

@@ -8,25 +8,26 @@
 #storeMenu {
   display: flex;
   justify-content: flex-start;
-}
 
-#storeMenu > button {
-  margin: 2px;
-  font-size: 0.8em;
-  border-style: none;
-  min-width: 5em;
-  min-height: 2.3em;
-  cursor: pointer;
-}
+  > button {
+    margin: 2px;
+    font-size: 0.8em;
+    border-style: none;
+    min-width: 5em;
+    min-height: 2.3em;
+    cursor: pointer;
+  }
 
-#storeMenu > .active {
-  background-color: m.$auxiliary-color;
-  cursor: initial;
-}
+  > .active {
+    background-color: m.$auxiliary-color;
+    cursor: initial;
+  }
 
-#storeMenu > .inactive {
-  background-color: m.$auxiliary-color-dark;
-}
-#storeMenu > .inactive:hover {
-  background-color: m.$auxiliary-color;
+  > .inactive {
+    background-color: m.$auxiliary-color-dark;
+
+    &:hover {
+      background-color: m.$auxiliary-color;
+    }
+  }
 }

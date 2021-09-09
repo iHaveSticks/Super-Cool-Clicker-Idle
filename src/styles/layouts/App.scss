@@ -2,18 +2,22 @@
 
 #main {
   display: grid;
-  grid-template-columns: 55% 45%;
-  grid-template-rows: 9.3em auto 1fr;
+  grid-template-columns: 1fr 20em 18em 1fr;
+  grid-template-rows: auto 1fr auto auto;
+  grid-template-areas:
+    ". header header ."
+    ". store stats ."
+    "footer footer footer footer";
 
   margin: 0 auto;
   padding: 0 5px;
-  max-width: 38em;
-  min-height: calc(100vh - 2em);
+  min-height: inherit;
 }
 
 #mainHead {
   grid-column: 1 / span 2;
   width: 100%;
+  grid-area: header;
 }
 
 #clicksCurrent {

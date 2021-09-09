@@ -289,7 +289,7 @@ export default function App() {
     }
 
     return (
-    <div style={{margin: "none"}}>
+    <div style={{margin: "none", minHeight: "inherit"}}>
         <Settings
             //variables
             autoSaveOn = {autoSaveOn}
@@ -333,19 +333,18 @@ export default function App() {
 
             />
 
-            <div id="gameStatsContainer">
-                <GameStats  perAutoClick={perAutoClick}
-                            autoClickSpeed={autoClickSpeed}
-                            perClick={perClick}
-                            pineconesCurrent={pineconesCurrent}
-                            numOfPinetrees={numOfPinetrees}
-                            pinetreesMod={pinetreesMod}
-                            clicksTotal={clicksTotal}
-                            weirdRockAmount = {weirdRockAmount}
-                />
-            </div>
+            
+            <GameStats  perAutoClick={perAutoClick}
+                        autoClickSpeed={autoClickSpeed}
+                        perClick={perClick}
+                        pineconesCurrent={pineconesCurrent}
+                        numOfPinetrees={numOfPinetrees}
+                        pinetreesMod={pinetreesMod}
+                        clicksTotal={clicksTotal}
+                        weirdRockAmount = {weirdRockAmount}
+            />
+            <Footer />
         </main>
-        <Footer />
         <MessageContainer />
     </div>
     )

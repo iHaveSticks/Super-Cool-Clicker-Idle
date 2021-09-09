@@ -3,6 +3,8 @@
 #footer {
   padding: 0.5em 0;
   background-color: m.$primary-color-dark;
+  grid-area: footer;
+  width: 100%;
 
   p {
     height: 1em;

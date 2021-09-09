@@ -1,14 +1,18 @@
-@media screen and (max-width: 46.75em), screen and (max-device-width: 900px) {
+@media screen and (max-width: 47.5em), screen and (max-device-width: 900px) {
   /* 
     Max-width is different from #main because browser default is used
   */
 
   #main {
     grid-template-columns: 100%;
+    grid-template-areas:
+      "header"
+      "store"
+      "stats"
+      "footer";
 
     #mainHead {
       text-align: center;
-      grid-column: 1;
 
       #clicksCurrent {
         margin: auto;
@@ -40,11 +44,9 @@
       }
     }
 
-    #gameStatsContainer {
+    #gameStats {
       text-align: center;
       width: 100%;
-      max-width: 20em;
-      margin: auto;
     }
   }
 }

@@ -104,17 +104,18 @@
 
 #main {
   display: grid;
-  grid-template-columns: 55% 45%;
-  grid-template-rows: 9.3em auto 1fr;
+  grid-template-columns: 1fr 20em 18em 1fr;
+  grid-template-rows: auto 1fr auto auto;
+  grid-template-areas: ". header header ." ". store stats ." "footer footer footer footer";
   margin: 0 auto;
   padding: 0 5px;
-  max-width: 38em;
-  min-height: calc(100vh - 2em);
+  min-height: inherit;
 }
 
 #mainHead {
   grid-column: 1/span 2;
   width: 100%;
+  grid-area: header;
 }
 
 #clicksCurrent {
@@ -227,6 +228,7 @@
 #storeContainer {
   min-height: 22em;
   overflow: hidden;
+  grid-area: store;
 }
 
 #storeMenu {
@@ -252,15 +254,16 @@
   background-color: #bcb860;
 }
 
-#gameStatsInside {
+#gameStats {
   margin: 0;
   padding: 1em;
   white-space: nowrap;
-  display: block;
   border: 3px solid #e6e6e6;
   overflow: hidden;
+  grid-area: stats;
+  height: fit-content;
 }
-#gameStatsInside h3 {
+#gameStats h3 {
   margin-top: 0;
 }
 
@@ -305,6 +308,8 @@
 #footer {
   padding: 0.5em 0;
   background-color: #252b25;
+  grid-area: footer;
+  width: 100%;
 }
 #footer p {
   height: 1em;
@@ -325,16 +330,16 @@
   justify-content: space-between;
 }
 
-@media screen and (max-width: 46.75em), screen and (max-device-width: 900px) {
+@media screen and (max-width: 47.5em), screen and (max-device-width: 900px) {
   /* 
     Max-width is different from #main because browser default is used
   */
   #main {
     grid-template-columns: 100%;
+    grid-template-areas: "header" "store" "stats" "footer";
   }
   #main #mainHead {
     text-align: center;
-    grid-column: 1;
   }
   #main #mainHead #clicksCurrent {
     margin: auto;
@@ -361,11 +366,9 @@
     display: flex;
     flex-direction: row-reverse;
   }
-  #main #gameStatsContainer {
+  #main #gameStats {
     text-align: center;
     width: 100%;
-    max-width: 20em;
-    margin: auto;
   }
 }
 @media screen and (max-device-width: 900px) {
@@ -392,11 +395,6 @@ html {
   box-sizing: inherit;
 }
 
-#root {
-  color: #fffbdb;
-  user-select: none;
-}
-
 h3 {
   font-size: 1.5rem;
 }
@@ -417,6 +415,13 @@ body {
   font-family: "Roboto Condensed", sans-serif;
   background-color: #30362f;
   margin: 0;
+  min-height: 100vh;
+}
+
+#root {
+  color: #fffbdb;
+  user-select: none;
+  min-height: inherit;
 }
 
 /*# sourceMappingURL=index.css.map */

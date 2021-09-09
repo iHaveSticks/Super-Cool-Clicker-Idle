@@ -8,7 +8,7 @@ export default function GameStats(props)  {
     Displays game statistics inside a box
     */
     return(
-        <aside id={"gameStatsInside"}>
+        <aside id={"gameStats"}>
             <h3>Stats</h3>
                 <p className={"rowStyles"}>Selfclick:&nbsp;{NumberCompacter(props.perClick * props.weirdRockAmount)}</p>
                 {props.perAutoClick > 0 &&

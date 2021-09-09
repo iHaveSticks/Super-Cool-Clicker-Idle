@@ -1,12 +1,13 @@
 @use "../_master.scss" as m;
 
-#gameStatsInside {
+#gameStats {
   margin: 0;
   padding: 1em;
   white-space: nowrap;
-  display: block;
   border: 3px solid m.$color-borders;
   overflow: hidden;
+  grid-area: stats;
+  height: fit-content;
 
   h3 {
     margin-top: 0;

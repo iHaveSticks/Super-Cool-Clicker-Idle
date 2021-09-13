@@ -1,5 +1,3 @@
-@use "../_master.scss" as m;
-
 #storeContainer {
   min-height: 22em;
   overflow: hidden;
@@ -20,15 +18,15 @@
   }
 
   > .active {
-    background-color: m.$auxiliary-color;
+    background-color: var(--auxiliary-color);
     cursor: initial;
   }
 
   > .inactive {
-    background-color: m.$auxiliary-color-dark;
+    background-color: var(--auxiliary-color-dark);
 
     &:hover {
-      background-color: m.$auxiliary-color;
+      background-color: var(--auxiliary-color);
     }
   }
 }

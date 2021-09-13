@@ -1,5 +1,3 @@
-@use "../_master.scss" as m;
-
 #messageBoxContainer {
   position: fixed;
 
@@ -21,9 +19,9 @@
   min-height: 2rem;
   margin: 0 20px 5px auto;
 
-  background-color: m.$primary-color-dark;
-  color: m.$color-words;
-  border: 2px solid m.$secondary-color;
+  background-color: var(--primary-color-dark);
+  color: var(--color-words);
+  border: 2px solid var(--secondary-color);
 
   pointer-events: all;
 

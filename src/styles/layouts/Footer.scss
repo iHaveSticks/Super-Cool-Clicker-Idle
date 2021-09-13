@@ -1,8 +1,6 @@
-@use "../_master.scss" as m;
-
 #footer {
   padding: 0.5em 0;
-  background-color: m.$primary-color-dark;
+  background-color: var(--primary-color-dark);
   grid-area: footer;
   width: 100%;
 
@@ -12,10 +10,10 @@
   }
 
   a {
-    color: m.$secondary-color;
+    color: var(--secondary-color);
 
     &:hover {
-      color: m.$color-words;
+      color: var(--color-words);
     }
   }
 }

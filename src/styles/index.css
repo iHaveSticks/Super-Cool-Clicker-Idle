@@ -1,3 +1,27 @@
+.theme-original {
+  --primary-color: #30362f;
+  --primary-color-dark: #252b25;
+  --secondary-color: #da7422;
+  --secondary-color-dark: #63340e;
+  --auxiliary-color: #bcb860;
+  --auxiliary-color-dark: #939049;
+  --color-borders: #e6e6e6;
+  --color-words: #fffbdb;
+  --color-words-dark: black;
+}
+
+.theme-light {
+  --primary-color: #f2f2f2;
+  --primary-color-dark: #d9d9d9;
+  --secondary-color: #ffb366;
+  --secondary-color-dark: #ffb366;
+  --auxiliary-color: #bcb860;
+  --auxiliary-color-dark: #939049;
+  --color-borders: #1a1a1a;
+  --color-words: #262626;
+  --color-words-dark: #262626;
+}
+
 .switch {
   /* variables */
   --switchHeight: 0.625em;
@@ -70,13 +94,11 @@
   min-height: 2.3em;
   margin: 0 0.5em;
   border-radius: 0.2em;
-  color: black;
+  color: var(--color-words-dark);
 }
 
 .buttonAvailable {
-  --primary-color-dark: #252b25;
-  --secondary-color-dark: #63340e;
-  background-color: #da7422;
+  background-color: var(--secondary-color);
   cursor: pointer;
 }
 .buttonAvailable:hover {
@@ -119,7 +141,7 @@
 }
 
 #clicksCurrent {
-  border: 3px solid #e6e6e6;
+  border: 3px solid var(--color-borders);
   width: 11em;
   white-space: nowrap;
   padding: 0.25em;
@@ -159,8 +181,8 @@
 #settingsMenu {
   display: flex;
   flex-direction: column;
-  color: #30362f;
-  background-color: #fffbdb;
+  color: var(--primary-color);
+  background-color: var(--color-words);
   margin: 10vh auto;
   padding: 20px;
   max-width: 19em;
@@ -173,7 +195,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: 2px dotted #252b25;
+  border-bottom: 2px dotted var(--primary-color-dark);
   font-family: "Arial", sans-serif;
 }
 
@@ -217,12 +239,12 @@
   display: block;
   margin: auto;
   background-color: transparent;
-  border: solid #252b25;
+  border: solid var(--primary-color-dark);
   font-size: 0.8rem;
 }
 #deleteSaveBtn:hover, #deleteSaveBtn:focus-visible {
-  background-color: #252b25;
-  color: #e6e6e6;
+  background-color: var(--primary-color-dark);
+  color: var(--color-borders);
 }
 
 #storeContainer {
@@ -244,21 +266,21 @@
   cursor: pointer;
 }
 #storeMenu > .active {
-  background-color: #bcb860;
+  background-color: var(--auxiliary-color);
   cursor: initial;
 }
 #storeMenu > .inactive {
-  background-color: #939049;
+  background-color: var(--auxiliary-color-dark);
 }
 #storeMenu > .inactive:hover {
-  background-color: #bcb860;
+  background-color: var(--auxiliary-color);
 }
 
 #gameStats {
   margin: 0;
   padding: 1em;
   white-space: nowrap;
-  border: 3px solid #e6e6e6;
+  border: 3px solid var(--color-borders);
   overflow: hidden;
   grid-area: stats;
   height: fit-content;
@@ -293,9 +315,9 @@
   width: 12rem;
   min-height: 2rem;
   margin: 0 20px 5px auto;
-  background-color: #252b25;
-  color: #fffbdb;
-  border: 2px solid #da7422;
+  background-color: var(--primary-color-dark);
+  color: var(--color-words);
+  border: 2px solid var(--secondary-color);
   pointer-events: all;
 }
 .messageBox p {
@@ -307,7 +329,7 @@
 
 #footer {
   padding: 0.5em 0;
-  background-color: #252b25;
+  background-color: var(--primary-color-dark);
   grid-area: footer;
   width: 100%;
 }
@@ -316,10 +338,10 @@
   margin: 0;
 }
 #footer a {
-  color: #da7422;
+  color: var(--secondary-color);
 }
 #footer a:hover {
-  color: #fffbdb;
+  color: var(--color-words);
 }
 
 #footerInside {
@@ -402,24 +424,24 @@ h3 {
 a {
   font-family: inherit;
   font-size: inherit;
-  color: #da7422;
+  color: var(--secondary-color);
   text-decoration: none;
 }
 
 a:hover,
 a:focus {
-  color: #da7422;
+  color: var(--secondary-color);
 }
 
 body {
   font-family: "Roboto Condensed", sans-serif;
-  background-color: #30362f;
+  background-color: var(--primary-color);
   margin: 0;
   min-height: 100vh;
 }
 
 #root {
-  color: #fffbdb;
+  color: var(--color-words);
   user-select: none;
   min-height: inherit;
 }
